@@ -1,0 +1,16 @@
+* text=auto
+
+# Godot scripts and scenes — force LF, text
+*.gd text eol=lf
+*.tscn text eol=lf
+*.tres text eol=lf
+*.gdextension text eol=lf
+*.gdshader text eol=lf
+*.godot text eol=lf
+
+# Assets — binary
+*.png binary
+*.ogg binary
+*.mp3 binary
+*.wav binary
+*.woff2 binary
