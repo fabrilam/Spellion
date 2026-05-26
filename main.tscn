@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dikuvi1qxt3wh" path="res://scenes/hud.tscn" id="7_hud"]
 [ext_resource type="PackedScene" uid="uid://d0d7rjymd7xn6" path="res://scenes/stats_screen.tscn" id="9_stats"]
 [ext_resource type="Script" uid="uid://cdr206usxicj8" path="res://scripts/forest_scatter.gd" id="10_forest"]
-[ext_resource type="PackedScene" path="res://scenes/minimap.tscn" id="11_minimap"]
+[ext_resource type="PackedScene" uid="uid://bheq2fmkfkct6" path="res://scenes/minimap.tscn" id="11_minimap"]
 [ext_resource type="Script" uid="uid://dfk5477mh5g4r" path="res://scripts/orb_sky_spawner.gd" id="12_dg77c"]
-[ext_resource type="PackedScene" path="res://scenes/inventory_screen.tscn" id="12_inv"]
+[ext_resource type="PackedScene" uid="uid://dmhqodj6kxrci" path="res://scenes/inventory_screen.tscn" id="12_inv"]
 [ext_resource type="PackedScene" uid="uid://i03ay0pqo6gn" path="res://scenes/enemy_hp_panel.tscn" id="13_hp"]
 [ext_resource type="Script" uid="uid://bdwhddmlralrn" path="res://scripts/dungeon/dungeon_visualizer.gd" id="14_w48qg"]
 

@@ -18,7 +18,7 @@ func _apply_level_stats() -> void:
 
 func _add_red_light() -> void:
 	var light := OmniLight3D.new()
-	light.light_color = Color(1, 0.2, 0)
+	light.light_color = Color(0, 1, 0)
 	light.light_energy = 20.0
 	light.omni_range = 15.0
 	light.shadow_enabled = false
