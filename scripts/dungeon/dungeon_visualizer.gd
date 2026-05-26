@@ -274,11 +274,9 @@ func _add_lights() -> void:
 			add_child(light)
 
 func _spawn_enemies() -> void:
-	print("_spawn_enemies() called")
 	_spawn_enemies_with_level(1)
 
 func _spawn_enemies_with_level(dlvl: int) -> void:
-	print("_spawn_enemies_with_level(", dlvl, ") called")
 	var player := get_tree().get_first_node_in_group("player")
 	if not player:
 		return
@@ -292,12 +290,20 @@ func _spawn_enemies_with_level(dlvl: int) -> void:
 				floor_tiles.append(Vector3(px, 0.0, pz))
 	if floor_tiles.is_empty():
 		return
+	# Filter out tiles within 15 tiles (30 world units) of entrance
+	var safe_dist := 30.0
+	var spawn_tiles: Array = []
+	for ft in floor_tiles:
+		if ft.distance_to(_spawn_pos) >= safe_dist:
+			spawn_tiles.append(ft)
+	if spawn_tiles.is_empty():
+		spawn_tiles = floor_tiles
 	var count_: int = maxi(20, floor_tiles.size() / 6)
 	var parent := get_parent()
 	var spawn_parent := parent if parent else self
-	for i in count_:
-		var idx: int = randi_range(0, floor_tiles.size() - 1)
-		var pos: Vector3 = floor_tiles[idx]
+	for i in min(count_, spawn_tiles.size()):
+		var idx: int = randi_range(0, spawn_tiles.size() - 1)
+		var pos: Vector3 = spawn_tiles[idx]
 		var enemy := enemy_scene.instantiate()
 		enemy.position = pos + Vector3(0.0, 0.6, 0.0)
 		var min_lvl: int = (dlvl - 1) * 3 + 1
@@ -305,19 +311,10 @@ func _spawn_enemies_with_level(dlvl: int) -> void:
 		var lvl := randi_range(min_lvl, max_lvl)
 		spawn_parent.call_deferred("add_child", enemy)
 		enemy.call_deferred("init", player, lvl)
-	# Spawn exactly one Super SPIDER per dungeon floor (near entrance)
+	# Spawn exactly one Super SPIDER per dungeon floor (far from entrance)
 	var super_scene := preload("res://scenes/super_spider.tscn")
 	var super_enemy := super_scene.instantiate()
-	var super_pos: Vector3 = _spawn_pos + Vector3(2.0, 0.0, 2.0)
-	if floor_tiles.size() > 0:
-		var nearest: Vector3 = floor_tiles[0]
-		var near_dist := 99999.0
-		for ft in floor_tiles:
-			var d: float = ft.distance_squared_to(_spawn_pos)
-			if d < near_dist:
-				near_dist = d
-				nearest = ft
-		super_pos = nearest
+	var super_pos: Vector3 = spawn_tiles[randi_range(0, spawn_tiles.size() - 1)]
 	super_enemy.position = super_pos + Vector3(0.0, 0.6, 0.0)
 	var super_lvl: int = clampi(dlvl * 3 + 2, 3, 20)
 	spawn_parent.call_deferred("add_child", super_enemy)

@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-enum Action { MELEE, FIREBALL }
+enum Action { MELEE, FIREBALL, RANGED }
 
 @export var stats: Stats
 @export var inventory: Inventory
@@ -117,6 +117,7 @@ func _setup_inventory() -> void:
 		["mace_basic", "Wooden Mace", "Mace", "club (1).png", "mace.tscn", 2, 2, 0.45, 0.65, 4, 8, -0.35, 0.0],
 		["flail_basic", "Iron Flail", "Mace", "club (5).png", "flail.tscn", 2, 3, 0.5, 0.75, 5, 10, -0.45, 0.0],
 		["sword_vampiric", "Bloodletter", "Sword", "sword (2).png", "sword.glb", 2, 3, 0.4, 0.7, 4, 7, 2.0, 1.0],
+		["bow_basic", "Short Bow", "Bow", "bow (1).png", "arrow.tscn", 2, 3, 0.2, 0.4, 3, 6, 0.0, 0.0],
 	]
 
 	for w in weapons:
@@ -300,6 +301,10 @@ func _apply_sword_window() -> void:
 				AudioManager.play_sfx_random("punch")
 
 func _do_action() -> void:
+	var weapon := inventory.get_equipped(Inventory.EquipSlot.RIGHT_HAND)
+	if weapon and weapon.category == "Bow":
+		_ranged_attack()
+		return
 	match _current_action:
 		Action.MELEE:
 			_melee_attack()
@@ -329,6 +334,30 @@ func _cast_fireball() -> void:
 		if _anim.has_animation("testanim"):
 			_anim.play("testanim", 0.1)
 		elif _anim.has_animation("default_001"):
+			_anim.play("default_001", 0.1)
+
+func _ranged_attack() -> void:
+	_rotate_toward_mouse()
+	var weapon := inventory.get_equipped(Inventory.EquipSlot.RIGHT_HAND)
+	if not weapon:
+		return
+	_action_cd = 0.6
+	var proj = preload("res://scenes/fx/arrow_projectile.tscn").instantiate()
+	var cam: Camera3D = get_viewport().get_camera_3d()
+	if cam:
+		var from: Vector3 = cam.project_ray_origin(get_viewport().get_mouse_position())
+		var d: Vector3 = cam.project_ray_normal(get_viewport().get_mouse_position())
+		var t: float = -from.y / d.y
+		if t > 0.0:
+			var dmg = weapon.stats.get("min_damage", 3.0)
+			proj.init((from + d * t - global_position).normalized(), dmg)
+	get_parent().add_child(proj)
+	proj.global_position = global_position + Vector3(0, 0.5, 0)
+	AudioManager.play_sfx("fireball")
+	_attacking = true
+	if _anim:
+		_anim.speed_scale = 1.0
+		if _anim.has_animation("default_001"):
 			_anim.play("default_001", 0.1)
 
 func _update_anim(moving: bool) -> void:
