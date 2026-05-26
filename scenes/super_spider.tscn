@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b7hsd6mh3bqy3"]
+
+[ext_resource type="Script" path="res://scripts/super_spider.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://qkfydhqg7tbd" path="res://assets/models/enemies/spider.glb" id="2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d613k"]
+radius = 0.5
+height = 1.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hitbox"]
+size = Vector3(1.2, 1.0, 1.2)
+
+[node name="SuperSpider" type="CharacterBody3D"]
+script = ExtResource("1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_d613k")
+
+[node name="SpiderModel" type="Node3D" parent="." instance=ExtResource("2")]
+transform = Transform3D(0.375, 0, 0, 0, 0.375, 0, 0, 0, 0.375, 0, 0, 0)
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("BoxShape3D_hitbox")
+
+[node name="RedLight" type="OmniLight3D" parent="."]
+light_color = Color(1, 0, 0, 1)
+light_energy = 5.0
+omni_range = 8.0
+shadow_enabled = false

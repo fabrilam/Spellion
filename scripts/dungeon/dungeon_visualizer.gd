@@ -303,6 +303,23 @@ func _spawn_enemies_with_level(dlvl: int) -> void:
 		var lvl := randi_range(min_lvl, max_lvl)
 		spawn_parent.call_deferred("add_child", enemy)
 		enemy.call_deferred("init", player, lvl)
+	# Spawn exactly one Super SPIDER per dungeon floor (near entrance)
+	var super_scene := preload("res://scenes/super_spider.tscn")
+	var super_enemy := super_scene.instantiate()
+	var super_pos: Vector3 = _spawn_pos + Vector3(2.0, 0.0, 2.0)
+	if floor_tiles.size() > 0:
+		var nearest: Vector3 = floor_tiles[0]
+		var near_dist := 99999.0
+		for ft in floor_tiles:
+			var d: float = ft.distance_squared_to(_spawn_pos)
+			if d < near_dist:
+				near_dist = d
+				nearest = ft
+		super_pos = nearest
+	super_enemy.position = super_pos + Vector3(0.0, 0.6, 0.0)
+	var super_lvl: int = clampi(dlvl * 3 + 2, 3, 20)
+	spawn_parent.call_deferred("add_child", super_enemy)
+	super_enemy.call_deferred("init", player, super_lvl)
 
 func _process(delta: float) -> void:
 	if _goal_mat:

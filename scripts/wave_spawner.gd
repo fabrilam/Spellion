@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var enemy_scene: PackedScene = preload("res://scenes/spider.tscn")
+@export var super_spider_scene: PackedScene = preload("res://scenes/super_spider.tscn")
 @export var player: Node3D
 @export var scatter_count: int = 0
 @export var min_enemies: int = 3
@@ -49,12 +50,24 @@ func _spawn_wave() -> void:
 	var max_lvl := mini(1 + wave, 15)
 	for i in count:
 		_spawn_enemy(min_lvl, max_lvl)
+	if super_spider_scene and player:
+		_spawn_super_spider(min_lvl, max_lvl)
 
 func _spawn_enemy(min_lvl: int, max_lvl: int) -> void:
 	if not enemy_scene or not player:
 		return
 	var enemy := enemy_scene.instantiate()
 	var lvl := randi_range(min_lvl, max_lvl)
+	var spawn_pos := _random_spawn_position()
+	enemy.position = spawn_pos
+	add_child(enemy)
+	enemy.owner = get_tree().edited_scene_root if Engine.is_editor_hint() else null
+	enemy.init(player, lvl)
+	_enemies.append(enemy)
+
+func _spawn_super_spider(min_lvl: int, max_lvl: int) -> void:
+	var enemy := super_spider_scene.instantiate()
+	var lvl := clampi(max_lvl + 2, 3, 20)
 	var spawn_pos := _random_spawn_position()
 	enemy.position = spawn_pos
 	add_child(enemy)
@@ -78,3 +91,8 @@ func _random_spawn_position() -> Vector3:
 		var dist := randf_range(10, 25)
 		return player.global_position + dir * dist
 	return Vector3(randf_range(-190, 190), 0, randf_range(-190, 190))
+
+func clear_super_spider() -> void:
+	for e in _enemies:
+		if is_instance_valid(e) and e.has_method("consume_orb") and e.display_name == "Super SPIDER":
+			e.queue_free()
