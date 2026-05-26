@@ -5,3 +5,7 @@
 # No subir
 *.md
 *.txt
+tools/jira_config.json
+
+# Excepciones — archivos puntuales que SÍ van al repo
+!tools/jira_tracking.md

@@ -274,9 +274,11 @@ func _add_lights() -> void:
 			add_child(light)
 
 func _spawn_enemies() -> void:
+	print("_spawn_enemies() called")
 	_spawn_enemies_with_level(1)
 
 func _spawn_enemies_with_level(dlvl: int) -> void:
+	print("_spawn_enemies_with_level(", dlvl, ") called")
 	var player := get_tree().get_first_node_in_group("player")
 	if not player:
 		return

@@ -288,7 +288,9 @@ func _physics_process(delta: float) -> void:
 		wdir = wdir.normalized()
 		velocity.x = wdir.x * current_speed * 0.5
 		velocity.z = wdir.z * current_speed * 0.5
+		var _s := scale
 		transform.basis = Basis.looking_at(wdir, Vector3.UP)
+		scale = _s
 	else:
 		velocity.x = 0.0
 		velocity.z = 0.0
@@ -301,7 +303,9 @@ func _look_at_player() -> void:
 	diff.y = 0.0
 	if diff.length_squared() < 0.001:
 		return
+	var _s := scale
 	transform.basis = Basis.looking_at(-diff.normalized(), Vector3.UP)
+	scale = _s
 
 func _attack_player() -> void:
 	if not _player or not _player.has_method("take_damage"):
