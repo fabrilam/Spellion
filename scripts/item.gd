@@ -17,6 +17,9 @@ class_name Item
 @export var str_scale_min: float = 0.15
 @export var str_scale_max: float = 0.3
 
+@export var dex_scale_min: float = 0.0
+@export var dex_scale_max: float = 0.0
+
 @export var grid_width: int = 1
 @export var grid_height: int = 1
 

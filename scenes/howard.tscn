@@ -12,6 +12,7 @@ height = 1.9170898
 size = Vector3(1, 1.8, 1)
 
 [node name="Howard" type="CharacterBody3D" unique_id=1681260734]
+collision_layer = 4
 script = ExtResource("1_vbaiy")
 stats = ExtResource("2_qtmng")
 

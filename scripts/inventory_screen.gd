@@ -448,4 +448,7 @@ func _drop_to_world(item: Item) -> void:
 	get_tree().current_scene.add_child(world_node)
 	if _player:
 		var dir := Vector3(randf_range(-1, 1), 0, randf_range(-1, 1)).normalized()
-		world_node.global_position = _player.global_position + dir * 2.0 + Vector3(0, -0.4, 0)
+		var ground_y := -0.49
+		if _player.global_position.z > 0.0:
+			ground_y = 0.2
+		world_node.global_position = Vector3(_player.global_position.x + dir.x * 2.0, ground_y, _player.global_position.z + dir.z * 2.0)

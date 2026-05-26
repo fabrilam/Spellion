@@ -55,6 +55,8 @@ func save_game() -> void:
 						"grid_height": item.grid_height,
 						"str_scale_min": item.str_scale_min,
 						"str_scale_max": item.str_scale_max,
+						"dex_scale_min": item.dex_scale_min,
+						"dex_scale_max": item.dex_scale_max,
 						"stats": item.stats.duplicate(),
 					})
 		data["inventory_grid"] = items_data
@@ -77,6 +79,8 @@ func save_game() -> void:
 					"grid_height": item.grid_height,
 					"str_scale_min": item.str_scale_min,
 					"str_scale_max": item.str_scale_max,
+					"dex_scale_min": item.dex_scale_min,
+					"dex_scale_max": item.dex_scale_max,
 					"stats": item.stats.duplicate(),
 				}
 		data["equipped"] = equip_data
@@ -170,5 +174,7 @@ func _item_from_data(d: Dictionary) -> Item:
 	item.grid_height = d.get("grid_height", 1)
 	item.str_scale_min = d.get("str_scale_min", 0.15)
 	item.str_scale_max = d.get("str_scale_max", 0.3)
+	item.dex_scale_min = d.get("dex_scale_min", 0.0)
+	item.dex_scale_max = d.get("dex_scale_max", 0.0)
 	item.stats = d.get("stats", {}).duplicate()
 	return item

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://rrowstaticfx"]
+
+[ext_resource type="PackedScene" path="res://assets/models/weapons/arrow.tscn" id="1"]
+
+[node name="ArrowVisual" type="Node3D"]
+
+[node name="Mesh" parent="." instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+scale = Vector3(1.5, 1.5, 1.5)

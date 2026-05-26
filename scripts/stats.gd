@@ -18,6 +18,8 @@ var _item_dmg_min: float = 1.0
 var _item_dmg_max: float = 2.0
 var _item_str_scale_min: float = 0.15
 var _item_str_scale_max: float = 0.3
+var _item_dex_scale_min: float = 0.0
+var _item_dex_scale_max: float = 0.0
 
 # Derived stats (computed)
 var _max_hp: float = 0.0
@@ -32,20 +34,21 @@ var _crit_chance: float = 0.0
 var _defense: float = 0.0
 var _attack_speed: float = 0.0
 var _attack_speed_mod: float = 0.0
+var _bow_speed_bonus: float = 0.0
 var _hp_regen_add: float = 0.0
 
 func _update_derived() -> void:
 	_max_hp = 80.0 + vitality * 10.0
 	_max_mana = 20.0 + intelligence * 5.0
-	_dmg_min = _item_dmg_min + strength * _item_str_scale_min
-	_dmg_max = _item_dmg_max + strength * _item_str_scale_max
+	_dmg_min = _item_dmg_min + strength * _item_str_scale_min + agility * _item_dex_scale_min
+	_dmg_max = _item_dmg_max + strength * _item_str_scale_max + agility * _item_dex_scale_max
 	_spell_damage = 8.0 + intelligence * 1.5
 	_mana_regen = 2.0 + intelligence * 0.5
 	_hp_regen = vitality * 0.02 + _hp_regen_add
 	_speed = 2.75 + agility * 0.05
 	_crit_chance = 0.05 + agility * 0.005
 	_defense = vitality * 1.5
-	_attack_speed = 3.0 + agility * 0.015 + _attack_speed_mod
+	_attack_speed = 3.0 + agility * 0.015 + _attack_speed_mod + _bow_speed_bonus
 	if hp > _max_hp: hp = _max_hp
 	if mana > _max_mana: mana = _max_mana
 	hp_changed.emit(hp, _max_hp)
@@ -86,15 +89,21 @@ func get_crit_chance() -> float: _update_derived() if _crit_chance == 0.0 else n
 func get_defense() -> float: _update_derived() if _defense == 0.0 else null; return _defense
 func get_attack_speed() -> float: return _attack_speed if _attack_speed > 0 else 1.0
 
-func set_item_melee_damage(min_val: float, max_val: float, s_min: float = 0.15, s_max: float = 0.3) -> void:
+func set_item_melee_damage(min_val: float, max_val: float, s_min: float = 0.15, s_max: float = 0.3, d_min: float = 0.0, d_max: float = 0.0) -> void:
 	_item_dmg_min = min_val
 	_item_dmg_max = max_val
 	_item_str_scale_min = s_min
 	_item_str_scale_max = s_max
+	_item_dex_scale_min = d_min
+	_item_dex_scale_max = d_max
 	_update_derived()
 
 func set_attack_speed_mod(val: float) -> void:
 	_attack_speed_mod = val
+	_update_derived()
+
+func set_bow_speed_bonus(val: float) -> void:
+	_bow_speed_bonus = val
 	_update_derived()
 
 func set_hp_regen_add(val: float) -> void:

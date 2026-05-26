@@ -12,6 +12,9 @@ var _sword_hitbox: Area3D = null
 var _hit_something := false
 var _hp_regen_delay: float = 0.0
 var _hp_regen_tick: float = 0.0
+var _arrow_visual: Node3D = null
+var _bow_firing := false
+const _arrow_scene := preload("res://scenes/fx/arrow_projectile.tscn")
 
 func _ready() -> void:
 	if not stats:
@@ -104,6 +107,11 @@ func _setup_inventory() -> void:
 				var cat := child.name.trim_prefix("Weapon")
 				_weapon_nodes[cat] = child
 				child.visible = false
+		var bow := model.get_node_or_null("Armature/Skeleton3D/BowAttach/WeaponBow")
+		if bow:
+			_weapon_nodes["Bow"] = bow
+			bow.visible = false
+		_arrow_visual = model.get_node_or_null("Armature/Skeleton3D/SwordAttach/ArrowVisual")
 
 	inventory.item_equipped.connect(_on_item_equipped)
 	inventory.item_unequipped.connect(_on_item_unequipped)
@@ -111,13 +119,12 @@ func _setup_inventory() -> void:
 	inventory.item_unequipped.connect(_on_unequip_stats)
 
 	var weapons := [
-		["sword_basic", "Rusty Shortsword", "Sword", "sword (1).png", "sword.glb", 2, 3, 0.4, 0.7, 4, 7, -0.5, 0.0],
-		["dagger_basic", "Iron Dagger", "Dagger", "dagger (1).png", "dagger.tscn", 1, 1, 0.35, 0.5, 3, 5, -0.1, 0.0],
-		["axe_basic", "Hand Axe", "Axe", "axe (1).png", "hand_axe.tscn", 2, 2, 0.5, 0.8, 5, 9, -0.4, 0.0],
-		["mace_basic", "Wooden Mace", "Mace", "club (1).png", "mace.tscn", 2, 2, 0.45, 0.65, 4, 8, -0.35, 0.0],
-		["flail_basic", "Iron Flail", "Mace", "club (5).png", "flail.tscn", 2, 3, 0.5, 0.75, 5, 10, -0.45, 0.0],
-		["sword_vampiric", "Bloodletter", "Sword", "sword (2).png", "sword.glb", 2, 3, 0.4, 0.7, 4, 7, 2.0, 1.0],
-		["bow_basic", "Short Bow", "Bow", "bow (1).png", "arrow.tscn", 2, 3, 0.2, 0.4, 3, 6, 0.0, 0.0],
+		["sword_basic", "Rusty Shortsword", "Sword", "sword (1).png", "sword.glb", 2, 3, 0.6, 0.6, 4, 7, -0.5, 0.0],
+		["dagger_basic", "Iron Dagger", "Dagger", "dagger (1).png", "dagger.tscn", 1, 2, 0.3, 0.3, 3, 5, -0.1, 0.0],
+		["axe_basic", "Hand Axe", "Axe", "axe (5).png", "hand_axe.tscn", 2, 2, 0.8, 0.8, 5, 9, -0.4, 0.0],
+		["flail_basic", "Iron Flail", "Mace", "club (5).png", "flail.tscn", 2, 3, 0.7, 0.7, 5, 10, -0.45, 0.0],
+		["sword_vampiric", "Bloodletter", "Sword", "sword (2).png", "sword.glb", 1, 3, 0.6, 0.6, 4, 7, 2.0, 1.0],
+		["bow_basic", "Short Bow", "Bow", "bow (1).png", "bow_world.tscn", 2, 3, 0.3, 0.3, 2, 4, 0.0, 0.0],
 	]
 
 	for w in weapons:
@@ -133,6 +140,19 @@ func _setup_inventory() -> void:
 		item.str_scale_min = w[7]
 		item.str_scale_max = w[8]
 		item.stats = {"min_damage": w[9], "max_damage": w[10], "attack_speed_mod": w[11], "hp_regen": w[12]}
+		match item.category:
+			"Bow":
+				item.dex_scale_min = 0.9
+				item.dex_scale_max = 0.9
+			"Dagger":
+				item.dex_scale_min = 0.2
+				item.dex_scale_max = 0.2
+			"Sword":
+				item.dex_scale_min = 0.1
+				item.dex_scale_max = 0.1
+			_:
+				item.dex_scale_min = 0.0
+				item.dex_scale_max = 0.0
 		if w[0] == "sword_basic":
 			inventory.equip(item, Inventory.EquipSlot.RIGHT_HAND)
 		else:
@@ -170,8 +190,10 @@ func _apply_equip_stats() -> void:
 		s_max = weapon.str_scale_max
 		atk_spd_mod = weapon.stats.get("attack_speed_mod", 0.0)
 		hp_regen_bonus = weapon.stats.get("hp_regen", 0.0)
-	stats.set_item_melee_damage(min_dmg, max_dmg, s_min, s_max)
+	stats.set_item_melee_damage(min_dmg, max_dmg, s_min, s_max, weapon.dex_scale_min if weapon else 0.0, weapon.dex_scale_max if weapon else 0.0)
 	stats.set_attack_speed_mod(atk_spd_mod)
+	var bow_bonus := -1.0 if (weapon and weapon.category == "Bow") else 0.0
+	stats.set_bow_speed_bonus(bow_bonus)
 	stats.set_hp_regen_add(hp_regen_bonus)
 
 func _update_weapon_visibility() -> void:
@@ -337,28 +359,63 @@ func _cast_fireball() -> void:
 			_anim.play("default_001", 0.1)
 
 func _ranged_attack() -> void:
+	if _bow_firing:
+		return
+	_bow_firing = true
 	_rotate_toward_mouse()
 	var weapon := inventory.get_equipped(Inventory.EquipSlot.RIGHT_HAND)
 	if not weapon:
+		_bow_firing = false
 		return
-	_action_cd = 0.6
-	var proj = preload("res://scenes/fx/arrow_projectile.tscn").instantiate()
-	var cam: Camera3D = get_viewport().get_camera_3d()
-	if cam:
-		var from: Vector3 = cam.project_ray_origin(get_viewport().get_mouse_position())
-		var d: Vector3 = cam.project_ray_normal(get_viewport().get_mouse_position())
-		var t: float = -from.y / d.y
-		if t > 0.0:
-			var dmg = weapon.stats.get("min_damage", 3.0)
-			proj.init((from + d * t - global_position).normalized(), dmg)
-	get_parent().add_child(proj)
-	proj.global_position = global_position + Vector3(0, 0.5, 0)
-	AudioManager.play_sfx("fireball")
+	var dir := -global_transform.basis.z.normalized()
+	var dmg: float = weapon.stats.get("min_damage", 3.0)
+	var atk_spd := stats.get_attack_speed() if stats else 3.0
+	_action_cd = 0.9 / atk_spd
 	_attacking = true
+
 	if _anim:
-		_anim.speed_scale = 1.0
+		_anim.speed_scale = atk_spd
 		if _anim.has_animation("default_001"):
 			_anim.play("default_001", 0.1)
+
+	# Show static arrow during draw (child of SwordAttach, follows hand)
+	if _arrow_visual:
+		_arrow_visual.visible = true
+
+	# Play bow string animation and wait for release
+	var bow_node = _weapon_nodes.get("Bow")
+	if bow_node:
+		var bow_anim = bow_node.get_node_or_null("AnimPlayer")
+		if bow_anim and bow_anim.has_animation("bow_string"):
+			bow_anim.stop()
+			bow_anim.speed_scale = atk_spd
+			bow_anim.play("bow_string")
+			await bow_anim.animation_finished
+	else:
+		await get_tree().create_timer(0.9 / atk_spd).timeout
+
+	if not is_instance_valid(self):
+		_bow_firing = false
+		return
+
+	# Hide static arrow
+	if _arrow_visual:
+		_arrow_visual.visible = false
+
+	# Spawn real arrow at SwordAttach position, fly straight
+	if _arrow_scene:
+		var proj = _arrow_scene.instantiate()
+		if proj:
+			proj.init(dir, dmg)
+			var p = get_parent()
+			if p:
+				p.add_child(proj)
+				if _weapon_attach:
+					proj.global_position = _weapon_attach.global_position
+				else:
+					proj.global_position = global_position + dir * 1.5 + Vector3(0, 0.4, 0)
+				AudioManager.play_sfx("fireball")
+	_bow_firing = false
 
 func _update_anim(moving: bool) -> void:
 	if not _anim: return

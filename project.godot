@@ -75,6 +75,13 @@ toggle_stats={
 "type": &"key"
 }]
 }
+pickup={
+"deadzone": 0.5,
+"events": [{
+"keycode": 69,
+"type": &"key"
+}]
+}
 
 [physics]
 

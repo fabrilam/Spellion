@@ -28,6 +28,7 @@ var _rage_timer: float = 0.0
 var _base_speed: float = 1.25
 var _base_vision: float = 7.5
 var _purple_orb_count: int = 0
+var _slow_timer: float = 0.0
 var display_name: String = ""
 
 const MAX_PURPLE_ORBS: int = 10
@@ -241,6 +242,10 @@ func apply_rage(dur: float) -> void:
 func _physics_process(delta: float) -> void:
 	if not _alive or not _player:
 		return
+	if _slow_timer > 0.0:
+		_slow_timer -= delta
+	else:
+		_base_speed = move_speed
 	_attack_cooldown = max(_attack_cooldown - delta, 0.0)
 
 	if _rage_timer > 0.0:
@@ -345,6 +350,11 @@ func take_damage(amount: float) -> void:
 		panel.track(self)
 	if hp <= 0.0:
 		_die()
+
+func stun(duration: float) -> void:
+	_slow_timer = duration
+	_base_speed = move_speed * 0.2
+	velocity = Vector3.ZERO
 
 func _update_hp_bar() -> void:
 	if not _hp_bar_fill or not _hp_bar_label:

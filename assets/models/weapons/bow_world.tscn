@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bowsr6xt5pwgd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bow_body"]
+size = Vector3(0.04, 0.45, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="Mat_bow_body"]
+albedo_color = Color(0.4, 0.25, 0.1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_string"]
+top_radius = 0.005
+bottom_radius = 0.005
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="Mat_string"]
+albedo_color = Color(0.7, 0.7, 0.6, 1)
+
+[node name="BowWorld" type="Node3D"]
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_bow_body")
+material_override = SubResource("Mat_bow_body")
+
+[node name="String" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, 0.1, 0)
+mesh = SubResource("CylinderMesh_string")
+material_override = SubResource("Mat_string")

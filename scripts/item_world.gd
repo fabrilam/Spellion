@@ -6,13 +6,22 @@ var _pickup_range: Area3D = null
 var _pickup_label: CanvasLayer = null
 var _player_near: bool = false
 
+func init(item_data: Item) -> void:
+	item = item_data
+
 func _ready() -> void:
 	if not item:
 		return
-	gravity_scale = 0.0
+	_setup_mesh()
+	_setup_pickup()
+	_setup_label()
+	# Frozen in place — no physics, no falling through floor
 	freeze = true
+	gravity_scale = 0.0
+	collision_layer = 0
+	collision_mask = 0
 
-	# 3D model
+func _setup_mesh() -> void:
 	if item.scene_path and not item.scene_path.is_empty():
 		var scene := load(item.scene_path) as PackedScene
 		if scene:
@@ -25,14 +34,7 @@ func _ready() -> void:
 	else:
 		_fallback_mesh()
 
-	# Collision
-	var col := CollisionShape3D.new()
-	var shape := BoxShape3D.new()
-	shape.size = Vector3(0.16, 0.16, 0.16)
-	col.shape = shape
-	add_child(col)
-
-	# Pickup Area
+func _setup_pickup() -> void:
 	_pickup_range = Area3D.new()
 	var col_range := CollisionShape3D.new()
 	var sphere := SphereShape3D.new()
@@ -40,9 +42,10 @@ func _ready() -> void:
 	col_range.shape = sphere
 	_pickup_range.add_child(col_range)
 	_pickup_range.body_entered.connect(_on_body_entered)
+	_pickup_range.body_exited.connect(_on_body_exited)
 	add_child(_pickup_range)
 
-	# Label
+func _setup_label() -> void:
 	_pickup_label = CanvasLayer.new()
 	var label := Label.new()
 	label.text = "[E] " + (item.name if item else "Item")
@@ -77,7 +80,9 @@ func _update_label_position() -> void:
 	var cam := get_viewport().get_camera_3d()
 	if not cam: return
 	var screen_pos := cam.unproject_position(global_position + Vector3(0, 0.5, 0))
-	_pickup_label.position = screen_pos - Vector2(_pickup_label.get_child(0).size.x * 0.5, 0)
+	var label = _pickup_label.get_child(0) as Control
+	if label:
+		label.position = screen_pos - Vector2(label.size.x * 0.5, 0)
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
