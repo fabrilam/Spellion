@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://cj8f2yn5005k7"]
+
+[ext_resource type="Texture2D" path="res://assets/textures/fx/blood_splatter_1.png" id="1"]
+[ext_resource type="Texture2D" path="res://assets/textures/fx/blood_splatter_2.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/textures/fx/blood_splatter_3.png" id="3"]
+[ext_resource type="Texture2D" path="res://assets/textures/fx/blood_splatter_4.png" id="4"]
+[ext_resource type="Texture2D" path="res://assets/textures/fx/blood_splatter_5.png" id="5"]
+[ext_resource type="Script" path="res://scenes/fx/blood_impact.gd" id="6"]
+
+[sub_resource type="SpriteFrames" id="SF"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 18.0
+}]
+
+[node name="BloodImpact" type="AnimatedSprite3D"]
+billboard = 1
+alpha_cut = 0
+modulate = Color(0.5, 0.0, 0.0, 1.0)
+sprite_frames = SubResource("SF")
+script = ExtResource("6")

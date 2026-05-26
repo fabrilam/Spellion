@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://coqk1ufab3y3a"]
+
+[ext_resource type="Script" uid="uid://b4bxd4kt6uhqp" path="res://scenes/fx/blood_spray.gd" id="1"]
+
+[node name="BloodSpray" type="Node3D" unique_id=1142508602]
+script = ExtResource("1")

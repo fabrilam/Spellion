@@ -1,0 +1,986 @@
+[
+  {
+    "file": "amulet (1).png",
+    "name": "Rusty Amulet",
+    "category": "Amulet",
+    "desc": "Enhances magical affinity. +1 spell power."
+  },
+  {
+    "file": "amulet (2).png",
+    "name": "Old Amulet",
+    "category": "Amulet",
+    "desc": "Enhances magical affinity. +2 spell power."
+  },
+  {
+    "file": "amulet (3).png",
+    "name": "Worn Amulet",
+    "category": "Amulet",
+    "desc": "Enhances magical affinity. +3 spell power."
+  },
+  {
+    "file": "amulet (4).png",
+    "name": "Fine Amulet",
+    "category": "Amulet",
+    "desc": "Enhances magical affinity. +4 spell power."
+  },
+  {
+    "file": "amulet (5).png",
+    "name": "Sturdy Amulet",
+    "category": "Amulet",
+    "desc": "Enhances magical affinity. +5 spell power."
+  },
+  {
+    "file": "amulet (6).png",
+    "name": "Keen Amulet",
+    "category": "Amulet",
+    "desc": "Enhances magical affinity. +6 spell power."
+  },
+  {
+    "file": "armor (1).png",
+    "name": "Rusty Armor",
+    "category": "Armor",
+    "desc": "Provides 5 defense. Rusty protection."
+  },
+  {
+    "file": "armor (10).png",
+    "name": "Rusty Armor",
+    "category": "Armor",
+    "desc": "Provides 7 defense. Rusty protection."
+  },
+  {
+    "file": "armor (11).png",
+    "name": "Old Armor",
+    "category": "Armor",
+    "desc": "Provides 7 defense. Old protection."
+  },
+  {
+    "file": "armor (12).png",
+    "name": "Worn Armor",
+    "category": "Armor",
+    "desc": "Provides 7 defense. Worn protection."
+  },
+  {
+    "file": "armor (13).png",
+    "name": "Fine Armor",
+    "category": "Armor",
+    "desc": "Provides 7 defense. Fine protection."
+  },
+  {
+    "file": "armor (14).png",
+    "name": "Sturdy Armor",
+    "category": "Armor",
+    "desc": "Provides 7 defense. Sturdy protection."
+  },
+  {
+    "file": "armor (15).png",
+    "name": "Keen Armor",
+    "category": "Armor",
+    "desc": "Provides 7 defense. Keen protection."
+  },
+  {
+    "file": "armor (16).png",
+    "name": "Superior Armor",
+    "category": "Armor",
+    "desc": "Provides 7 defense. Superior protection."
+  },
+  {
+    "file": "armor (17).png",
+    "name": "Flawless Armor",
+    "category": "Armor",
+    "desc": "Provides 7 defense. Flawless protection."
+  },
+  {
+    "file": "armor (18).png",
+    "name": "Arcane Armor",
+    "category": "Armor",
+    "desc": "Provides 7 defense. Arcane protection."
+  },
+  {
+    "file": "armor (19).png",
+    "name": "Rusty Armor",
+    "category": "Armor",
+    "desc": "Provides 9 defense. Rusty protection."
+  },
+  {
+    "file": "armor (2).png",
+    "name": "Old Armor",
+    "category": "Armor",
+    "desc": "Provides 5 defense. Old protection."
+  },
+  {
+    "file": "armor (20).png",
+    "name": "Old Armor",
+    "category": "Armor",
+    "desc": "Provides 9 defense. Old protection."
+  },
+  {
+    "file": "armor (3).png",
+    "name": "Worn Armor",
+    "category": "Armor",
+    "desc": "Provides 5 defense. Worn protection."
+  },
+  {
+    "file": "armor (4).png",
+    "name": "Fine Armor",
+    "category": "Armor",
+    "desc": "Provides 5 defense. Fine protection."
+  },
+  {
+    "file": "armor (5).png",
+    "name": "Sturdy Armor",
+    "category": "Armor",
+    "desc": "Provides 5 defense. Sturdy protection."
+  },
+  {
+    "file": "armor (6).png",
+    "name": "Keen Armor",
+    "category": "Armor",
+    "desc": "Provides 5 defense. Keen protection."
+  },
+  {
+    "file": "armor (7).png",
+    "name": "Superior Armor",
+    "category": "Armor",
+    "desc": "Provides 5 defense. Superior protection."
+  },
+  {
+    "file": "armor (8).png",
+    "name": "Flawless Armor",
+    "category": "Armor",
+    "desc": "Provides 5 defense. Flawless protection."
+  },
+  {
+    "file": "armor (9).png",
+    "name": "Arcane Armor",
+    "category": "Armor",
+    "desc": "Provides 5 defense. Arcane protection."
+  },
+  {
+    "file": "axe (1).png",
+    "name": "Rusty Axe",
+    "category": "Axe",
+    "desc": "Deals 8 base damage. A rusty rusty axe."
+  },
+  {
+    "file": "axe (10).png",
+    "name": "Rusty Axe",
+    "category": "Axe",
+    "desc": "Deals 11 base damage. A rusty rusty axe."
+  },
+  {
+    "file": "axe (11).png",
+    "name": "Old Axe",
+    "category": "Axe",
+    "desc": "Deals 11 base damage. A old old axe."
+  },
+  {
+    "file": "axe (2).png",
+    "name": "Old Axe",
+    "category": "Axe",
+    "desc": "Deals 8 base damage. A old old axe."
+  },
+  {
+    "file": "axe (3).png",
+    "name": "Worn Axe",
+    "category": "Axe",
+    "desc": "Deals 8 base damage. A worn worn axe."
+  },
+  {
+    "file": "axe (4).png",
+    "name": "Fine Axe",
+    "category": "Axe",
+    "desc": "Deals 8 base damage. A fine fine axe."
+  },
+  {
+    "file": "axe (5).png",
+    "name": "Sturdy Axe",
+    "category": "Axe",
+    "desc": "Deals 8 base damage. A sturdy sturdy axe."
+  },
+  {
+    "file": "axe (6).png",
+    "name": "Keen Axe",
+    "category": "Axe",
+    "desc": "Deals 8 base damage. A keen keen axe."
+  },
+  {
+    "file": "axe (7).png",
+    "name": "Superior Axe",
+    "category": "Axe",
+    "desc": "Deals 8 base damage. A superior superior axe."
+  },
+  {
+    "file": "axe (8).png",
+    "name": "Flawless Axe",
+    "category": "Axe",
+    "desc": "Deals 8 base damage. A flawless flawless axe."
+  },
+  {
+    "file": "axe (9).png",
+    "name": "Arcane Axe",
+    "category": "Axe",
+    "desc": "Deals 8 base damage. A arcane arcane axe."
+  },
+  {
+    "file": "bow (1).png",
+    "name": "Rusty Bow",
+    "category": "Bow",
+    "desc": "Deals 8 base damage. A rusty rusty bow."
+  },
+  {
+    "file": "bow (2).png",
+    "name": "Old Bow",
+    "category": "Bow",
+    "desc": "Deals 8 base damage. A old old bow."
+  },
+  {
+    "file": "bow (3).png",
+    "name": "Worn Bow",
+    "category": "Bow",
+    "desc": "Deals 8 base damage. A worn worn bow."
+  },
+  {
+    "file": "bow (4).png",
+    "name": "Fine Bow",
+    "category": "Bow",
+    "desc": "Deals 8 base damage. A fine fine bow."
+  },
+  {
+    "file": "bow (5).png",
+    "name": "Sturdy Bow",
+    "category": "Bow",
+    "desc": "Deals 8 base damage. A sturdy sturdy bow."
+  },
+  {
+    "file": "bow (6).png",
+    "name": "Keen Bow",
+    "category": "Bow",
+    "desc": "Deals 8 base damage. A keen keen bow."
+  },
+  {
+    "file": "bow (7).png",
+    "name": "Superior Bow",
+    "category": "Bow",
+    "desc": "Deals 8 base damage. A superior superior bow."
+  },
+  {
+    "file": "bow (8).png",
+    "name": "Flawless Bow",
+    "category": "Bow",
+    "desc": "Deals 8 base damage. A flawless flawless bow."
+  },
+  {
+    "file": "bow (9).png",
+    "name": "Arcane Bow",
+    "category": "Bow",
+    "desc": "Deals 8 base damage. A arcane arcane bow."
+  },
+  {
+    "file": "club (1).png",
+    "name": "Rusty Club",
+    "category": "Mace",
+    "desc": "Deals 8 base damage. A rusty rusty club."
+  },
+  {
+    "file": "club (10).png",
+    "name": "Rusty Club",
+    "category": "Mace",
+    "desc": "Deals 11 base damage. A rusty rusty club."
+  },
+  {
+    "file": "club (11).png",
+    "name": "Old Club",
+    "category": "Mace",
+    "desc": "Deals 11 base damage. A old old club."
+  },
+  {
+    "file": "club (2).png",
+    "name": "Old Club",
+    "category": "Mace",
+    "desc": "Deals 8 base damage. A old old club."
+  },
+  {
+    "file": "club (3).png",
+    "name": "Worn Club",
+    "category": "Mace",
+    "desc": "Deals 8 base damage. A worn worn club."
+  },
+  {
+    "file": "club (4).png",
+    "name": "Fine Club",
+    "category": "Mace",
+    "desc": "Deals 8 base damage. A fine fine club."
+  },
+  {
+    "file": "club (5).png",
+    "name": "Sturdy Club",
+    "category": "Mace",
+    "desc": "Deals 8 base damage. A sturdy sturdy club."
+  },
+  {
+    "file": "club (6).png",
+    "name": "Keen Club",
+    "category": "Mace",
+    "desc": "Deals 8 base damage. A keen keen club."
+  },
+  {
+    "file": "club (7).png",
+    "name": "Superior Club",
+    "category": "Mace",
+    "desc": "Deals 8 base damage. A superior superior club."
+  },
+  {
+    "file": "club (8).png",
+    "name": "Flawless Club",
+    "category": "Mace",
+    "desc": "Deals 8 base damage. A flawless flawless club."
+  },
+  {
+    "file": "club (9).png",
+    "name": "Arcane Club",
+    "category": "Mace",
+    "desc": "Deals 8 base damage. A arcane arcane club."
+  },
+  {
+    "file": "dagger (1).png",
+    "name": "Rusty Dagger",
+    "category": "Dagger",
+    "desc": "Deals 8 base damage. A rusty rusty dagger."
+  },
+  {
+    "file": "dagger (2).png",
+    "name": "Old Dagger",
+    "category": "Dagger",
+    "desc": "Deals 8 base damage. A old old dagger."
+  },
+  {
+    "file": "dagger (3).png",
+    "name": "Worn Dagger",
+    "category": "Dagger",
+    "desc": "Deals 8 base damage. A worn worn dagger."
+  },
+  {
+    "file": "dagger (4).png",
+    "name": "Fine Dagger",
+    "category": "Dagger",
+    "desc": "Deals 8 base damage. A fine fine dagger."
+  },
+  {
+    "file": "dagger (5).png",
+    "name": "Sturdy Dagger",
+    "category": "Dagger",
+    "desc": "Deals 8 base damage. A sturdy sturdy dagger."
+  },
+  {
+    "file": "headgear (1).png",
+    "name": "Rusty Headgear",
+    "category": "Helmet",
+    "desc": "Provides 5 defense. Rusty protection."
+  },
+  {
+    "file": "headgear (10).png",
+    "name": "Rusty Headgear",
+    "category": "Helmet",
+    "desc": "Provides 7 defense. Rusty protection."
+  },
+  {
+    "file": "headgear (11).png",
+    "name": "Old Headgear",
+    "category": "Helmet",
+    "desc": "Provides 7 defense. Old protection."
+  },
+  {
+    "file": "headgear (12).png",
+    "name": "Worn Headgear",
+    "category": "Helmet",
+    "desc": "Provides 7 defense. Worn protection."
+  },
+  {
+    "file": "headgear (13).png",
+    "name": "Fine Headgear",
+    "category": "Helmet",
+    "desc": "Provides 7 defense. Fine protection."
+  },
+  {
+    "file": "headgear (14).png",
+    "name": "Sturdy Headgear",
+    "category": "Helmet",
+    "desc": "Provides 7 defense. Sturdy protection."
+  },
+  {
+    "file": "headgear (15).png",
+    "name": "Keen Headgear",
+    "category": "Helmet",
+    "desc": "Provides 7 defense. Keen protection."
+  },
+  {
+    "file": "headgear (2).png",
+    "name": "Old Headgear",
+    "category": "Helmet",
+    "desc": "Provides 5 defense. Old protection."
+  },
+  {
+    "file": "headgear (3).png",
+    "name": "Worn Headgear",
+    "category": "Helmet",
+    "desc": "Provides 5 defense. Worn protection."
+  },
+  {
+    "file": "headgear (4).png",
+    "name": "Fine Headgear",
+    "category": "Helmet",
+    "desc": "Provides 5 defense. Fine protection."
+  },
+  {
+    "file": "headgear (5).png",
+    "name": "Sturdy Headgear",
+    "category": "Helmet",
+    "desc": "Provides 5 defense. Sturdy protection."
+  },
+  {
+    "file": "headgear (6).png",
+    "name": "Keen Headgear",
+    "category": "Helmet",
+    "desc": "Provides 5 defense. Keen protection."
+  },
+  {
+    "file": "headgear (7).png",
+    "name": "Superior Headgear",
+    "category": "Helmet",
+    "desc": "Provides 5 defense. Superior protection."
+  },
+  {
+    "file": "headgear (8).png",
+    "name": "Flawless Headgear",
+    "category": "Helmet",
+    "desc": "Provides 5 defense. Flawless protection."
+  },
+  {
+    "file": "headgear (9).png",
+    "name": "Arcane Headgear",
+    "category": "Helmet",
+    "desc": "Provides 5 defense. Arcane protection."
+  },
+  {
+    "file": "icon_054_28x28.png",
+    "name": "Unknown Item",
+    "category": "Misc",
+    "desc": "An unidentified item."
+  },
+  {
+    "file": "icon_055_28x28.png",
+    "name": "Unknown Item",
+    "category": "Misc",
+    "desc": "An unidentified item."
+  },
+  {
+    "file": "icon_056_28x28.png",
+    "name": "Unknown Item",
+    "category": "Misc",
+    "desc": "An unidentified item."
+  },
+  {
+    "file": "icon_057_28x28.png",
+    "name": "Unknown Item",
+    "category": "Misc",
+    "desc": "An unidentified item."
+  },
+  {
+    "file": "icon_058_28x28.png",
+    "name": "Unknown Item",
+    "category": "Misc",
+    "desc": "An unidentified item."
+  },
+  {
+    "file": "icon_059_28x28.png",
+    "name": "Unknown Item",
+    "category": "Misc",
+    "desc": "An unidentified item."
+  },
+  {
+    "file": "icon_060_28x28.png",
+    "name": "Unknown Item",
+    "category": "Misc",
+    "desc": "An unidentified item."
+  },
+  {
+    "file": "icon_061_28x28.png",
+    "name": "Unknown Item",
+    "category": "Misc",
+    "desc": "An unidentified item."
+  },
+  {
+    "file": "icon_062_28x28.png",
+    "name": "Unknown Item",
+    "category": "Misc",
+    "desc": "An unidentified item."
+  },
+  {
+    "file": "icon_063_28x28.png",
+    "name": "Unknown Item",
+    "category": "Misc",
+    "desc": "An unidentified item."
+  },
+  {
+    "file": "icon_064_28x28.png",
+    "name": "Unknown Item",
+    "category": "Misc",
+    "desc": "An unidentified item."
+  },
+  {
+    "file": "icon_065_28x28.png",
+    "name": "Unknown Item",
+    "category": "Misc",
+    "desc": "An unidentified item."
+  },
+  {
+    "file": "icon_066_28x28.png",
+    "name": "Unknown Item",
+    "category": "Misc",
+    "desc": "An unidentified item."
+  },
+  {
+    "file": "icon_097_56x57.png",
+    "name": "Unknown Item",
+    "category": "Misc",
+    "desc": "An unidentified item."
+  },
+  {
+    "file": "icon_098_56x57.png",
+    "name": "Unknown Item",
+    "category": "Misc",
+    "desc": "An unidentified item."
+  },
+  {
+    "file": "icon_099_28x57.png",
+    "name": "Unknown Item",
+    "category": "Misc",
+    "desc": "An unidentified item."
+  },
+  {
+    "file": "icon_100_28x57.png",
+    "name": "Unknown Item",
+    "category": "Misc",
+    "desc": "An unidentified item."
+  },
+  {
+    "file": "icon_101_28x57.png",
+    "name": "Unknown Item",
+    "category": "Misc",
+    "desc": "An unidentified item."
+  },
+  {
+    "file": "lifepotion.png",
+    "name": "Life Potion",
+    "category": "Potion",
+    "desc": "Restores health."
+  },
+  {
+    "file": "lifepotionbig.png",
+    "name": "Greater Life Potion",
+    "category": "Potion",
+    "desc": "Restores a large amount of health."
+  },
+  {
+    "file": "manapotion.png",
+    "name": "Mana Potion",
+    "category": "Potion",
+    "desc": "Restores mana."
+  },
+  {
+    "file": "manapotionbig.png",
+    "name": "Greater Mana Potion",
+    "category": "Potion",
+    "desc": "Restores a large amount of mana."
+  },
+  {
+    "file": "questitem (1).png",
+    "name": "Rusty Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 1."
+  },
+  {
+    "file": "questitem (10).png",
+    "name": "Rusty Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 10."
+  },
+  {
+    "file": "questitem (11).png",
+    "name": "Old Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 11."
+  },
+  {
+    "file": "questitem (12).png",
+    "name": "Worn Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 12."
+  },
+  {
+    "file": "questitem (13).png",
+    "name": "Fine Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 13."
+  },
+  {
+    "file": "questitem (14).png",
+    "name": "Sturdy Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 14."
+  },
+  {
+    "file": "questitem (15).png",
+    "name": "Keen Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 15."
+  },
+  {
+    "file": "questitem (16).png",
+    "name": "Superior Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 16."
+  },
+  {
+    "file": "questitem (17).png",
+    "name": "Flawless Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 17."
+  },
+  {
+    "file": "questitem (18).png",
+    "name": "Arcane Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 18."
+  },
+  {
+    "file": "questitem (19).png",
+    "name": "Rusty Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 19."
+  },
+  {
+    "file": "questitem (2).png",
+    "name": "Old Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 2."
+  },
+  {
+    "file": "questitem (20).png",
+    "name": "Old Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 20."
+  },
+  {
+    "file": "questitem (21).png",
+    "name": "Worn Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 21."
+  },
+  {
+    "file": "questitem (22).png",
+    "name": "Fine Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 22."
+  },
+  {
+    "file": "questitem (3).png",
+    "name": "Worn Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 3."
+  },
+  {
+    "file": "questitem (4).png",
+    "name": "Fine Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 4."
+  },
+  {
+    "file": "questitem (5).png",
+    "name": "Sturdy Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 5."
+  },
+  {
+    "file": "questitem (6).png",
+    "name": "Keen Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 6."
+  },
+  {
+    "file": "questitem (7).png",
+    "name": "Superior Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 7."
+  },
+  {
+    "file": "questitem (8).png",
+    "name": "Flawless Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 8."
+  },
+  {
+    "file": "questitem (9).png",
+    "name": "Arcane Quest Item",
+    "category": "Quest",
+    "desc": "A key item. Chapter 9."
+  },
+  {
+    "file": "ring (1).png",
+    "name": "Rusty Ring",
+    "category": "Ring",
+    "desc": "Grants +1 to strength."
+  },
+  {
+    "file": "ring (2).png",
+    "name": "Old Ring",
+    "category": "Ring",
+    "desc": "Grants +2 to agility."
+  },
+  {
+    "file": "ring (3).png",
+    "name": "Worn Ring",
+    "category": "Ring",
+    "desc": "Grants +3 to intelligence."
+  },
+  {
+    "file": "ring (4).png",
+    "name": "Fine Ring",
+    "category": "Ring",
+    "desc": "Grants +4 to vitality."
+  },
+  {
+    "file": "ring (5).png",
+    "name": "Sturdy Ring",
+    "category": "Ring",
+    "desc": "Grants +5 to strength."
+  },
+  {
+    "file": "ring (6).png",
+    "name": "Keen Ring",
+    "category": "Ring",
+    "desc": "Grants +6 to agility."
+  },
+  {
+    "file": "ring (7).png",
+    "name": "Superior Ring",
+    "category": "Ring",
+    "desc": "Grants +7 to intelligence."
+  },
+  {
+    "file": "ring (8).png",
+    "name": "Flawless Ring",
+    "category": "Ring",
+    "desc": "Grants +8 to vitality."
+  },
+  {
+    "file": "shield (1).png",
+    "name": "Rusty Shield",
+    "category": "Shield",
+    "desc": "Provides 5 defense. Rusty protection."
+  },
+  {
+    "file": "shield (10).png",
+    "name": "Rusty Shield",
+    "category": "Shield",
+    "desc": "Provides 7 defense. Rusty protection."
+  },
+  {
+    "file": "shield (11).png",
+    "name": "Old Shield",
+    "category": "Shield",
+    "desc": "Provides 7 defense. Old protection."
+  },
+  {
+    "file": "shield (2).png",
+    "name": "Old Shield",
+    "category": "Shield",
+    "desc": "Provides 5 defense. Old protection."
+  },
+  {
+    "file": "shield (3).png",
+    "name": "Worn Shield",
+    "category": "Shield",
+    "desc": "Provides 5 defense. Worn protection."
+  },
+  {
+    "file": "shield (4).png",
+    "name": "Fine Shield",
+    "category": "Shield",
+    "desc": "Provides 5 defense. Fine protection."
+  },
+  {
+    "file": "shield (5).png",
+    "name": "Sturdy Shield",
+    "category": "Shield",
+    "desc": "Provides 5 defense. Sturdy protection."
+  },
+  {
+    "file": "shield (6).png",
+    "name": "Keen Shield",
+    "category": "Shield",
+    "desc": "Provides 5 defense. Keen protection."
+  },
+  {
+    "file": "shield (7).png",
+    "name": "Superior Shield",
+    "category": "Shield",
+    "desc": "Provides 5 defense. Superior protection."
+  },
+  {
+    "file": "shield (8).png",
+    "name": "Flawless Shield",
+    "category": "Shield",
+    "desc": "Provides 5 defense. Flawless protection."
+  },
+  {
+    "file": "shield (9).png",
+    "name": "Arcane Shield",
+    "category": "Shield",
+    "desc": "Provides 5 defense. Arcane protection."
+  },
+  {
+    "file": "spellbook.png",
+    "name": "Spellbook",
+    "category": "Misc",
+    "desc": "A tome of forgotten knowledge."
+  },
+  {
+    "file": "staff (1).png",
+    "name": "Rusty Staff",
+    "category": "Staff",
+    "desc": "Deals 8 base damage. A rusty rusty staff."
+  },
+  {
+    "file": "staff (2).png",
+    "name": "Old Staff",
+    "category": "Staff",
+    "desc": "Deals 8 base damage. A old old staff."
+  },
+  {
+    "file": "staff (3).png",
+    "name": "Worn Staff",
+    "category": "Staff",
+    "desc": "Deals 8 base damage. A worn worn staff."
+  },
+  {
+    "file": "staff (4).png",
+    "name": "Fine Staff",
+    "category": "Staff",
+    "desc": "Deals 8 base damage. A fine fine staff."
+  },
+  {
+    "file": "staff (5).png",
+    "name": "Sturdy Staff",
+    "category": "Staff",
+    "desc": "Deals 8 base damage. A sturdy sturdy staff."
+  },
+  {
+    "file": "staff (6).png",
+    "name": "Keen Staff",
+    "category": "Staff",
+    "desc": "Deals 8 base damage. A keen keen staff."
+  },
+  {
+    "file": "sword (1).png",
+    "name": "Rusty Sword",
+    "category": "Sword",
+    "desc": "Deals 8 base damage. A rusty rusty sword."
+  },
+  {
+    "file": "sword (10).png",
+    "name": "Rusty Sword",
+    "category": "Sword",
+    "desc": "Deals 11 base damage. A rusty rusty sword."
+  },
+  {
+    "file": "sword (11).png",
+    "name": "Old Sword",
+    "category": "Sword",
+    "desc": "Deals 11 base damage. A old old sword."
+  },
+  {
+    "file": "sword (12).png",
+    "name": "Worn Sword",
+    "category": "Sword",
+    "desc": "Deals 11 base damage. A worn worn sword."
+  },
+  {
+    "file": "sword (13).png",
+    "name": "Fine Sword",
+    "category": "Sword",
+    "desc": "Deals 11 base damage. A fine fine sword."
+  },
+  {
+    "file": "sword (14).png",
+    "name": "Sturdy Sword",
+    "category": "Sword",
+    "desc": "Deals 11 base damage. A sturdy sturdy sword."
+  },
+  {
+    "file": "sword (15).png",
+    "name": "Keen Sword",
+    "category": "Sword",
+    "desc": "Deals 11 base damage. A keen keen sword."
+  },
+  {
+    "file": "sword (16).png",
+    "name": "Superior Sword",
+    "category": "Sword",
+    "desc": "Deals 11 base damage. A superior superior sword."
+  },
+  {
+    "file": "sword (17).png",
+    "name": "Flawless Sword",
+    "category": "Sword",
+    "desc": "Deals 11 base damage. A flawless flawless sword."
+  },
+  {
+    "file": "sword (2).png",
+    "name": "Old Sword",
+    "category": "Sword",
+    "desc": "Deals 8 base damage. A old old sword."
+  },
+  {
+    "file": "sword (3).png",
+    "name": "Worn Sword",
+    "category": "Sword",
+    "desc": "Deals 8 base damage. A worn worn sword."
+  },
+  {
+    "file": "sword (4).png",
+    "name": "Fine Sword",
+    "category": "Sword",
+    "desc": "Deals 8 base damage. A fine fine sword."
+  },
+  {
+    "file": "sword (5).png",
+    "name": "Sturdy Sword",
+    "category": "Sword",
+    "desc": "Deals 8 base damage. A sturdy sturdy sword."
+  },
+  {
+    "file": "sword (6).png",
+    "name": "Keen Sword",
+    "category": "Sword",
+    "desc": "Deals 8 base damage. A keen keen sword."
+  },
+  {
+    "file": "sword (7).png",
+    "name": "Superior Sword",
+    "category": "Sword",
+    "desc": "Deals 8 base damage. A superior superior sword."
+  },
+  {
+    "file": "sword (8).png",
+    "name": "Flawless Sword",
+    "category": "Sword",
+    "desc": "Deals 8 base damage. A flawless flawless sword."
+  },
+  {
+    "file": "sword (9).png",
+    "name": "Arcane Sword",
+    "category": "Sword",
+    "desc": "Deals 8 base damage. A arcane arcane sword."
+  }
+]

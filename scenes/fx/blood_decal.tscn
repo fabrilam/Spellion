@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bk0yq3tyq1s3b"]
+
+[ext_resource type="Script" path="res://scenes/fx/blood_decal.gd" id="1"]
+
+[sub_resource type="StandardMaterial3D" id="Mat"]
+transparency = 1
+cull_mode = 0
+
+[sub_resource type="QuadMesh" id="QM"]
+size = Vector2(1.2, 1.2)
+
+[node name="BloodDecal" type="Node3D"]
+script = ExtResource("1")
+
+[node name="Decal" type="MeshInstance3D" parent="."]
+material_override = SubResource("Mat")
+mesh = SubResource("QM")

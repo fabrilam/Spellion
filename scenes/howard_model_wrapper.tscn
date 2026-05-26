@@ -1,0 +1,10 @@
+[gd_scene format=4 uid="uid://chwqp0753qwfu"]
+
+[ext_resource type="PackedScene" uid="uid://b4dai1ij8b78i" path="res://assets/models/characters/howard.glb" id="1_model"]
+
+[node name="HowardModelWrapper" type="Node3D"]
+
+[node name="HowardModel" parent="." instance=ExtResource("1_model")]
+
+[node name="BowArmature" type="Node3D" parent="HowardModel"]
+visible = false

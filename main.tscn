@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://d1w63nej76kiv"]
+
+[ext_resource type="Script" uid="uid://clbbdesslsb6w" path="res://scripts/camera_rig.gd" id="1_ig7tw"]
+[ext_resource type="PlaneMesh" uid="uid://1d6ep8r7oldr" path="res://assets/meshes/floor_400.tres" id="2_60kde"]
+[ext_resource type="Environment" uid="uid://0ohst2r0tf21" path="res://assets/env/forest_env.tres" id="3_venvi"]
+[ext_resource type="PackedScene" uid="uid://bqekei4v82bce" path="res://scenes/howard.tscn" id="4_howard"]
+[ext_resource type="Material" uid="uid://ce0s7rkvxn1yl" path="res://assets/textures/floor/floor_grass_material.tres" id="5_floor_mat"]
+[ext_resource type="Script" uid="uid://cyg0dyw8a8fnj" path="res://scripts/wave_spawner.gd" id="6_spawner"]
+[ext_resource type="PackedScene" uid="uid://dikuvi1qxt3wh" path="res://scenes/hud.tscn" id="7_hud"]
+[ext_resource type="PackedScene" uid="uid://d0d7rjymd7xn6" path="res://scenes/stats_screen.tscn" id="9_stats"]
+[ext_resource type="Script" uid="uid://cdr206usxicj8" path="res://scripts/forest_scatter.gd" id="10_forest"]
+[ext_resource type="PackedScene" path="res://scenes/minimap.tscn" id="11_minimap"]
+[ext_resource type="Script" uid="uid://dfk5477mh5g4r" path="res://scripts/orb_sky_spawner.gd" id="12_dg77c"]
+[ext_resource type="PackedScene" path="res://scenes/inventory_screen.tscn" id="12_inv"]
+[ext_resource type="PackedScene" uid="uid://i03ay0pqo6gn" path="res://scenes/enemy_hp_panel.tscn" id="13_hp"]
+[ext_resource type="Script" uid="uid://bdwhddmlralrn" path="res://scripts/dungeon/dungeon_visualizer.gd" id="14_w48qg"]
+
+[node name="Main" type="Node3D" unique_id=1026970952]
+
+[node name="CameraRig" type="Marker3D" parent="." unique_id=1097307975]
+transform = Transform3D(1, 0, 0, 0, 0.57357645, 0.81915206, 0, -0.81915206, 0.57357645, 0, 28, 20)
+script = ExtResource("1_ig7tw")
+target = NodePath("../Howard")
+follow_speed = 10.0
+
+[node name="IsometricCamera" type="Camera3D" parent="CameraRig" unique_id=81652713]
+current = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=602721109]
+environment = ExtResource("3_venvi")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=336373491]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 30, 30, 0)
+light_color = Color(1, 0.95, 0.85, 1)
+light_energy = 1.2
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=2041149078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = ExtResource("5_floor_mat")
+mesh = ExtResource("2_60kde")
+
+[node name="Howard" parent="." unique_id=1730466666 instance=ExtResource("4_howard")]
+
+[node name="WaveSpawner" type="Node3D" parent="." unique_id=2093264923]
+script = ExtResource("6_spawner")
+scatter_count = 40
+
+[node name="HUD" parent="." unique_id=306689880 instance=ExtResource("7_hud")]
+
+[node name="StatsScreen" parent="." unique_id=45661394 instance=ExtResource("9_stats")]
+
+[node name="InventoryScreen" parent="." unique_id=11223344 instance=ExtResource("12_inv")]
+
+[node name="EnemyHPBars" type="CanvasLayer" parent="." unique_id=1115684183]
+
+[node name="Minimap" parent="." unique_id=887654321 instance=ExtResource("11_minimap")]
+
+[node name="Forest" type="Node3D" parent="." unique_id=610198065]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -80)
+script = ExtResource("10_forest")
+
+[node name="PurpleOrbSpawner" type="Timer" parent="." unique_id=1284354475]
+script = ExtResource("12_dg77c")
+
+[node name="EnemyHPPanel" parent="." unique_id=999999001 instance=ExtResource("13_hp")]
+
+[node name="Dungeon" type="Node3D" parent="." unique_id=1667347214]
+script = ExtResource("14_w48qg")

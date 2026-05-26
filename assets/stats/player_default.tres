@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Stats" format=3 uid="uid://be8tr02bt62we"]
+
+[ext_resource type="Script" uid="uid://kupyurbt4a3d" path="res://scripts/stats.gd" id="1_180gv"]
+
+[resource]
+script = ExtResource("1_180gv")
+mana = 35.0

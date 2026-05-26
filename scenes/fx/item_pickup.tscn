@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bqp2md2vtcksr"]
+
+[ext_resource type="Script" path="res://scripts/item_world.gd" id="1"]
+
+[node name="ItemPickup" type="RigidBody3D"]
+script = ExtResource("1")

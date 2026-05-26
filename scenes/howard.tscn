@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bqekei4v82bce"]
+
+[ext_resource type="Script" uid="uid://4atyonf5jb4t" path="res://scripts/player.gd" id="1_vbaiy"]
+[ext_resource type="Resource" uid="uid://be8tr02bt62we" path="res://assets/stats/player_default.tres" id="2_qtmng"]
+[ext_resource type="PackedScene" uid="uid://dnrmtanlfybgu" path="res://scenes/character_root.tscn" id="3_model"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xfxny"]
+radius = 0.4
+height = 1.9170898
+
+[sub_resource type="BoxMesh" id="BoxMesh_vbaiy"]
+size = Vector3(1, 1.8, 1)
+
+[node name="Howard" type="CharacterBody3D" unique_id=1681260734]
+script = ExtResource("1_vbaiy")
+stats = ExtResource("2_qtmng")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=71897627]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85693616, 0)
+shape = SubResource("CapsuleShape3D_xfxny")
+
+[node name="HowardModel" parent="." unique_id=577768921 instance=ExtResource("3_model")]
+transform = Transform3D(-0.54, 0, -8.1537735e-08, 0, 0.54, 0, 8.1537735e-08, 0, -0.54, 0, 0, 0)
+
+[node name="Mesh de 180cm" type="MeshInstance3D" parent="." unique_id=329032836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.902805, 0.9824643)
+visible = false
+mesh = SubResource("BoxMesh_vbaiy")

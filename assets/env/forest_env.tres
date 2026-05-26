@@ -1,0 +1,18 @@
+[gd_resource type="Environment" format=3 uid="uid://0ohst2r0tf21"]
+
+[ext_resource type="Texture2D" uid="uid://dnlsnj8562k6v" path="res://assets/env/360_F_478149454_kEB9776PJlVMRCKOG4dBsmHPI8ZfqjNq.jpg" id="1_sky"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_y0fkp"]
+panorama = ExtResource("1_sky")
+
+[sub_resource type="Sky" id="Sky_8y2v7"]
+sky_material = SubResource("PanoramaSkyMaterial_y0fkp")
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 1.5
+sky = SubResource("Sky_8y2v7")
+ambient_light_source = 2
+ambient_light_color = Color(0.4, 0.5, 0.3, 1)
+ambient_light_energy = 0.8
+tonemap_mode = 2

@@ -1,0 +1,390 @@
+[gd_scene format=3 uid="uid://d0d7rjymd7xn6"]
+
+[ext_resource type="Script" uid="uid://b3rfixkfded6v" path="res://scripts/stats_screen.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_but"]
+content_margin_left = 2.0
+content_margin_top = 0.0
+content_margin_right = 2.0
+content_margin_bottom = 0.0
+bg_color = Color(0.6, 0.08, 0.08, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_but_pressed"]
+content_margin_left = 2.0
+content_margin_top = 0.0
+content_margin_right = 2.0
+content_margin_bottom = 0.0
+bg_color = Color(0.4, 0.05, 0.05, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_but_hover"]
+content_margin_left = 2.0
+content_margin_top = 0.0
+content_margin_right = 2.0
+content_margin_bottom = 0.0
+bg_color = Color(0.8, 0.12, 0.12, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_but_disabled"]
+content_margin_left = 2.0
+content_margin_top = 0.0
+content_margin_right = 2.0
+content_margin_bottom = 0.0
+bg_color = Color(0.15, 0.15, 0.15, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="StatsScreen" type="CanvasLayer" unique_id=1980006729]
+script = ExtResource("1_script")
+
+[node name="Panel" type="Panel" parent="." unique_id=1271526562]
+offset_left = 20.0
+offset_top = 100.0
+offset_right = 220.0
+offset_bottom = -20.0
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="Panel" unique_id=1544676480]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Margin" unique_id=358061617]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LevelLabel" type="Label" parent="Panel/Margin/VBox" unique_id=46116265]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Level 1"
+
+[node name="PointsLabel" type="Label" parent="Panel/Margin/VBox" unique_id=1785732767]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Unspent: 0"
+
+[node name="Sep1" type="HSeparator" parent="Panel/Margin/VBox" unique_id=1304555296]
+layout_mode = 2
+
+[node name="PrimaryLabel" type="Label" parent="Panel/Margin/VBox" unique_id=886910360]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "PRIMARY STATS"
+
+[node name="StrRow" type="HBoxContainer" parent="Panel/Margin/VBox" unique_id=560340271]
+layout_mode = 2
+
+[node name="StrLabel" type="Label" parent="Panel/Margin/VBox/StrRow" unique_id=1447006864]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
+text = "Strength"
+
+[node name="StrValue" type="Label" parent="Panel/Margin/VBox/StrRow" unique_id=2141549044]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "3"
+horizontal_alignment = 2
+
+[node name="StrPlus" type="Button" parent="Panel/Margin/VBox/StrRow" unique_id=183016213]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.5, 0.5, 0.5, 0.5)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_but")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_but_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_but_hover")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_but_disabled")
+text = "+"
+
+[node name="AgiRow" type="HBoxContainer" parent="Panel/Margin/VBox" unique_id=1945600331]
+layout_mode = 2
+
+[node name="AgiLabel" type="Label" parent="Panel/Margin/VBox/AgiRow" unique_id=1161134614]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
+text = "Agility"
+
+[node name="AgiValue" type="Label" parent="Panel/Margin/VBox/AgiRow" unique_id=2111374999]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "3"
+horizontal_alignment = 2
+
+[node name="AgiPlus" type="Button" parent="Panel/Margin/VBox/AgiRow" unique_id=966058580]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.5, 0.5, 0.5, 0.5)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_but")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_but_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_but_hover")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_but_disabled")
+text = "+"
+
+[node name="IntRow" type="HBoxContainer" parent="Panel/Margin/VBox" unique_id=513194967]
+layout_mode = 2
+
+[node name="IntLabel" type="Label" parent="Panel/Margin/VBox/IntRow" unique_id=2117330522]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
+text = "Intelligence"
+
+[node name="IntValue" type="Label" parent="Panel/Margin/VBox/IntRow" unique_id=1072551207]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "3"
+horizontal_alignment = 2
+
+[node name="IntPlus" type="Button" parent="Panel/Margin/VBox/IntRow" unique_id=2044026928]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.5, 0.5, 0.5, 0.5)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_but")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_but_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_but_hover")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_but_disabled")
+text = "+"
+
+[node name="VitRow" type="HBoxContainer" parent="Panel/Margin/VBox" unique_id=1886988944]
+layout_mode = 2
+
+[node name="VitLabel" type="Label" parent="Panel/Margin/VBox/VitRow" unique_id=1993570107]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
+text = "Vitality"
+
+[node name="VitValue" type="Label" parent="Panel/Margin/VBox/VitRow" unique_id=2057612001]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "3"
+horizontal_alignment = 2
+
+[node name="VitPlus" type="Button" parent="Panel/Margin/VBox/VitRow" unique_id=1580754617]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.5, 0.5, 0.5, 0.5)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_but")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_but_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_but_hover")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_but_disabled")
+text = "+"
+
+[node name="Sep2" type="HSeparator" parent="Panel/Margin/VBox" unique_id=1222008393]
+layout_mode = 2
+
+[node name="DerivedLabel" type="Label" parent="Panel/Margin/VBox" unique_id=2030474470]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "DERIVED STATS"
+
+[node name="HPRow" type="HBoxContainer" parent="Panel/Margin/VBox" unique_id=28343133]
+layout_mode = 2
+
+[node name="HPLabel" type="Label" parent="Panel/Margin/VBox/HPRow" unique_id=411580214]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Max HP"
+
+[node name="HPValue" type="Label" parent="Panel/Margin/VBox/HPRow" unique_id=1526480752]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "110"
+horizontal_alignment = 2
+
+[node name="MPRow" type="HBoxContainer" parent="Panel/Margin/VBox" unique_id=1101416377]
+layout_mode = 2
+
+[node name="MPLabel" type="Label" parent="Panel/Margin/VBox/MPRow" unique_id=402214869]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Max MP"
+
+[node name="MPValue" type="Label" parent="Panel/Margin/VBox/MPRow" unique_id=727968207]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "35"
+horizontal_alignment = 2
+
+[node name="MeleeDmgRow" type="HBoxContainer" parent="Panel/Margin/VBox" unique_id=2069387328]
+layout_mode = 2
+
+[node name="MeleeDmgLabel" type="Label" parent="Panel/Margin/VBox/MeleeDmgRow" unique_id=628722991]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Melee Dmg"
+
+[node name="MeleeDmgValue" type="Label" parent="Panel/Margin/VBox/MeleeDmgRow" unique_id=498623722]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "11"
+horizontal_alignment = 2
+
+[node name="SpellDmgRow" type="HBoxContainer" parent="Panel/Margin/VBox" unique_id=1095751374]
+layout_mode = 2
+
+[node name="SpellDmgLabel" type="Label" parent="Panel/Margin/VBox/SpellDmgRow" unique_id=165560249]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Spell Dmg"
+
+[node name="SpellDmgValue" type="Label" parent="Panel/Margin/VBox/SpellDmgRow" unique_id=732828148]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "8"
+horizontal_alignment = 2
+
+[node name="SpeedRow" type="HBoxContainer" parent="Panel/Margin/VBox" unique_id=599312144]
+layout_mode = 2
+
+[node name="SpeedLabel" type="Label" parent="Panel/Margin/VBox/SpeedRow" unique_id=459976642]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Speed"
+
+[node name="SpeedValue" type="Label" parent="Panel/Margin/VBox/SpeedRow" unique_id=644044833]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "5.5"
+horizontal_alignment = 2
+
+[node name="CritRow" type="HBoxContainer" parent="Panel/Margin/VBox" unique_id=1636832873]
+layout_mode = 2
+
+[node name="CritLabel" type="Label" parent="Panel/Margin/VBox/CritRow" unique_id=1019395373]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Crit Chance"
+
+[node name="CritValue" type="Label" parent="Panel/Margin/VBox/CritRow" unique_id=1028994230]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "5%"
+horizontal_alignment = 2
+
+[node name="AtkSpdRow" type="HBoxContainer" parent="Panel/Margin/VBox" unique_id=1407510546]
+layout_mode = 2
+
+[node name="AtkSpdLabel" type="Label" parent="Panel/Margin/VBox/AtkSpdRow" unique_id=791885289]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Attack Speed"
+
+[node name="AtkSpdValue" type="Label" parent="Panel/Margin/VBox/AtkSpdRow" unique_id=371569845]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "1.00"
+horizontal_alignment = 2
+
+[node name="DefRow" type="HBoxContainer" parent="Panel/Margin/VBox" unique_id=1346929173]
+layout_mode = 2
+
+[node name="DefLabel" type="Label" parent="Panel/Margin/VBox/DefRow" unique_id=483266460]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Defense"
+
+[node name="DefValue" type="Label" parent="Panel/Margin/VBox/DefRow" unique_id=875874158]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "4"
+horizontal_alignment = 2
+
+[node name="HpRegenRow" type="HBoxContainer" parent="Panel/Margin/VBox" unique_id=933859050]
+layout_mode = 2
+
+[node name="HpRegenLabel" type="Label" parent="Panel/Margin/VBox/HpRegenRow" unique_id=1329452017]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "HP Regen"
+
+[node name="HpRegenValue" type="Label" parent="Panel/Margin/VBox/HpRegenRow" unique_id=1959152317]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2
+
+[node name="MpRegenRow" type="HBoxContainer" parent="Panel/Margin/VBox" unique_id=1987395509]
+layout_mode = 2
+
+[node name="MpRegenLabel" type="Label" parent="Panel/Margin/VBox/MpRegenRow" unique_id=1123200815]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Mana Regen"
+
+[node name="MpRegenValue" type="Label" parent="Panel/Margin/VBox/MpRegenRow" unique_id=119955027]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2
+
+[node name="SepSave" type="HSeparator" parent="Panel/Margin/VBox" unique_id=1147621019]
+layout_mode = 2
+
+[node name="SaveRow" type="HBoxContainer" parent="Panel/Margin/VBox" unique_id=1652561373]
+layout_mode = 2
+
+[node name="SaveBtn" type="Button" parent="Panel/Margin/VBox/SaveRow" unique_id=192206046]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.8, 0.8, 0.6, 1)
+theme_override_font_sizes/font_size = 11
+text = "Save"
+
+[node name="LoadBtn" type="Button" parent="Panel/Margin/VBox/SaveRow" unique_id=1120875983]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.8, 0.8, 0.6, 1)
+theme_override_font_sizes/font_size = 11
+text = "Load"
+
+[node name="BarModeBtn" type="Button" parent="Panel/Margin/VBox" unique_id=1622269061]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "HP Bars: Panel"

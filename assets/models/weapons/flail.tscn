@@ -1,0 +1,41 @@
+[gd_scene format=3]
+
+[sub_resource type="CylinderMesh" id="MM0"]
+top_radius = 0.04
+bottom_radius = 0.04
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="SM0"]
+albedo_color = Color(0.4, 0.25, 0.12, 1)
+
+[sub_resource type="CylinderMesh" id="MM1"]
+top_radius = 0.015
+bottom_radius = 0.015
+height = 0.15
+
+[sub_resource type="StandardMaterial3D" id="SM1"]
+albedo_color = Color(0.4, 0.4, 0.4, 1)
+
+[sub_resource type="SphereMesh" id="MM2"]
+radius = 0.07
+height = 0.14
+
+[sub_resource type="StandardMaterial3D" id="SM2"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="Flail" type="Node3D"]
+
+[node name="Handle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = SubResource("MM0")
+material_override = SubResource("SM0")
+
+[node name="Chain" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 0)
+mesh = SubResource("MM1")
+material_override = SubResource("SM1")
+
+[node name="Ball" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38, 0)
+mesh = SubResource("MM2")
+material_override = SubResource("SM2")

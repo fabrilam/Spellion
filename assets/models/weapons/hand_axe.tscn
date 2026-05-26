@@ -1,0 +1,27 @@
+[gd_scene format=3]
+
+[sub_resource type="CylinderMesh" id="MM0"]
+top_radius = 0.04
+bottom_radius = 0.04
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="SM0"]
+albedo_color = Color(0.45, 0.3, 0.15, 1)
+
+[sub_resource type="BoxMesh" id="MM1"]
+size = Vector3(0.2, 0.25, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="SM1"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="Hand_axe" type="Node3D"]
+
+[node name="Handle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = SubResource("MM0")
+material_override = SubResource("SM0")
+
+[node name="Blade" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, 0.25, 0)
+mesh = SubResource("MM1")
+material_override = SubResource("SM1")

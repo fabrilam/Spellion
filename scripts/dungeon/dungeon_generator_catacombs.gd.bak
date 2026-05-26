@@ -1,0 +1,294 @@
+extends Resource
+class_name DungeonGenerator
+
+const TILE_SIZE := 1.0
+
+const ROOM_TEMPLATES := {
+	DungeonTiles.RoomType.SPAWN:     { "min_w": 10, "max_w": 14, "min_h": 10, "max_h": 14 },
+	DungeonTiles.RoomType.HALLWAY:   { "min_w": 16, "max_w": 24, "min_h": 6, "max_h": 10 },
+	DungeonTiles.RoomType.OPEN_AREA: { "min_w": 16, "max_w": 24, "min_h": 16, "max_h": 24 },
+	DungeonTiles.RoomType.STORAGE:   { "min_w": 8, "max_w": 12, "min_h": 8, "max_h": 12 },
+	DungeonTiles.RoomType.TREASURE:  { "min_w": 10, "max_w": 14, "min_h": 10, "max_h": 14 },
+	DungeonTiles.RoomType.ALTAR:     { "min_w": 10, "max_w": 14, "min_h": 10, "max_h": 14 },
+	DungeonTiles.RoomType.LIBRARY:   { "min_w": 12, "max_w": 16, "min_h": 12, "max_h": 16 },
+	DungeonTiles.RoomType.BOSS:      { "min_w": 20, "max_w": 28, "min_h": 20, "max_h": 28 },
+}
+
+const ROOM_WEIGHTS := {
+	DungeonTiles.RoomType.HALLWAY:   25,
+	DungeonTiles.RoomType.OPEN_AREA: 15,
+	DungeonTiles.RoomType.STORAGE:   20,
+	DungeonTiles.RoomType.TREASURE:  12,
+	DungeonTiles.RoomType.ALTAR:     8,
+	DungeonTiles.RoomType.LIBRARY:   10,
+	DungeonTiles.RoomType.BOSS:      10,
+}
+
+var rng := RandomNumberGenerator.new()
+var _grid: Array = []
+var _rooms: Array = []
+var _grid_w: int = 0
+var _grid_h: int = 0
+
+func generate(seed_val: int = -1, grid_w: int = 120, grid_h: int = 120, room_count: int = 18) -> Dictionary:
+	rng = RandomNumberGenerator.new()
+	if seed_val >= 0:
+		rng.seed = seed_val
+	else:
+		rng.randomize()
+	_grid_w = grid_w
+	_grid_h = grid_h
+	_rooms = []
+
+	_grid = []
+	for y in range(grid_h):
+		var row: Array = []
+		for x in range(grid_w):
+			row.append(DungeonTiles.TileType.VOID)
+		_grid.append(row)
+
+	# Place SPAWN at left edge so it has an exterior wall
+	var spawn_t: Dictionary = ROOM_TEMPLATES[DungeonTiles.RoomType.SPAWN]
+	var spawn_w: int = rng.randi_range(spawn_t.min_w, spawn_t.max_w)
+	var spawn_h: int = rng.randi_range(spawn_t.min_h, spawn_t.max_h)
+	var spawn_x: int = 0
+	var spawn_y: int = rng.randi_range(3, _grid_h - spawn_h - 3)
+	_carve_room(spawn_x, spawn_y, spawn_w, spawn_h, DungeonTiles.RoomType.SPAWN)
+
+	for i in room_count - 1:
+		_generate_room()
+
+	_merge_rooms()
+	_random_interconnect()
+
+	return {
+		"grid": _grid,
+		"rooms": _rooms.duplicate(),
+		"width": _grid_w,
+		"height": _grid_h,
+	}
+
+func _carve_room(rx: int, ry: int, rw: int, rh: int, rtype: int) -> void:
+	for y in range(ry, ry + rh):
+		for x in range(rx, rx + rw):
+			if x < 0 or x >= _grid_w or y < 0 or y >= _grid_h:
+				continue
+			var is_edge: bool = (x == rx or x == rx + rw - 1 or y == ry or y == ry + rh - 1)
+			if is_edge:
+				if _grid[y][x] != DungeonTiles.TileType.FLOOR:
+					_grid[y][x] = DungeonTiles.TileType.WALL
+			else:
+				_grid[y][x] = DungeonTiles.TileType.FLOOR
+
+	_rooms.append({
+		"x": rx, "y": ry,
+		"w": rw, "h": rh,
+		"type": rtype,
+	})
+
+func _generate_room() -> void:
+	var max_attempts: int = 80
+	for _attempt in max_attempts:
+		var rtype: int = _random_room_type()
+		var templ: Dictionary = ROOM_TEMPLATES[rtype]
+		var rw: int = rng.randi_range(templ.min_w, templ.max_w)
+		var rh: int = rng.randi_range(templ.min_h, templ.max_h)
+
+		if _rooms.is_empty():
+			continue
+		var anchor: Dictionary = _rooms[rng.randi_range(0, _rooms.size() - 1)]
+		var side: int = rng.randi_range(0, 3)
+		# Reserve SPAWN's left side for entrance
+		if anchor.type == DungeonTiles.RoomType.SPAWN and side == 1:
+			continue
+		var rx: int
+		var ry: int
+		match side:
+			0, 1:
+				var slide_max: int = mini(rh - 3, anchor.h - 3)
+				if slide_max < 1:
+					continue
+				var off: int = rng.randi_range(-slide_max + 1, slide_max - 1)
+				rx = anchor.x + anchor.w - 1 if side == 0 else anchor.x - rw + 1
+				ry = anchor.y + off
+			2, 3:
+				var slide_max: int = mini(rw - 3, anchor.w - 3)
+				if slide_max < 1:
+					continue
+				var off: int = rng.randi_range(-slide_max + 1, slide_max - 1)
+				rx = anchor.x + off
+				ry = anchor.y + anchor.h - 1 if side == 2 else anchor.y - rh + 1
+
+		if _room_fits(rx, ry, rw, rh):
+			_carve_room(rx, ry, rw, rh, rtype)
+			return
+
+func _room_fits(rx: int, ry: int, rw: int, rh: int) -> bool:
+	if rx < 0 or ry < 0 or rx + rw > _grid_w or ry + rh > _grid_h:
+		return false
+	for y in range(ry, ry + rh):
+		for x in range(rx, rx + rw):
+			if _grid[y][x] == DungeonTiles.TileType.FLOOR:
+				return false
+	return true
+
+func _random_room_type() -> int:
+	var total: int = 0
+	for rt in ROOM_WEIGHTS:
+		total += ROOM_WEIGHTS[rt]
+	var roll: int = rng.randi_range(1, total)
+	var accum: int = 0
+	for rt in ROOM_WEIGHTS:
+		accum += ROOM_WEIGHTS[rt]
+		if roll <= accum:
+			return rt
+	return DungeonTiles.RoomType.HALLWAY
+
+func _random_interconnect() -> void:
+	# Add extra doors between rooms that are close but not connected
+	# 30% chance per close pair
+	for ri in _rooms.size():
+		var ra: Dictionary = _rooms[ri]
+		for rj in range(ri + 1, _rooms.size()):
+			var rb: Dictionary = _rooms[rj]
+			var dist: int = abs(ra.x - rb.x) + abs(ra.y - rb.y)
+			if dist > 20:
+				continue
+			if rng.randf() > 0.3:
+				continue
+			# Check if they already share a wall
+			var already_connected := _rooms_share_wall(ra, rb)
+			if not already_connected:
+				_force_door_between(ra, rb)
+
+func _rooms_share_wall(ra: Dictionary, rb: Dictionary) -> bool:
+	# Simple check: any wall tile of ra adjacent to floor of rb?
+	for y in range(ra.y, ra.y + ra.h):
+		for x in range(ra.x, ra.x + ra.w):
+			if _grid[y][x] != DungeonTiles.TileType.WALL:
+				continue
+			for ny in [y - 1, y + 1]:
+				if ny >= 0 and ny < _grid_h and _grid[ny][x] == DungeonTiles.TileType.FLOOR:
+					if _is_in_room(x, ny, rb):
+						return true
+			for nx in [x - 1, x + 1]:
+				if nx >= 0 and nx < _grid_w and _grid[y][nx] == DungeonTiles.TileType.FLOOR:
+					if _is_in_room(nx, y, rb):
+						return true
+	return false
+
+func _is_in_room(tx: int, ty: int, rd: Dictionary) -> bool:
+	return tx > rd.x and tx < rd.x + rd.w - 1 and ty > rd.y and ty < rd.y + rd.h - 1
+
+func _force_door_between(ra: Dictionary, rb: Dictionary) -> void:
+	# Find closest wall tiles between rooms and place a door
+	var best_dist := 999
+	var best_tile: Vector2i
+	for y in range(ra.y, ra.y + ra.h):
+		for x in range(ra.x, ra.x + ra.w):
+			if _grid[y][x] != DungeonTiles.TileType.WALL:
+				continue
+			if _is_corner(Vector2i(x, y), ra):
+				continue
+			var cx: int = rb.x + rb.w / 2
+			var cy: int = rb.y + rb.h / 2
+			var d: int = abs(x - cx) + abs(y - cy)
+			if d < best_dist:
+				best_dist = d
+				best_tile = Vector2i(x, y)
+	if best_dist < 999:
+		_grid[best_tile.y][best_tile.x] = DungeonTiles.TileType.DOOR
+
+func _merge_rooms() -> void:
+	for ri in _rooms.size():
+		var rd: Dictionary = _rooms[ri]
+		var spawn_exit_placed: bool = false
+		var wall_sections: Array = _find_wall_sections(rd)
+		var door_on_side: Dictionary = { "top": false, "bottom": false, "left": false, "right": false }
+
+		for sec in wall_sections:
+			var side: String = sec.side
+			var tiles: Array = sec.tiles
+			var sec_type: int = sec.type
+
+			if sec_type == 0:
+				if rd.type == DungeonTiles.RoomType.SPAWN and not spawn_exit_placed and not door_on_side[side]:
+					var eligible: Array = _eligible_tiles(tiles, rd)
+					if eligible.size() > 0:
+						var mid: int = eligible.size() / 2
+						_grid[eligible[mid].y][eligible[mid].x] = DungeonTiles.TileType.DOOR
+						spawn_exit_placed = true
+						door_on_side[side] = true
+			elif sec_type == 1 and not door_on_side[side]:
+				var eligible: Array = _eligible_tiles(tiles, rd)
+				if eligible.size() > 0:
+					var mid: int = eligible.size() / 2
+					_grid[eligible[mid].y][eligible[mid].x] = DungeonTiles.TileType.DOOR
+					door_on_side[side] = true
+
+func _eligible_tiles(tiles: Array, rd: Dictionary) -> Array:
+	var result: Array = []
+	for t in tiles:
+		var tv: Vector2i = t
+		if not _is_corner(tv, rd):
+			result.append(tv)
+	return result
+
+func _is_corner(t: Vector2i, rd: Dictionary) -> bool:
+	var at_top: bool = (t.y == rd.y)
+	var at_bottom: bool = (t.y == rd.y + rd.h - 1)
+	var at_left: bool = (t.x == rd.x)
+	var at_right: bool = (t.x == rd.x + rd.w - 1)
+	return (at_top or at_bottom) and (at_left or at_right)
+
+func _find_wall_sections(rd: Dictionary) -> Array:
+	var result: Array = []
+	_scan_wall(result, rd.x, rd.y, rd.w, 0, -1, "top")
+	_scan_wall(result, rd.x, rd.y + rd.h - 1, rd.w, 0, 1, "bottom")
+	_scan_wall(result, rd.y, rd.x, rd.h, -1, 0, "left")
+	_scan_wall(result, rd.y, rd.x + rd.w - 1, rd.h, 1, 0, "right")
+	return result
+
+func _scan_wall(result: Array, start_a: int, fixed_b: int, length: int, dir_x: int, dir_y: int, side_name: String) -> void:
+	var current_group: Array = []
+	var current_type: int = -1
+
+	for i in length:
+		var tx: int
+		var ty: int
+		if dir_y != 0:
+			tx = start_a + i
+			ty = fixed_b
+		else:
+			tx = fixed_b
+			ty = start_a + i
+
+		var nx: int = tx + dir_x
+		var ny: int = ty + dir_y
+		var faces_floor: bool = false
+
+		if nx >= 0 and nx < _grid_w and ny >= 0 and ny < _grid_h:
+			if _grid[ny][nx] == DungeonTiles.TileType.FLOOR:
+				faces_floor = true
+
+		var tile_type: int = 1 if faces_floor else 0
+
+		if tile_type != current_type:
+			if current_group.size() > 0:
+				result.append({ "tiles": current_group.duplicate(), "type": current_type, "side": side_name })
+			current_group = []
+			current_type = tile_type
+
+		current_group.append(Vector2i(tx, ty))
+
+	if current_group.size() > 0:
+		result.append({ "tiles": current_group.duplicate(), "type": current_type, "side": side_name })
+
+func get_room_at(tx: int, ty: int) -> Dictionary:
+	for r in _rooms:
+		var rd: Dictionary = r
+		var rx: int = rd.x
+		var ry: int = rd.y
+		if tx >= rx and tx < rx + rd.w and ty >= ry and ty < ry + rd.h:
+			return rd
+	return { "type": DungeonTiles.RoomType.NONE }

@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/models/weapons/dagger.tscn" id="1"]
+
+[node name="WeaponHand" type="Node3D"]
+transform = Transform3D(0.99230695, 0.096758634, 0.07723248, 0.06079963, 0.16255471, -0.9848245, -0.10784477, 0.9819439, 0.15542129, -0.02, 0.15, -0.05)
+
+[node name="Mesh" parent="." instance=ExtResource("1")]

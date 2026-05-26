@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dmhqodj6kxrci"]
+
+[ext_resource type="Script" path="res://scripts/inventory_screen.gd" id="1"]
+
+[node name="InventoryScreen" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1")
+
+[node name="Panel" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 780.0
+offset_top = 60.0
+mouse_filter = 1
+
+[node name="Backdrop" type="TextureRect" parent="Panel"]
+mouse_filter = 2
+
+[node name="Highlight" type="ColorRect" parent="Panel"]
+visible = false
+mouse_filter = 2
+color = Color(0.3, 0.8, 0.3, 0.4)
+
+[node name="DragItem" type="TextureRect" parent="."]
+visible = false
+mouse_filter = 2
+
+[node name="Tooltip" type="Panel" parent="."]
+visible = false
+mouse_filter = 2
+color = Color(0.05, 0.05, 0.08, 0.92)
+
+[node name="TooltipName" type="Label" parent="Tooltip"]
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 190.0
+offset_bottom = 24.0
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.9, 0.9, 0.7, 1)
+
+[node name="TooltipDesc" type="Label" parent="Tooltip"]
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 190.0
+offset_bottom = 60.0
+autowrap_mode = 1
+theme_override_font_sizes/font_size = 9
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+
+[node name="TooltipStats" type="Label" parent="Tooltip"]
+offset_left = 8.0
+offset_top = 56.0
+offset_right = 190.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 9
+theme_override_colors/font_color = Color(0.6, 0.8, 0.6, 1)

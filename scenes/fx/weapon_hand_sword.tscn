@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://i66sp54qjjrr"]
+
+[ext_resource type="PackedScene" uid="uid://cbn27w3kx2e52" path="res://assets/models/weapons/sword.glb" id="1"]
+
+[node name="WeaponHand" type="Node3D" unique_id=844600889]
+
+[node name="Mesh" parent="." unique_id=365088194 instance=ExtResource("1")]

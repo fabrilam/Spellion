@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cseed1ny5n1j3"]
+
+[ext_resource type="Script" path="res://scripts/orb_of_life.gd" id="1_7pvrk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_q7s8b"]
+radius = 0.22
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n2138"]
+albedo_color = Color(0, 1, 0.2, 1)
+emission_enabled = true
+emission = Color(0, 0.8, 0.2, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0tv46"]
+radius = 0.16
+height = 0.32
+
+[node name="OrbOfLife" type="Area3D" unique_id=1894317231]
+script = ExtResource("1_7pvrk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=45083075]
+shape = SubResource("SphereShape3D_q7s8b")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=254764027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27, 0)
+material_override = SubResource("StandardMaterial3D_n2138")
+mesh = SubResource("SphereMesh_0tv46")

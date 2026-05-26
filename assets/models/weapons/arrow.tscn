@@ -1,0 +1,49 @@
+[gd_scene format=3]
+
+[sub_resource type="CylinderMesh" id="MM0"]
+top_radius = 0.015
+bottom_radius = 0.015
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="SM0"]
+albedo_color = Color(0.5, 0.35, 0.15, 1)
+
+[sub_resource type="BoxMesh" id="MM1"]
+size = Vector3(0.03, 0.08, 0.03)
+
+[sub_resource type="StandardMaterial3D" id="SM1"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="BoxMesh" id="MM2"]
+size = Vector3(0.02, 0.06, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="SM2"]
+albedo_color = Color(0.6, 0.1, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="MM3"]
+size = Vector3(0.02, 0.06, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="SM3"]
+albedo_color = Color(0.6, 0.1, 0.1, 1)
+
+[node name="Arrow" type="Node3D"]
+
+[node name="Shaft" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("MM0")
+material_override = SubResource("SM0")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32, 0)
+mesh = SubResource("MM1")
+material_override = SubResource("SM1")
+
+[node name="Fletch1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02, -0.25, 0)
+mesh = SubResource("MM2")
+material_override = SubResource("SM2")
+
+[node name="Fletch2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02, -0.25, 0)
+mesh = SubResource("MM3")
+material_override = SubResource("SM3")
