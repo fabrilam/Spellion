@@ -12,6 +12,8 @@ var _sounds := {
 	"orb_pickup": preload("res://assets/audio/sfx_orb_pickup.mp3"),
 	"levelup": preload("res://assets/audio/sfx_levelup.mp3"),
 	"ui_click": preload("res://assets/audio/sfx_ui_click.mp3"),
+	"bow_shoot": preload("res://assets/audio/rf_sfx_database/Arrow01.WAV"),
+	"arrow_impact": preload("res://assets/audio/rf_sfx_database/ArrHit.WAV"),
 }
 
 var _sound_groups := {

@@ -26,7 +26,7 @@ func _draw() -> void:
 			return
 
 	var view := get_viewport_rect().size
-	position = Vector2(view.x - map_size - margin, view.y - map_size - margin)
+	position = Vector2(view.x - map_size - margin, view.y - map_size - margin - 80.0)
 	size = Vector2(map_size, map_size)
 
 	draw_rect(Rect2(Vector2(0, 0), Vector2(map_size, map_size)), Color(0, 0, 0, 0.55))

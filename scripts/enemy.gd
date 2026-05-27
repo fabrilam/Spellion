@@ -345,11 +345,18 @@ func take_damage(amount: float) -> void:
 	_update_bar_visibility()
 	AudioManager.play_sfx("enemy_hit")
 	_spawn_blood_effects()
+	_spawn_damage_number(amount)
 	var panel = get_tree().get_first_node_in_group("enemy_hp_panel")
 	if panel and panel.has_method("track"):
 		panel.track(self)
 	if hp <= 0.0:
 		_die()
+
+func _spawn_damage_number(amount: float) -> void:
+	var scene := preload("res://scenes/fx/floating_damage.tscn")
+	var dmg := scene.instantiate()
+	get_parent().add_child(dmg)
+	dmg.init(amount, global_position)
 
 func stun(duration: float) -> void:
 	_slow_timer = duration

@@ -193,17 +193,18 @@ func _add_goal_tile() -> void:
 		return
 	var pos: Vector3 = candidates[randi() % candidates.size()]
 
-	# Rainbow floor tile
+	# Psychedelic rainbow floor tile (above floor surface)
 	var mii := MeshInstance3D.new()
 	var box := BoxMesh.new()
-	box.size = Vector3(2.0, 0.15, 2.0)
+	box.size = Vector3(2.0, 0.08, 2.0)
 	mii.mesh = box
 	_goal_mat = StandardMaterial3D.new()
 	_goal_mat.albedo_color = Color(1.0, 0.0, 0.0)
 	_goal_mat.emission_enabled = true
 	_goal_mat.emission = Color(1.0, 0.0, 0.0)
+	_goal_mat.emission_energy_multiplier = 1.5
 	mii.material_override = _goal_mat
-	mii.position = pos + Vector3(0, 0.1, 0)
+	mii.position = pos + Vector3(0, 0.24, 0)
 	add_child(mii)
 
 	_goal_area = Area3D.new()
@@ -213,112 +214,7 @@ func _add_goal_tile() -> void:
 	col_shape.shape = col_box
 	_goal_area.add_child(col_shape)
 	_goal_area.position = pos
-	_goal_area.body_entered.connect(_on_goal_entered)
 	add_child(_goal_area)
-
-func _on_goal_entered(body: Node) -> void:
-	if body.is_in_group("player"):
-		goal_reached.emit(_dungeon_level)
-		_dungeon_level += 1
-
-func get_spawn_pos() -> Vector3:
-	return _spawn_pos
-
-func _add_exit_marker() -> void:
-	# Stair-like mesh at the entrance door
-	var stair_mat := StandardMaterial3D.new()
-	stair_mat.albedo_color = Color(0.6, 0.5, 0.3)
-	stair_mat.emission_enabled = true
-	stair_mat.emission = Color(0.3, 0.25, 0.15)
-	var step1 := MeshInstance3D.new()
-	var box1 := BoxMesh.new()
-	box1.size = Vector3(0.8, 0.1, 1.0)
-	step1.mesh = box1
-	step1.material_override = stair_mat
-	step1.position = _spawn_pos + Vector3(-0.3, 0.05, 0.0)
-	add_child(step1)
-	var step2 := MeshInstance3D.new()
-	var box2 := BoxMesh.new()
-	box2.size = Vector3(0.6, 0.1, 0.8)
-	step2.mesh = box2
-	step2.material_override = stair_mat
-	step2.position = _spawn_pos + Vector3(-0.5, 0.15, 0.0)
-	add_child(step2)
-
-func _add_lights() -> void:
-	for ri in _rooms.size():
-		var rd: Dictionary = _rooms[ri]
-		var rw: int = rd.w
-		var rh: int = rd.h
-		var light_count := 1
-		if rw >= 14 and rh >= 14:
-			light_count = 3
-		elif rw >= 10 and rh >= 10:
-			light_count = 2
-		var cx: float = (rd.x + rw / 2.0) * 2.0 - _grid_w * 0.5 * 2.0
-		var cz: float = (rd.y + rh / 2.0) * 2.0 + 20.0
-		for li in range(light_count):
-			var ox: float = (li - (light_count - 1) * 0.5) * 4.0
-			var lx: float = cx + ox
-			var lz: float = cz
-			var grid_x: int = int((lx + _grid_w) / 2.0 + 0.5)
-			var grid_y: int = int((lz - 20.0) / 2.0 + 0.5)
-			if grid_x >= 0 and grid_x < _grid_w and grid_y >= 0 and grid_y < _grid_h:
-				if _grid[grid_y][grid_x] == DungeonTiles.TileType.WALL:
-					continue
-			var light := OmniLight3D.new()
-			light.position = Vector3(lx, 3.5, lz)
-			light.light_color = Color(1.0, 0.9, 0.7)
-			light.light_energy = 1.2
-			light.omni_range = 8.0
-			add_child(light)
-
-func _spawn_enemies() -> void:
-	_spawn_enemies_with_level(1)
-
-func _spawn_enemies_with_level(dlvl: int) -> void:
-	var player := get_tree().get_first_node_in_group("player")
-	if not player:
-		return
-	var enemy_scene := preload("res://scenes/spider.tscn")
-	var floor_tiles: Array = []
-	for y in range(_grid_h):
-		for x in range(_grid_w):
-			if _grid[y][x] == DungeonTiles.TileType.FLOOR:
-				var px: float = x * 2.0 - _grid_w * 0.5 * 2.0
-				var pz: float = y * 2.0 + 20.0
-				floor_tiles.append(Vector3(px, 0.0, pz))
-	if floor_tiles.is_empty():
-		return
-	# Filter out tiles within 15 tiles (30 world units) of entrance
-	var safe_dist := 30.0
-	var spawn_tiles: Array = []
-	for ft in floor_tiles:
-		if ft.distance_to(_spawn_pos) >= safe_dist:
-			spawn_tiles.append(ft)
-	if spawn_tiles.is_empty():
-		spawn_tiles = floor_tiles
-	var count_: int = maxi(20, floor_tiles.size() / 6)
-	var parent := get_parent()
-	var spawn_parent := parent if parent else self
-	for i in min(count_, spawn_tiles.size()):
-		var idx: int = randi_range(0, spawn_tiles.size() - 1)
-		var pos: Vector3 = spawn_tiles[idx]
-		var enemy := enemy_scene.instantiate()
-		enemy.position = pos + Vector3(0.0, 0.6, 0.0)
-		var min_lvl: int = (dlvl - 1) * 3 + 1
-		var max_lvl: int = dlvl * 3
-		var lvl := randi_range(min_lvl, max_lvl)
-		spawn_parent.call_deferred("add_child", enemy)
-		enemy.call_deferred("init", player, lvl)
-	# Spawn exactly one Super SPIDER per dungeon floor (far from entrance)
-	var super_scene := preload("res://scenes/super_spider.tscn")
-	var super_enemy := super_scene.instantiate()
-	var super_pos: Vector3 = spawn_tiles[randi_range(0, spawn_tiles.size() - 1)]
-	super_enemy.position = super_pos + Vector3(0.0, 0.6, 0.0)
-	var super_lvl: int = clampi(dlvl * 3 + 2, 3, 20)
-	spawn_parent.call_deferred("add_child", super_enemy)
-	super_enemy.call_deferred("init", player, super_lvl)
 
 func _process(delta: float) -> void:
 	if _goal_mat:
@@ -326,6 +222,7 @@ func _process(delta: float) -> void:
 		var c: Color = Color.from_hsv(_goal_hue, 0.8, 1.0)
 		_goal_mat.albedo_color = c
 		_goal_mat.emission = Color.from_hsv(_goal_hue, 0.8, 0.6)
+	_goal_tile_trigger()
 
 func _add_cube(st: SurfaceTool, center: Vector3, size: Vector3, mat: Material) -> void:
 	st.set_material(mat)
@@ -389,3 +286,95 @@ func get_rooms() -> Array:
 
 func get_grid_size() -> Vector2i:
 	return Vector2i(_grid_w, _grid_h)
+
+func _add_lights() -> void:
+	for room in _rooms:
+		var rx: int = room.x + room.w / 2
+		var ry: int = room.y + room.h / 2
+		if rx < 0 or rx >= _grid_w or ry < 0 or ry >= _grid_h:
+			continue
+		if _grid[ry][rx] == DungeonTiles.TileType.WALL:
+			continue
+		var lx: float = rx * 2.0 - _grid_w * 0.5 * 2.0
+		var lz: float = ry * 2.0 + 20.0
+		var light := OmniLight3D.new()
+		light.name = "RoomLight"
+		light.position = Vector3(lx, 3.5, lz)
+		light.light_color = Color(1.0, 0.9, 0.7)
+		light.light_energy = 1.2
+		light.omni_range = 8.0
+		add_child(light)
+
+func _add_exit_marker() -> void:
+	var stair_mat := StandardMaterial3D.new()
+	stair_mat.albedo_color = Color(0.4, 0.35, 0.3)
+	var step1 := MeshInstance3D.new()
+	step1.mesh = BoxMesh.new()
+	step1.mesh.size = Vector3(1.5, 0.1, 0.6)
+	step1.material_override = stair_mat
+	step1.position = _spawn_pos + Vector3(-0.3, 0.05, 0.0)
+	add_child(step1)
+	var step2 := MeshInstance3D.new()
+	step2.mesh = BoxMesh.new()
+	step2.mesh.size = Vector3(1.5, 0.1, 0.6)
+	step2.material_override = stair_mat
+	step2.position = _spawn_pos + Vector3(-0.5, 0.15, 0.0)
+	add_child(step2)
+
+func _goal_tile_trigger() -> void:
+	if not _goal_area or not _goal_area.monitoring:
+		return
+	var player := get_tree().get_first_node_in_group("player")
+	if not player:
+		return
+	var dist := _goal_area.global_position.distance_to(player.global_position)
+	if dist < 1.5:
+		_goal_area.monitoring = false
+		var prev = _dungeon_level
+		_dungeon_level += 1
+		goal_reached.emit(prev)
+
+func _spawn_enemies() -> void:
+	_spawn_enemies_with_level(1)
+
+func _spawn_enemies_with_level(dlvl: int) -> void:
+	var player := get_tree().get_first_node_in_group("player")
+	if not player:
+		return
+	var enemy_scene := preload("res://scenes/spider.tscn")
+	var floor_tiles: Array = []
+	for y in range(_grid_h):
+		for x in range(_grid_w):
+			if _grid[y][x] == DungeonTiles.TileType.FLOOR:
+				var px: float = x * 2.0 - _grid_w * 0.5 * 2.0
+				var pz: float = y * 2.0 + 20.0
+				floor_tiles.append(Vector3(px, 0.0, pz))
+	if floor_tiles.is_empty():
+		return
+	var safe_dist := 30.0
+	var spawn_tiles: Array = []
+	for ft in floor_tiles:
+		if ft.distance_to(_spawn_pos) >= safe_dist:
+			spawn_tiles.append(ft)
+	if spawn_tiles.is_empty():
+		spawn_tiles = floor_tiles
+	var count_: int = maxi(20, floor_tiles.size() / 6)
+	var parent := get_parent()
+	var spawn_parent := parent if parent else self
+	for i in min(count_, spawn_tiles.size()):
+		var idx: int = randi_range(0, spawn_tiles.size() - 1)
+		var pos: Vector3 = spawn_tiles[idx]
+		var enemy := enemy_scene.instantiate()
+		enemy.position = pos + Vector3(0.0, 0.6, 0.0)
+		var min_lvl: int = (dlvl - 1) * 3 + 1
+		var max_lvl: int = dlvl * 3
+		var lvl := randi_range(min_lvl, max_lvl)
+		spawn_parent.call_deferred("add_child", enemy)
+		enemy.call_deferred("init", player, lvl)
+	var super_scene := preload("res://scenes/super_spider.tscn")
+	var super_enemy := super_scene.instantiate()
+	var super_pos: Vector3 = spawn_tiles[randi_range(0, spawn_tiles.size() - 1)]
+	super_enemy.position = super_pos + Vector3(0.0, 0.6, 0.0)
+	var super_lvl: int = clampi(dlvl * 3 + 2, 3, 20)
+	spawn_parent.call_deferred("add_child", super_enemy)
+	super_enemy.call_deferred("init", player, super_lvl)

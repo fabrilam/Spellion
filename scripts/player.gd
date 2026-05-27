@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-enum Action { MELEE, FIREBALL, RANGED }
+enum Action { MELEE, RANGED }
 
 @export var stats: Stats
 @export var inventory: Inventory
@@ -15,6 +15,10 @@ var _hp_regen_tick: float = 0.0
 var _arrow_visual: Node3D = null
 var _bow_firing := false
 const _arrow_scene := preload("res://scenes/fx/arrow_projectile.tscn")
+var _spells: Array[SpellData] = []
+var _current_spell_index: int = 0
+var _q_held := false
+signal spell_changed(index: int)
 
 func _ready() -> void:
 	if not stats:
@@ -27,6 +31,7 @@ func _ready() -> void:
 		if _anim and _anim.has_animation("idle"):
 			_anim.play("idle", 0.0)
 	_setup_inventory()
+	_setup_spells()
 	_sword_hitbox = Area3D.new()
 	_sword_hitbox.name = "SwordHitbox"
 	var col := CollisionShape3D.new()
@@ -64,6 +69,14 @@ func _process(delta: float) -> void:
 	if not _is_stats_open() and not _attacking:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and _action_cd <= 0:
 			_do_action()
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and _action_cd <= 0:
+			_cast_current_spell()
+	if Input.is_key_pressed(KEY_Q):
+		if not _q_held:
+			_q_held = true
+			_toggle_spell_menu()
+	elif _q_held:
+		_q_held = false
 	if Input.is_key_pressed(KEY_C):
 		if not _c_held:
 			_c_held = true
@@ -119,12 +132,12 @@ func _setup_inventory() -> void:
 	inventory.item_unequipped.connect(_on_unequip_stats)
 
 	var weapons := [
-		["sword_basic", "Rusty Shortsword", "Sword", "sword (1).png", "sword.glb", 2, 3, 0.6, 0.6, 4, 7, -0.5, 0.0],
-		["dagger_basic", "Iron Dagger", "Dagger", "dagger (1).png", "dagger.tscn", 1, 2, 0.3, 0.3, 3, 5, -0.1, 0.0],
-		["axe_basic", "Hand Axe", "Axe", "axe (5).png", "hand_axe.tscn", 2, 2, 0.8, 0.8, 5, 9, -0.4, 0.0],
-		["flail_basic", "Iron Flail", "Mace", "club (5).png", "flail.tscn", 2, 3, 0.7, 0.7, 5, 10, -0.45, 0.0],
-		["sword_vampiric", "Bloodletter", "Sword", "sword (2).png", "sword.glb", 1, 3, 0.6, 0.6, 4, 7, 2.0, 1.0],
-		["bow_basic", "Short Bow", "Bow", "bow (1).png", "bow_world.tscn", 2, 3, 0.3, 0.3, 2, 4, 0.0, 0.0],
+		["sword_basic", "Rusty Shortsword", "Sword", "sword (1).png", "sword.glb", 2, 3, 0.3, 0.3, 4, 7, -0.5, 0.0],
+		["dagger_basic", "Iron Dagger", "Dagger", "dagger (1).png", "dagger.tscn", 1, 2, 0.15, 0.15, 3, 5, -0.1, 0.0],
+		["axe_basic", "Hand Axe", "Axe", "axe (5).png", "hand_axe.tscn", 2, 2, 0.4, 0.4, 5, 9, -0.4, 0.0],
+		["flail_basic", "Iron Flail", "Mace", "club (5).png", "flail.tscn", 2, 3, 0.35, 0.35, 5, 10, -0.45, 0.0],
+		["sword_vampiric", "Bloodletter", "Sword", "sword (2).png", "sword.glb", 1, 3, 0.3, 0.3, 4, 7, 2.0, 1.0],
+		["bow_basic", "Short Bow", "Bow", "bow (1).png", "bow_world.tscn", 2, 3, 0.15, 0.15, 2, 4, 0.0, 0.0],
 	]
 
 	for w in weapons:
@@ -142,14 +155,14 @@ func _setup_inventory() -> void:
 		item.stats = {"min_damage": w[9], "max_damage": w[10], "attack_speed_mod": w[11], "hp_regen": w[12]}
 		match item.category:
 			"Bow":
-				item.dex_scale_min = 0.9
-				item.dex_scale_max = 0.9
+				item.dex_scale_min = 0.36
+				item.dex_scale_max = 0.36
 			"Dagger":
-				item.dex_scale_min = 0.2
-				item.dex_scale_max = 0.2
-			"Sword":
 				item.dex_scale_min = 0.1
 				item.dex_scale_max = 0.1
+			"Sword":
+				item.dex_scale_min = 0.05
+				item.dex_scale_max = 0.05
 			_:
 				item.dex_scale_min = 0.0
 				item.dex_scale_max = 0.0
@@ -327,36 +340,103 @@ func _do_action() -> void:
 	if weapon and weapon.category == "Bow":
 		_ranged_attack()
 		return
-	match _current_action:
-		Action.MELEE:
-			_melee_attack()
-		Action.FIREBALL:
-			_cast_fireball()
+	_melee_attack()
 
-func _cast_fireball() -> void:
-	_rotate_toward_mouse()
-	if not stats or stats.mana < 5:
+func _setup_spells() -> void:
+	var fire := SpellData.new()
+	fire.id = "fireball"
+	fire.name = "Fireball"
+	fire.description = "Launches a fireball"
+	fire.icon_path = "res://assets/textures/ui/spell_fire.svg"
+	fire.mana_cost = 5
+	fire.min_val = 25.0
+	fire.max_val = 30.0
+	fire.color = Color(1, 0.5, 0)
+
+	var heal_data := SpellData.new()
+	heal_data.id = "heal"
+	heal_data.name = "Heal"
+	heal_data.description = "Restores HP"
+	heal_data.icon_path = "res://assets/textures/ui/spell_heal.svg"
+	heal_data.mana_cost = 10
+	heal_data.min_val = 10.0
+	heal_data.max_val = 15.0
+	heal_data.color = Color(0.2, 0.5, 1)
+
+	_spells = [fire, heal_data]
+
+func get_spells() -> Array[SpellData]:
+	return _spells
+
+func get_current_spell() -> SpellData:
+	if _current_spell_index >= 0 and _current_spell_index < _spells.size():
+		return _spells[_current_spell_index]
+	return null
+
+func set_spell_index(idx: int) -> void:
+	if idx >= 0 and idx < _spells.size() and idx != _current_spell_index:
+		_current_spell_index = idx
+		spell_changed.emit(idx)
+
+func _toggle_spell_menu() -> void:
+	var hud := get_node_or_null("../HUD")
+	if hud and hud.has_method("toggle_spell_menu"):
+		hud.toggle_spell_menu()
+
+func _spell_light(color: Color) -> void:
+	var light_scene := preload("res://scenes/fx/spell_light.tscn")
+	var light := light_scene.instantiate()
+	if _weapon_attach:
+		_weapon_attach.add_child(light)
+		light.light_color = color
+	else:
+		add_child(light)
+		light.position = Vector3(0, 0.5, 0)
+		light.light_color = color
+	var tween := create_tween()
+	tween.tween_property(light, "light_energy", 0.0, 0.4)
+	tween.tween_callback(light.queue_free)
+
+func _cast_current_spell() -> void:
+	if _attacking or not stats or not _spells.size():
 		return
-	_action_cd = 0.5
-	stats.mana -= 5
-	var proj = preload("res://scenes/projectile.tscn").instantiate()
-	var cam: Camera3D = get_viewport().get_camera_3d()
-	if cam:
-		var from: Vector3 = cam.project_ray_origin(get_viewport().get_mouse_position())
-		var d: Vector3 = cam.project_ray_normal(get_viewport().get_mouse_position())
-		var t: float = -from.y / d.y
-		if t > 0.0:
-			proj.init((from + d * t - global_position).normalized(), stats.spell_damage)
-	get_parent().add_child(proj)
-	proj.global_position = global_position + Vector3(0, 0.5, 0)
-	AudioManager.play_sfx("fireball")
+	var spell := get_current_spell()
+	if not spell:
+		return
+	if stats.mana < spell.mana_cost:
+		return
+	_rotate_toward_mouse()
+	stats.mana -= spell.mana_cost
+	_action_cd = 0.6
 	_attacking = true
-	if _anim:
-		_anim.speed_scale = 1.0
-		if _anim.has_animation("testanim"):
-			_anim.play("testanim", 0.1)
-		elif _anim.has_animation("default_001"):
-			_anim.play("default_001", 0.1)
+	_spell_light(spell.color)
+	match spell.id:
+		"fireball":
+			var dmg := randf_range(spell.min_val, spell.max_val)
+			var dir := -global_transform.basis.z.normalized()
+			if _anim:
+				_anim.speed_scale = 4.0
+				if _anim.has_animation("Sword1"):
+					_anim.play("Sword1", 0.1)
+				elif _anim.has_animation("testanim"):
+					_anim.play("testanim", 0.1)
+			await get_tree().create_timer(0.25).timeout
+			if not is_instance_valid(self):
+				return
+			var proj = preload("res://scenes/projectile.tscn").instantiate()
+			proj.init(dir, dmg)
+			get_parent().add_child(proj)
+			proj.global_position = global_position + dir * 0.5 + Vector3(0, 0.3, 0)
+		"heal":
+			var amt := randf_range(spell.min_val, spell.max_val)
+			stats.heal(amt)
+			AudioManager.play_sfx("orb_pickup")
+			if _anim:
+				_anim.speed_scale = 1.0
+				if _anim.has_animation("default_001"):
+					_anim.play("default_001", 0.1)
+				elif _anim.has_animation("testanim"):
+					_anim.play("testanim", 0.1)
 
 func _ranged_attack() -> void:
 	if _bow_firing:
@@ -368,7 +448,9 @@ func _ranged_attack() -> void:
 		_bow_firing = false
 		return
 	var dir := -global_transform.basis.z.normalized()
-	var dmg: float = weapon.stats.get("min_damage", 3.0)
+	var dmg_min := stats.get_melee_damage_min() if stats else 2.0
+	var dmg_max := stats.get_melee_damage_max() if stats else 4.0
+	var dmg := randf_range(dmg_min, dmg_max)
 	var atk_spd := stats.get_attack_speed() if stats else 3.0
 	_action_cd = 0.9 / atk_spd
 	_attacking = true
@@ -414,7 +496,7 @@ func _ranged_attack() -> void:
 					proj.global_position = _weapon_attach.global_position
 				else:
 					proj.global_position = global_position + dir * 1.5 + Vector3(0, 0.4, 0)
-				AudioManager.play_sfx("fireball")
+				AudioManager.play_sfx("bow_shoot")
 	_bow_firing = false
 
 func _update_anim(moving: bool) -> void:
