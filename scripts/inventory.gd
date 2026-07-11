@@ -79,6 +79,10 @@ func _remove(item: Item) -> void:
 		if _grid[i] == item:
 			_grid[i] = null
 
+func remove_item(item: Item) -> void:
+	_remove(item)
+	grid_changed.emit()
+
 func _has_room_direct(x: int, y: int, w: int, h: int) -> bool:
 	for dy in h:
 		for dx in w:

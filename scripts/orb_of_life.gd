@@ -9,5 +9,5 @@ func _ready() -> void:
 func _on_body_entered(body: Node) -> void:
 	if body.has_method("heal"):
 		body.call("heal", heal_amount)
-		AudioManager.play_sfx("orb_pickup")
+		AudioManager.play_sfx_channel4("orb_pickup")
 		queue_free()

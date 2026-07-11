@@ -1,986 +1,3830 @@
 [
   {
-    "file": "amulet (1).png",
-    "name": "Rusty Amulet",
-    "category": "Amulet",
-    "desc": "Enhances magical affinity. +1 spell power."
-  },
-  {
-    "file": "amulet (2).png",
-    "name": "Old Amulet",
-    "category": "Amulet",
-    "desc": "Enhances magical affinity. +2 spell power."
-  },
-  {
-    "file": "amulet (3).png",
-    "name": "Worn Amulet",
-    "category": "Amulet",
-    "desc": "Enhances magical affinity. +3 spell power."
-  },
-  {
-    "file": "amulet (4).png",
-    "name": "Fine Amulet",
-    "category": "Amulet",
-    "desc": "Enhances magical affinity. +4 spell power."
-  },
-  {
-    "file": "amulet (5).png",
-    "name": "Sturdy Amulet",
-    "category": "Amulet",
-    "desc": "Enhances magical affinity. +5 spell power."
-  },
-  {
-    "file": "amulet (6).png",
-    "name": "Keen Amulet",
-    "category": "Amulet",
-    "desc": "Enhances magical affinity. +6 spell power."
-  },
-  {
-    "file": "armor (1).png",
-    "name": "Rusty Armor",
-    "category": "Armor",
-    "desc": "Provides 5 defense. Rusty protection."
-  },
-  {
-    "file": "armor (10).png",
-    "name": "Rusty Armor",
-    "category": "Armor",
-    "desc": "Provides 7 defense. Rusty protection."
-  },
-  {
-    "file": "armor (11).png",
-    "name": "Old Armor",
-    "category": "Armor",
-    "desc": "Provides 7 defense. Old protection."
-  },
-  {
-    "file": "armor (12).png",
-    "name": "Worn Armor",
-    "category": "Armor",
-    "desc": "Provides 7 defense. Worn protection."
-  },
-  {
-    "file": "armor (13).png",
-    "name": "Fine Armor",
-    "category": "Armor",
-    "desc": "Provides 7 defense. Fine protection."
-  },
-  {
-    "file": "armor (14).png",
-    "name": "Sturdy Armor",
-    "category": "Armor",
-    "desc": "Provides 7 defense. Sturdy protection."
-  },
-  {
-    "file": "armor (15).png",
-    "name": "Keen Armor",
-    "category": "Armor",
-    "desc": "Provides 7 defense. Keen protection."
-  },
-  {
-    "file": "armor (16).png",
-    "name": "Superior Armor",
-    "category": "Armor",
-    "desc": "Provides 7 defense. Superior protection."
-  },
-  {
-    "file": "armor (17).png",
-    "name": "Flawless Armor",
-    "category": "Armor",
-    "desc": "Provides 7 defense. Flawless protection."
-  },
-  {
-    "file": "armor (18).png",
-    "name": "Arcane Armor",
-    "category": "Armor",
-    "desc": "Provides 7 defense. Arcane protection."
-  },
-  {
-    "file": "armor (19).png",
-    "name": "Rusty Armor",
-    "category": "Armor",
-    "desc": "Provides 9 defense. Rusty protection."
-  },
-  {
-    "file": "armor (2).png",
-    "name": "Old Armor",
-    "category": "Armor",
-    "desc": "Provides 5 defense. Old protection."
-  },
-  {
-    "file": "armor (20).png",
-    "name": "Old Armor",
-    "category": "Armor",
-    "desc": "Provides 9 defense. Old protection."
-  },
-  {
-    "file": "armor (3).png",
-    "name": "Worn Armor",
-    "category": "Armor",
-    "desc": "Provides 5 defense. Worn protection."
-  },
-  {
-    "file": "armor (4).png",
-    "name": "Fine Armor",
-    "category": "Armor",
-    "desc": "Provides 5 defense. Fine protection."
-  },
-  {
-    "file": "armor (5).png",
-    "name": "Sturdy Armor",
-    "category": "Armor",
-    "desc": "Provides 5 defense. Sturdy protection."
-  },
-  {
-    "file": "armor (6).png",
-    "name": "Keen Armor",
-    "category": "Armor",
-    "desc": "Provides 5 defense. Keen protection."
-  },
-  {
-    "file": "armor (7).png",
-    "name": "Superior Armor",
-    "category": "Armor",
-    "desc": "Provides 5 defense. Superior protection."
-  },
-  {
-    "file": "armor (8).png",
-    "name": "Flawless Armor",
-    "category": "Armor",
-    "desc": "Provides 5 defense. Flawless protection."
-  },
-  {
-    "file": "armor (9).png",
-    "name": "Arcane Armor",
-    "category": "Armor",
-    "desc": "Provides 5 defense. Arcane protection."
-  },
-  {
-    "file": "axe (1).png",
-    "name": "Rusty Axe",
-    "category": "Axe",
-    "desc": "Deals 8 base damage. A rusty rusty axe."
-  },
-  {
-    "file": "axe (10).png",
-    "name": "Rusty Axe",
-    "category": "Axe",
-    "desc": "Deals 11 base damage. A rusty rusty axe."
-  },
-  {
-    "file": "axe (11).png",
-    "name": "Old Axe",
-    "category": "Axe",
-    "desc": "Deals 11 base damage. A old old axe."
-  },
-  {
-    "file": "axe (2).png",
-    "name": "Old Axe",
-    "category": "Axe",
-    "desc": "Deals 8 base damage. A old old axe."
-  },
-  {
-    "file": "axe (3).png",
-    "name": "Worn Axe",
-    "category": "Axe",
-    "desc": "Deals 8 base damage. A worn worn axe."
-  },
-  {
-    "file": "axe (4).png",
-    "name": "Fine Axe",
-    "category": "Axe",
-    "desc": "Deals 8 base damage. A fine fine axe."
-  },
-  {
-    "file": "axe (5).png",
-    "name": "Sturdy Axe",
-    "category": "Axe",
-    "desc": "Deals 8 base damage. A sturdy sturdy axe."
-  },
-  {
-    "file": "axe (6).png",
-    "name": "Keen Axe",
-    "category": "Axe",
-    "desc": "Deals 8 base damage. A keen keen axe."
-  },
-  {
-    "file": "axe (7).png",
-    "name": "Superior Axe",
-    "category": "Axe",
-    "desc": "Deals 8 base damage. A superior superior axe."
-  },
-  {
-    "file": "axe (8).png",
-    "name": "Flawless Axe",
-    "category": "Axe",
-    "desc": "Deals 8 base damage. A flawless flawless axe."
-  },
-  {
-    "file": "axe (9).png",
-    "name": "Arcane Axe",
-    "category": "Axe",
-    "desc": "Deals 8 base damage. A arcane arcane axe."
-  },
-  {
-    "file": "bow (1).png",
-    "name": "Rusty Bow",
-    "category": "Bow",
-    "desc": "Deals 8 base damage. A rusty rusty bow."
-  },
-  {
-    "file": "bow (2).png",
-    "name": "Old Bow",
-    "category": "Bow",
-    "desc": "Deals 8 base damage. A old old bow."
-  },
-  {
-    "file": "bow (3).png",
-    "name": "Worn Bow",
-    "category": "Bow",
-    "desc": "Deals 8 base damage. A worn worn bow."
-  },
-  {
-    "file": "bow (4).png",
-    "name": "Fine Bow",
-    "category": "Bow",
-    "desc": "Deals 8 base damage. A fine fine bow."
-  },
-  {
-    "file": "bow (5).png",
-    "name": "Sturdy Bow",
-    "category": "Bow",
-    "desc": "Deals 8 base damage. A sturdy sturdy bow."
-  },
-  {
-    "file": "bow (6).png",
-    "name": "Keen Bow",
-    "category": "Bow",
-    "desc": "Deals 8 base damage. A keen keen bow."
-  },
-  {
-    "file": "bow (7).png",
-    "name": "Superior Bow",
-    "category": "Bow",
-    "desc": "Deals 8 base damage. A superior superior bow."
-  },
-  {
-    "file": "bow (8).png",
-    "name": "Flawless Bow",
-    "category": "Bow",
-    "desc": "Deals 8 base damage. A flawless flawless bow."
-  },
-  {
-    "file": "bow (9).png",
-    "name": "Arcane Bow",
-    "category": "Bow",
-    "desc": "Deals 8 base damage. A arcane arcane bow."
-  },
-  {
-    "file": "club (1).png",
-    "name": "Rusty Club",
-    "category": "Mace",
-    "desc": "Deals 8 base damage. A rusty rusty club."
-  },
-  {
-    "file": "club (10).png",
-    "name": "Rusty Club",
-    "category": "Mace",
-    "desc": "Deals 11 base damage. A rusty rusty club."
-  },
-  {
-    "file": "club (11).png",
-    "name": "Old Club",
-    "category": "Mace",
-    "desc": "Deals 11 base damage. A old old club."
-  },
-  {
-    "file": "club (2).png",
-    "name": "Old Club",
-    "category": "Mace",
-    "desc": "Deals 8 base damage. A old old club."
-  },
-  {
-    "file": "club (3).png",
-    "name": "Worn Club",
-    "category": "Mace",
-    "desc": "Deals 8 base damage. A worn worn club."
-  },
-  {
-    "file": "club (4).png",
-    "name": "Fine Club",
-    "category": "Mace",
-    "desc": "Deals 8 base damage. A fine fine club."
-  },
-  {
-    "file": "club (5).png",
-    "name": "Sturdy Club",
-    "category": "Mace",
-    "desc": "Deals 8 base damage. A sturdy sturdy club."
-  },
-  {
-    "file": "club (6).png",
-    "name": "Keen Club",
-    "category": "Mace",
-    "desc": "Deals 8 base damage. A keen keen club."
-  },
-  {
-    "file": "club (7).png",
-    "name": "Superior Club",
-    "category": "Mace",
-    "desc": "Deals 8 base damage. A superior superior club."
-  },
-  {
-    "file": "club (8).png",
-    "name": "Flawless Club",
-    "category": "Mace",
-    "desc": "Deals 8 base damage. A flawless flawless club."
-  },
-  {
-    "file": "club (9).png",
-    "name": "Arcane Club",
-    "category": "Mace",
-    "desc": "Deals 8 base damage. A arcane arcane club."
-  },
-  {
-    "file": "dagger (1).png",
-    "name": "Rusty Dagger",
-    "category": "Dagger",
-    "desc": "Deals 8 base damage. A rusty rusty dagger."
-  },
-  {
-    "file": "dagger (2).png",
-    "name": "Old Dagger",
-    "category": "Dagger",
-    "desc": "Deals 8 base damage. A old old dagger."
-  },
-  {
-    "file": "dagger (3).png",
-    "name": "Worn Dagger",
-    "category": "Dagger",
-    "desc": "Deals 8 base damage. A worn worn dagger."
-  },
-  {
-    "file": "dagger (4).png",
-    "name": "Fine Dagger",
-    "category": "Dagger",
-    "desc": "Deals 8 base damage. A fine fine dagger."
-  },
-  {
-    "file": "dagger (5).png",
-    "name": "Sturdy Dagger",
-    "category": "Dagger",
-    "desc": "Deals 8 base damage. A sturdy sturdy dagger."
-  },
-  {
-    "file": "headgear (1).png",
-    "name": "Rusty Headgear",
-    "category": "Helmet",
-    "desc": "Provides 5 defense. Rusty protection."
-  },
-  {
-    "file": "headgear (10).png",
-    "name": "Rusty Headgear",
-    "category": "Helmet",
-    "desc": "Provides 7 defense. Rusty protection."
-  },
-  {
-    "file": "headgear (11).png",
-    "name": "Old Headgear",
-    "category": "Helmet",
-    "desc": "Provides 7 defense. Old protection."
-  },
-  {
-    "file": "headgear (12).png",
-    "name": "Worn Headgear",
-    "category": "Helmet",
-    "desc": "Provides 7 defense. Worn protection."
-  },
-  {
-    "file": "headgear (13).png",
-    "name": "Fine Headgear",
-    "category": "Helmet",
-    "desc": "Provides 7 defense. Fine protection."
-  },
-  {
-    "file": "headgear (14).png",
-    "name": "Sturdy Headgear",
-    "category": "Helmet",
-    "desc": "Provides 7 defense. Sturdy protection."
-  },
-  {
-    "file": "headgear (15).png",
-    "name": "Keen Headgear",
-    "category": "Helmet",
-    "desc": "Provides 7 defense. Keen protection."
-  },
-  {
-    "file": "headgear (2).png",
-    "name": "Old Headgear",
-    "category": "Helmet",
-    "desc": "Provides 5 defense. Old protection."
-  },
-  {
-    "file": "headgear (3).png",
-    "name": "Worn Headgear",
-    "category": "Helmet",
-    "desc": "Provides 5 defense. Worn protection."
-  },
-  {
-    "file": "headgear (4).png",
-    "name": "Fine Headgear",
-    "category": "Helmet",
-    "desc": "Provides 5 defense. Fine protection."
-  },
-  {
-    "file": "headgear (5).png",
-    "name": "Sturdy Headgear",
-    "category": "Helmet",
-    "desc": "Provides 5 defense. Sturdy protection."
-  },
-  {
-    "file": "headgear (6).png",
-    "name": "Keen Headgear",
-    "category": "Helmet",
-    "desc": "Provides 5 defense. Keen protection."
-  },
-  {
-    "file": "headgear (7).png",
-    "name": "Superior Headgear",
-    "category": "Helmet",
-    "desc": "Provides 5 defense. Superior protection."
-  },
-  {
-    "file": "headgear (8).png",
-    "name": "Flawless Headgear",
-    "category": "Helmet",
-    "desc": "Provides 5 defense. Flawless protection."
-  },
-  {
-    "file": "headgear (9).png",
-    "name": "Arcane Headgear",
-    "category": "Helmet",
-    "desc": "Provides 5 defense. Arcane protection."
-  },
-  {
-    "file": "icon_054_28x28.png",
-    "name": "Unknown Item",
-    "category": "Misc",
-    "desc": "An unidentified item."
-  },
-  {
-    "file": "icon_055_28x28.png",
-    "name": "Unknown Item",
-    "category": "Misc",
-    "desc": "An unidentified item."
-  },
-  {
-    "file": "icon_056_28x28.png",
-    "name": "Unknown Item",
-    "category": "Misc",
-    "desc": "An unidentified item."
-  },
-  {
-    "file": "icon_057_28x28.png",
-    "name": "Unknown Item",
-    "category": "Misc",
-    "desc": "An unidentified item."
-  },
-  {
-    "file": "icon_058_28x28.png",
-    "name": "Unknown Item",
-    "category": "Misc",
-    "desc": "An unidentified item."
-  },
-  {
-    "file": "icon_059_28x28.png",
-    "name": "Unknown Item",
-    "category": "Misc",
-    "desc": "An unidentified item."
-  },
-  {
-    "file": "icon_060_28x28.png",
-    "name": "Unknown Item",
-    "category": "Misc",
-    "desc": "An unidentified item."
-  },
-  {
-    "file": "icon_061_28x28.png",
-    "name": "Unknown Item",
-    "category": "Misc",
-    "desc": "An unidentified item."
-  },
-  {
-    "file": "icon_062_28x28.png",
-    "name": "Unknown Item",
-    "category": "Misc",
-    "desc": "An unidentified item."
-  },
-  {
-    "file": "icon_063_28x28.png",
-    "name": "Unknown Item",
-    "category": "Misc",
-    "desc": "An unidentified item."
-  },
-  {
-    "file": "icon_064_28x28.png",
-    "name": "Unknown Item",
-    "category": "Misc",
-    "desc": "An unidentified item."
-  },
-  {
-    "file": "icon_065_28x28.png",
-    "name": "Unknown Item",
-    "category": "Misc",
-    "desc": "An unidentified item."
-  },
-  {
-    "file": "icon_066_28x28.png",
-    "name": "Unknown Item",
-    "category": "Misc",
-    "desc": "An unidentified item."
-  },
-  {
-    "file": "icon_097_56x57.png",
-    "name": "Unknown Item",
-    "category": "Misc",
-    "desc": "An unidentified item."
-  },
-  {
-    "file": "icon_098_56x57.png",
-    "name": "Unknown Item",
-    "category": "Misc",
-    "desc": "An unidentified item."
-  },
-  {
-    "file": "icon_099_28x57.png",
-    "name": "Unknown Item",
-    "category": "Misc",
-    "desc": "An unidentified item."
-  },
-  {
-    "file": "icon_100_28x57.png",
-    "name": "Unknown Item",
-    "category": "Misc",
-    "desc": "An unidentified item."
-  },
-  {
-    "file": "icon_101_28x57.png",
-    "name": "Unknown Item",
-    "category": "Misc",
-    "desc": "An unidentified item."
-  },
-  {
-    "file": "lifepotion.png",
+    "id": "sword_shortsword",
+    "name": "Rusty Shortsword",
+    "cat": "Sword",
+    "icon": "sword_shortsword.png",
+    "desc": "A rusty shortsword.",
+    "scene": "sword.glb",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 4,
+      "max_dmg": 7,
+      "atk_spd": -0.5
+    },
+    "scale": {
+      "str_min": 0.3,
+      "str_max": 0.3,
+      "dex_min": 0.05,
+      "dex_max": 0.05
+    },
+    "trail": {
+      "ofs": [
+        0.036,
+        0.38,
+        0.023
+      ],
+      "w": 0.55,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "sword_armyshortsword",
+    "name": "Army Shortsword",
+    "cat": "Sword",
+    "icon": "sword_armyshortsword.png",
+    "desc": "A army shortsword.",
+    "scene": "sword.glb",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 5,
+      "max_dmg": 8,
+      "atk_spd": -0.4
+    },
+    "scale": {
+      "str_min": 0.3,
+      "str_max": 0.3,
+      "dex_min": 0.05,
+      "dex_max": 0.05
+    },
+    "trail": {
+      "ofs": [
+        0.036,
+        0.38,
+        0.023
+      ],
+      "w": 0.55,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "sword_longsword",
+    "name": "Longsword",
+    "cat": "Sword",
+    "icon": "sword_longsword.png",
+    "desc": "A longsword.",
+    "scene": "sword.glb",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 6,
+      "max_dmg": 11,
+      "atk_spd": -0.8
+    },
+    "scale": {
+      "str_min": 0.3,
+      "str_max": 0.3,
+      "dex_min": 0.05,
+      "dex_max": 0.05
+    },
+    "trail": {
+      "ofs": [
+        0.036,
+        0.38,
+        0.023
+      ],
+      "w": 0.55,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "sword_cutlass",
+    "name": "Cutlass",
+    "cat": "Sword",
+    "icon": "sword_cutlass.png",
+    "desc": "A cutlass.",
+    "scene": "sword.glb",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 5,
+      "max_dmg": 9,
+      "atk_spd": -0.5
+    },
+    "scale": {
+      "str_min": 0.3,
+      "str_max": 0.3,
+      "dex_min": 0.05,
+      "dex_max": 0.05
+    },
+    "trail": {
+      "ofs": [
+        0.036,
+        0.38,
+        0.023
+      ],
+      "w": 0.55,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "sword_gladius",
+    "name": "Gladius",
+    "cat": "Sword",
+    "icon": "sword_gladius.png",
+    "desc": "A gladius.",
+    "scene": "sword.glb",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 4,
+      "max_dmg": 8,
+      "atk_spd": -0.3
+    },
+    "scale": {
+      "str_min": 0.3,
+      "str_max": 0.3,
+      "dex_min": 0.05,
+      "dex_max": 0.05
+    },
+    "trail": {
+      "ofs": [
+        0.036,
+        0.38,
+        0.023
+      ],
+      "w": 0.55,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "sword_katana",
+    "name": "Katana",
+    "cat": "Sword",
+    "icon": "sword_katana.png",
+    "desc": "A katana.",
+    "scene": "sword.glb",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 6,
+      "max_dmg": 10,
+      "atk_spd": -0.3
+    },
+    "scale": {
+      "str_min": 0.3,
+      "str_max": 0.3,
+      "dex_min": 0.05,
+      "dex_max": 0.05
+    },
+    "trail": {
+      "ofs": [
+        0.036,
+        0.38,
+        0.023
+      ],
+      "w": 0.55,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "sword_katanaunique",
+    "name": "Keen Katana",
+    "cat": "Sword",
+    "icon": "sword_katanaunique.png",
+    "desc": "A keen katana.",
+    "scene": "sword.glb",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "rare",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 8,
+      "max_dmg": 14,
+      "atk_spd": -0.2
+    },
+    "scale": {
+      "str_min": 0.3,
+      "str_max": 0.3,
+      "dex_min": 0.05,
+      "dex_max": 0.05
+    },
+    "trail": {
+      "ofs": [
+        0.036,
+        0.38,
+        0.023
+      ],
+      "w": 0.55,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "sword_rapier",
+    "name": "Rapier",
+    "cat": "Sword",
+    "icon": "sword_rapier.png",
+    "desc": "A rapier.",
+    "scene": "sword.glb",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 3,
+      "max_dmg": 7,
+      "atk_spd": -0.2
+    },
+    "scale": {
+      "str_min": 0.3,
+      "str_max": 0.3,
+      "dex_min": 0.05,
+      "dex_max": 0.05
+    },
+    "trail": {
+      "ofs": [
+        0.036,
+        0.38,
+        0.023
+      ],
+      "w": 0.55,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "sword_desert",
+    "name": "Desert Saber",
+    "cat": "Sword",
+    "icon": "sword_desert.png",
+    "desc": "A desert saber.",
+    "scene": "sword.glb",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 5,
+      "max_dmg": 9,
+      "atk_spd": -0.6
+    },
+    "scale": {
+      "str_min": 0.3,
+      "str_max": 0.3,
+      "dex_min": 0.05,
+      "dex_max": 0.05
+    },
+    "trail": {
+      "ofs": [
+        0.036,
+        0.38,
+        0.023
+      ],
+      "w": 0.55,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "sword_standard",
+    "name": "Standard Sword",
+    "cat": "Sword",
+    "icon": "sword_standard.png",
+    "desc": "A standard sword.",
+    "scene": "sword.glb",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 5,
+      "max_dmg": 10,
+      "atk_spd": -0.7
+    },
+    "scale": {
+      "str_min": 0.3,
+      "str_max": 0.3,
+      "dex_min": 0.05,
+      "dex_max": 0.05
+    },
+    "trail": {
+      "ofs": [
+        0.036,
+        0.38,
+        0.023
+      ],
+      "w": 0.55,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "sword_skull",
+    "name": "Skull Brand",
+    "cat": "Sword",
+    "icon": "sword_skull.png",
+    "desc": "A skull brand.",
+    "scene": "sword.glb",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "rare",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 7,
+      "max_dmg": 12,
+      "atk_spd": -0.7
+    },
+    "scale": {
+      "str_min": 0.3,
+      "str_max": 0.3,
+      "dex_min": 0.05,
+      "dex_max": 0.05
+    },
+    "trail": {
+      "ofs": [
+        0.036,
+        0.38,
+        0.023
+      ],
+      "w": 0.55,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "sword_ornamental",
+    "name": "Ornamental Sword",
+    "cat": "Sword",
+    "icon": "sword_ornamental.png",
+    "desc": "A ornamental sword.",
+    "scene": "sword.glb",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 4,
+      "max_dmg": 8,
+      "atk_spd": -0.6
+    },
+    "scale": {
+      "str_min": 0.3,
+      "str_max": 0.3,
+      "dex_min": 0.05,
+      "dex_max": 0.05
+    },
+    "trail": {
+      "ofs": [
+        0.036,
+        0.38,
+        0.023
+      ],
+      "w": 0.55,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "sword_bloodletter",
+    "name": "Bloodletter",
+    "cat": "Sword",
+    "icon": "sword_bloodletter.png",
+    "desc": "A bloodletter.",
+    "scene": "sword.glb",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "unique",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 8,
+      "max_dmg": 14,
+      "atk_spd": -0.5
+    },
+    "scale": {
+      "str_min": 0.3,
+      "str_max": 0.3,
+      "dex_min": 0.05,
+      "dex_max": 0.05
+    },
+    "trail": {
+      "ofs": [
+        0.036,
+        0.38,
+        0.023
+      ],
+      "w": 0.55,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    },
+    "fx": [
+      {
+        "type": "life_steal",
+        "val": 0.05
+      }
+    ],
+    "mod": [
+      1.0,
+      0.1,
+      0.1
+    ]
+  },
+  {
+    "id": "sword_excalibur",
+    "name": "Excalibur",
+    "cat": "Sword",
+    "icon": "sword_excalibur.png",
+    "desc": "A excalibur.",
+    "scene": "sword.glb",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "unique",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 12,
+      "max_dmg": 20,
+      "atk_spd": -0.4
+    },
+    "scale": {
+      "str_min": 0.3,
+      "str_max": 0.3,
+      "dex_min": 0.05,
+      "dex_max": 0.05
+    },
+    "trail": {
+      "ofs": [
+        0.036,
+        0.38,
+        0.023
+      ],
+      "w": 0.55,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    },
+    "fx": [
+      {
+        "type": "life_steal",
+        "val": 0.1
+      }
+    ]
+  },
+  {
+    "id": "sword_holybrand",
+    "name": "Holy Brand",
+    "cat": "Sword",
+    "icon": "sword_holybrand.png",
+    "desc": "A holy brand.",
+    "scene": "sword.glb",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "rare",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 9,
+      "max_dmg": 15,
+      "atk_spd": -0.6
+    },
+    "scale": {
+      "str_min": 0.3,
+      "str_max": 0.3,
+      "dex_min": 0.05,
+      "dex_max": 0.05
+    },
+    "trail": {
+      "ofs": [
+        0.036,
+        0.38,
+        0.023
+      ],
+      "w": 0.55,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "sword_magicfalchion",
+    "name": "Magic Falchion",
+    "cat": "Sword",
+    "icon": "sword_magicfalchion.png",
+    "desc": "A magic falchion.",
+    "scene": "sword.glb",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "magic",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 7,
+      "max_dmg": 12,
+      "atk_spd": -0.5
+    },
+    "scale": {
+      "str_min": 0.3,
+      "str_max": 0.3,
+      "dex_min": 0.05,
+      "dex_max": 0.05
+    },
+    "trail": {
+      "ofs": [
+        0.036,
+        0.38,
+        0.023
+      ],
+      "w": 0.55,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "sword_mourningphantom",
+    "name": "Mourning Phantom",
+    "cat": "Sword",
+    "icon": "sword_mourningphantom.png",
+    "desc": "A mourning phantom.",
+    "scene": "sword.glb",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "unique",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 10,
+      "max_dmg": 18,
+      "atk_spd": -0.3
+    },
+    "scale": {
+      "str_min": 0.3,
+      "str_max": 0.3,
+      "dex_min": 0.05,
+      "dex_max": 0.05
+    },
+    "trail": {
+      "ofs": [
+        0.036,
+        0.38,
+        0.023
+      ],
+      "w": 0.55,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "axe_handaxeA",
+    "name": "Hand Axe",
+    "cat": "Axe",
+    "icon": "axe_handaxeA.png",
+    "desc": "A hand axe.",
+    "scene": "hand_axe.tscn",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 5,
+      "max_dmg": 9,
+      "atk_spd": -0.4
+    },
+    "scale": {
+      "str_min": 0.5,
+      "str_max": 0.5,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.04,
+        0.35,
+        0.03
+      ],
+      "w": 0.5,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "axe_handaxeB",
+    "name": "War Hand Axe",
+    "cat": "Axe",
+    "icon": "axe_handaxeB.png",
+    "desc": "A war hand axe.",
+    "scene": "hand_axe.tscn",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 6,
+      "max_dmg": 10,
+      "atk_spd": -0.5
+    },
+    "scale": {
+      "str_min": 0.5,
+      "str_max": 0.5,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.04,
+        0.35,
+        0.03
+      ],
+      "w": 0.5,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "axe_largeA",
+    "name": "Large Axe",
+    "cat": "Axe",
+    "icon": "axe_largeA.png",
+    "desc": "A large axe.",
+    "scene": "basic_medieval_axe.glb",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 7,
+      "max_dmg": 13,
+      "atk_spd": -0.8
+    },
+    "scale": {
+      "str_min": 0.5,
+      "str_max": 0.5,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.04,
+        0.35,
+        0.03
+      ],
+      "w": 0.5,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "axe_largeB",
+    "name": "Battle Axe",
+    "cat": "Axe",
+    "icon": "axe_largeB.png",
+    "desc": "A battle axe.",
+    "scene": "medieval_battle_axe.glb",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 8,
+      "max_dmg": 14,
+      "atk_spd": -0.9
+    },
+    "scale": {
+      "str_min": 0.5,
+      "str_max": 0.5,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.04,
+        0.35,
+        0.03
+      ],
+      "w": 0.5,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "axe_mauler",
+    "name": "Mauler",
+    "cat": "Axe",
+    "icon": "axe_mauler.png",
+    "desc": "A mauler.",
+    "scene": "medieval_battle_axe.glb",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "rare",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 10,
+      "max_dmg": 18,
+      "atk_spd": -1.2
+    },
+    "scale": {
+      "str_min": 0.5,
+      "str_max": 0.5,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.04,
+        0.35,
+        0.03
+      ],
+      "w": 0.5,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "axe_waraxeA",
+    "name": "War Axe",
+    "cat": "Axe",
+    "icon": "axe_waraxeA.png",
+    "desc": "A war axe.",
+    "scene": "basic_medieval_axe.glb",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "magic",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 9,
+      "max_dmg": 15,
+      "atk_spd": -0.7
+    },
+    "scale": {
+      "str_min": 0.5,
+      "str_max": 0.5,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.04,
+        0.35,
+        0.03
+      ],
+      "w": 0.5,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "axe_woodmanaxe",
+    "name": "Woodman Axe",
+    "cat": "Axe",
+    "icon": "axe_woodmanaxe.png",
+    "desc": "A woodman axe.",
+    "scene": "hand_axe.tscn",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 4,
+      "max_dmg": 8,
+      "atk_spd": -0.6
+    },
+    "scale": {
+      "str_min": 0.5,
+      "str_max": 0.5,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.04,
+        0.35,
+        0.03
+      ],
+      "w": 0.5,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "axe_unique",
+    "name": "Berserker",
+    "cat": "Axe",
+    "icon": "axe_unique.png",
+    "desc": "A berserker.",
+    "scene": "medieval_battle_axe.glb",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "unique",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 11,
+      "max_dmg": 20,
+      "atk_spd": -0.8
+    },
+    "scale": {
+      "str_min": 0.5,
+      "str_max": 0.5,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.04,
+        0.35,
+        0.03
+      ],
+      "w": 0.5,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "axe_uniqueA",
+    "name": "Executioner",
+    "cat": "Axe",
+    "icon": "axe_uniqueA.png",
+    "desc": "A executioner.",
+    "scene": "medieval_battle_axe.glb",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "unique",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 14,
+      "max_dmg": 24,
+      "atk_spd": -1.5
+    },
+    "scale": {
+      "str_min": 0.5,
+      "str_max": 0.5,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.04,
+        0.35,
+        0.03
+      ],
+      "w": 0.5,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "club_mace",
+    "name": "Mace",
+    "cat": "Mace",
+    "icon": "club_mace.png",
+    "desc": "A mace.",
+    "scene": "mace.tscn",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 5,
+      "max_dmg": 10,
+      "atk_spd": -0.6
+    },
+    "scale": {
+      "str_min": 0.4,
+      "str_max": 0.4,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.03,
+        0.32,
+        0.02
+      ],
+      "w": 0.4,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    },
+    "material": "metal"
+  },
+  {
+    "id": "club_flail",
+    "name": "Flail",
+    "cat": "Mace",
+    "icon": "club_flail.png",
+    "desc": "A flail.",
+    "scene": "flail.tscn",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 6,
+      "max_dmg": 12,
+      "atk_spd": -0.7
+    },
+    "scale": {
+      "str_min": 0.4,
+      "str_max": 0.4,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.03,
+        0.32,
+        0.02
+      ],
+      "w": 0.4,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    },
+    "material": "metal"
+  },
+  {
+    "id": "club_flailunique",
+    "name": "Blood Flail",
+    "cat": "Mace",
+    "icon": "club_flailunique.png",
+    "desc": "A blood flail.",
+    "scene": "flail.tscn",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "unique",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 9,
+      "max_dmg": 16,
+      "atk_spd": -0.7
+    },
+    "scale": {
+      "str_min": 0.4,
+      "str_max": 0.4,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.03,
+        0.32,
+        0.02
+      ],
+      "w": 0.4,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    },
+    "fx": [
+      {
+        "type": "life_steal",
+        "val": 0.05
+      }
+    ],
+    "material": "metal"
+  },
+  {
+    "id": "club_holyhammer",
+    "name": "Holy Hammer",
+    "cat": "Mace",
+    "icon": "club_holyhammer.png",
+    "desc": "A holy hammer.",
+    "scene": "mace.tscn",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "unique",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 8,
+      "max_dmg": 15,
+      "atk_spd": -0.9
+    },
+    "scale": {
+      "str_min": 0.4,
+      "str_max": 0.4,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.03,
+        0.32,
+        0.02
+      ],
+      "w": 0.4,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    },
+    "material": "metal"
+  },
+  {
+    "id": "club_morningstar",
+    "name": "Morning Star",
+    "cat": "Mace",
+    "icon": "club_morningstar.png",
+    "desc": "A morning star.",
+    "scene": "flail.tscn",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "magic",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 7,
+      "max_dmg": 14,
+      "atk_spd": -0.8
+    },
+    "scale": {
+      "str_min": 0.4,
+      "str_max": 0.4,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.03,
+        0.32,
+        0.02
+      ],
+      "w": 0.4,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    },
+    "material": "metal"
+  },
+  {
+    "id": "club_warhammer",
+    "name": "War Hammer",
+    "cat": "Mace",
+    "icon": "club_warhammer.png",
+    "desc": "A war hammer.",
+    "scene": "mace.tscn",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 9,
+      "max_dmg": 17,
+      "atk_spd": -1.2
+    },
+    "scale": {
+      "str_min": 0.4,
+      "str_max": 0.4,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.03,
+        0.32,
+        0.02
+      ],
+      "w": 0.4,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    },
+    "material": "metal"
+  },
+  {
+    "id": "club_wooden",
+    "name": "Wooden Club",
+    "cat": "Mace",
+    "icon": "club_wooden.png",
+    "desc": "A wooden club.",
+    "scene": "mace.tscn",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 3,
+      "max_dmg": 7,
+      "atk_spd": -0.4
+    },
+    "scale": {
+      "str_min": 0.4,
+      "str_max": 0.4,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.03,
+        0.32,
+        0.02
+      ],
+      "w": 0.4,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    },
+    "material": "wood"
+  },
+  {
+    "id": "club_crudecudgel",
+    "name": "Crude Cudgel",
+    "cat": "Mace",
+    "icon": "club_crudecudgel.png",
+    "desc": "A crude cudgel.",
+    "scene": "mace.tscn",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 2,
+      "max_dmg": 6,
+      "atk_spd": -0.3
+    },
+    "scale": {
+      "str_min": 0.4,
+      "str_max": 0.4,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.03,
+        0.32,
+        0.02
+      ],
+      "w": 0.4,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    },
+    "material": "wood"
+  },
+  {
+    "id": "club_metalbat",
+    "name": "Metal Bat",
+    "cat": "Mace",
+    "icon": "club_metalbat.png",
+    "desc": "A metal bat.",
+    "scene": "mace.tscn",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 4,
+      "max_dmg": 9,
+      "atk_spd": -0.5
+    },
+    "scale": {
+      "str_min": 0.4,
+      "str_max": 0.4,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.03,
+        0.32,
+        0.02
+      ],
+      "w": 0.4,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    },
+    "material": "metal"
+  },
+  {
+    "id": "club_poor",
+    "name": "Cudgel",
+    "cat": "Mace",
+    "icon": "club_poor.png",
+    "desc": "A cudgel.",
+    "scene": "mace.tscn",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 2,
+      "max_dmg": 5,
+      "atk_spd": -0.3
+    },
+    "scale": {
+      "str_min": 0.4,
+      "str_max": 0.4,
+      "dex_min": 0.0,
+      "dex_max": 0.0
+    },
+    "trail": {
+      "ofs": [
+        0.03,
+        0.32,
+        0.02
+      ],
+      "w": 0.4,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 30,
+      "type": "tracer_modulated"
+    },
+    "material": "wood"
+  },
+  {
+    "id": "bow_standard",
+    "name": "Standard Bow",
+    "cat": "Bow",
+    "icon": "bow_standard.png",
+    "desc": "A standard bow.",
+    "scene": "bow_world.tscn",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "ranged",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 4,
+      "max_dmg": 8,
+      "atk_spd": -0.2
+    },
+    "scale": {
+      "str_min": 0.0,
+      "str_max": 0.0,
+      "dex_min": 0.36,
+      "dex_max": 0.36
+    },
+    "trail": {
+      "ofs": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "w": 0.1,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 15,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "bow_army",
+    "name": "Army Bow",
+    "cat": "Bow",
+    "icon": "bow_army.png",
+    "desc": "A army bow.",
+    "scene": "bow_world.tscn",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "ranged",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 5,
+      "max_dmg": 9,
+      "atk_spd": -0.3
+    },
+    "scale": {
+      "str_min": 0.0,
+      "str_max": 0.0,
+      "dex_min": 0.36,
+      "dex_max": 0.36
+    },
+    "trail": {
+      "ofs": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "w": 0.1,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 15,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "bow_bone",
+    "name": "Bone Bow",
+    "cat": "Bow",
+    "icon": "bow_bone.png",
+    "desc": "A bone bow.",
+    "scene": "bow_world.tscn",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "magic",
+    "atk": "ranged",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 6,
+      "max_dmg": 10,
+      "atk_spd": -0.3
+    },
+    "scale": {
+      "str_min": 0.0,
+      "str_max": 0.0,
+      "dex_min": 0.36,
+      "dex_max": 0.36
+    },
+    "trail": {
+      "ofs": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "w": 0.1,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 15,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "bow_demon",
+    "name": "Demon Bow",
+    "cat": "Bow",
+    "icon": "bow_demon.png",
+    "desc": "A demon bow.",
+    "scene": "bow_world.tscn",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "rare",
+    "atk": "ranged",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 8,
+      "max_dmg": 14,
+      "atk_spd": -0.2
+    },
+    "scale": {
+      "str_min": 0.0,
+      "str_max": 0.0,
+      "dex_min": 0.36,
+      "dex_max": 0.36
+    },
+    "trail": {
+      "ofs": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "w": 0.1,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 15,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "bow_diamond",
+    "name": "Diamond Bow",
+    "cat": "Bow",
+    "icon": "bow_diamond.png",
+    "desc": "A diamond bow.",
+    "scene": "bow_world.tscn",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "rare",
+    "atk": "ranged",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 7,
+      "max_dmg": 12,
+      "atk_spd": -0.1
+    },
+    "scale": {
+      "str_min": 0.0,
+      "str_max": 0.0,
+      "dex_min": 0.36,
+      "dex_max": 0.36
+    },
+    "trail": {
+      "ofs": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "w": 0.1,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 15,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "bow_dragon",
+    "name": "Dragon Bow",
+    "cat": "Bow",
+    "icon": "bow_dragon.png",
+    "desc": "A dragon bow.",
+    "scene": "bow_world.tscn",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "unique",
+    "atk": "ranged",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 10,
+      "max_dmg": 18,
+      "atk_spd": -0.1
+    },
+    "scale": {
+      "str_min": 0.0,
+      "str_max": 0.0,
+      "dex_min": 0.36,
+      "dex_max": 0.36
+    },
+    "trail": {
+      "ofs": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "w": 0.1,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 15,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "bow_elvish",
+    "name": "Elvish Bow",
+    "cat": "Bow",
+    "icon": "bow_elvish.png",
+    "desc": "A elvish bow.",
+    "scene": "bow_world.tscn",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "magic",
+    "atk": "ranged",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 5,
+      "max_dmg": 11,
+      "atk_spd": -0.1
+    },
+    "scale": {
+      "str_min": 0.0,
+      "str_max": 0.0,
+      "dex_min": 0.36,
+      "dex_max": 0.36
+    },
+    "trail": {
+      "ofs": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "w": 0.1,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 15,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "bow_poor",
+    "name": "Poor Bow",
+    "cat": "Bow",
+    "icon": "bow_poor.png",
+    "desc": "A poor bow.",
+    "scene": "bow_world.tscn",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "ranged",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 2,
+      "max_dmg": 5,
+      "atk_spd": -0.3
+    },
+    "scale": {
+      "str_min": 0.0,
+      "str_max": 0.0,
+      "dex_min": 0.36,
+      "dex_max": 0.36
+    },
+    "trail": {
+      "ofs": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "w": 0.1,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 15,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "dagger_basic",
+    "name": "Iron Dagger",
+    "cat": "Dagger",
+    "icon": "dagger_basic.png",
+    "desc": "A iron dagger.",
+    "scene": "dagger.tscn",
+    "grid": [
+      1,
+      2
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 2,
+      "max_dmg": 4,
+      "atk_spd": -0.1
+    },
+    "scale": {
+      "str_min": 0.15,
+      "str_max": 0.15,
+      "dex_min": 0.1,
+      "dex_max": 0.1
+    },
+    "trail": {
+      "ofs": [
+        0.02,
+        0.25,
+        0.01
+      ],
+      "w": 0.25,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 20,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "dagger_assassin",
+    "name": "Assassin's Dagger",
+    "cat": "Dagger",
+    "icon": "dagger_assassin.png",
+    "desc": "A assassin's dagger.",
+    "scene": "dagger.tscn",
+    "grid": [
+      1,
+      2
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "magic",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 4,
+      "max_dmg": 7,
+      "atk_spd": -0.1
+    },
+    "scale": {
+      "str_min": 0.15,
+      "str_max": 0.15,
+      "dex_min": 0.1,
+      "dex_max": 0.1
+    },
+    "trail": {
+      "ofs": [
+        0.02,
+        0.25,
+        0.01
+      ],
+      "w": 0.25,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 20,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "dagger_carver",
+    "name": "Carver",
+    "cat": "Dagger",
+    "icon": "dagger_carver.png",
+    "desc": "A carver.",
+    "scene": "dagger.tscn",
+    "grid": [
+      1,
+      2
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 3,
+      "max_dmg": 6,
+      "atk_spd": -0.15
+    },
+    "scale": {
+      "str_min": 0.15,
+      "str_max": 0.15,
+      "dex_min": 0.1,
+      "dex_max": 0.1
+    },
+    "trail": {
+      "ofs": [
+        0.02,
+        0.25,
+        0.01
+      ],
+      "w": 0.25,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 20,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "dagger_dragontooth",
+    "name": "Dragon Tooth",
+    "cat": "Dagger",
+    "icon": "dagger_dragontooth.png",
+    "desc": "A dragon tooth.",
+    "scene": "dagger.tscn",
+    "grid": [
+      1,
+      2
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "rare",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 5,
+      "max_dmg": 9,
+      "atk_spd": -0.1
+    },
+    "scale": {
+      "str_min": 0.15,
+      "str_max": 0.15,
+      "dex_min": 0.1,
+      "dex_max": 0.1
+    },
+    "trail": {
+      "ofs": [
+        0.02,
+        0.25,
+        0.01
+      ],
+      "w": 0.25,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 20,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "dagger_steel",
+    "name": "Steel Dagger",
+    "cat": "Dagger",
+    "icon": "dagger_steel.png",
+    "desc": "A steel dagger.",
+    "scene": "dagger.tscn",
+    "grid": [
+      1,
+      2
+    ],
+    "slot": "RIGHT_HAND",
+    "rarity": "common",
+    "atk": "melee",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "min_dmg": 3,
+      "max_dmg": 5,
+      "atk_spd": -0.05
+    },
+    "scale": {
+      "str_min": 0.15,
+      "str_max": 0.15,
+      "dex_min": 0.1,
+      "dex_max": 0.1
+    },
+    "trail": {
+      "ofs": [
+        0.02,
+        0.25,
+        0.01
+      ],
+      "w": 0.25,
+      "col": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "len": 20,
+      "type": "tracer_modulated"
+    }
+  },
+  {
+    "id": "armor_adventurerdoublet",
+    "name": "Adventurer Doublet",
+    "cat": "Armor",
+    "icon": "armor_adventurerdoublet.png",
+    "desc": "A adventurer doublet.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 3
+    },
+    "material": "leather"
+  },
+  {
+    "id": "armor_cape",
+    "name": "Cape",
+    "cat": "Armor",
+    "icon": "armor_cape.png",
+    "desc": "A cape.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 1
+    },
+    "material": "cloth"
+  },
+  {
+    "id": "armor_chainmail",
+    "name": "Chainmail",
+    "cat": "Armor",
+    "icon": "armor_chainmail.png",
+    "desc": "A chainmail.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 6
+    },
+    "material": "metal"
+  },
+  {
+    "id": "armor_chainmailtunic",
+    "name": "Chainmail Tunic",
+    "cat": "Armor",
+    "icon": "armor_chainmailtunic.png",
+    "desc": "A chainmail tunic.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 5
+    },
+    "material": "metal"
+  },
+  {
+    "id": "armor_cloak",
+    "name": "Cloak",
+    "cat": "Armor",
+    "icon": "armor_cloak.png",
+    "desc": "A cloak.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 2
+    },
+    "material": "cloth"
+  },
+  {
+    "id": "armor_cuirass",
+    "name": "Cuirass",
+    "cat": "Armor",
+    "icon": "armor_cuirass.png",
+    "desc": "A cuirass.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 7
+    },
+    "material": "metal"
+  },
+  {
+    "id": "armor_doublet",
+    "name": "Doublet",
+    "cat": "Armor",
+    "icon": "armor_doublet.png",
+    "desc": "A doublet.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 2
+    },
+    "material": "cloth"
+  },
+  {
+    "id": "armor_fullplate",
+    "name": "Full Plate",
+    "cat": "Armor",
+    "icon": "armor_fullplate.png",
+    "desc": "A full plate.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 10
+    },
+    "material": "metal"
+  },
+  {
+    "id": "armor_gothicplate",
+    "name": "Gothic Plate",
+    "cat": "Armor",
+    "icon": "armor_gothicplate.png",
+    "desc": "A gothic plate.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 12
+    },
+    "material": "metal"
+  },
+  {
+    "id": "armor_hardenedleather",
+    "name": "Hardened Leather",
+    "cat": "Armor",
+    "icon": "armor_hardenedleather.png",
+    "desc": "A hardened leather.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 4
+    },
+    "material": "leather"
+  },
+  {
+    "id": "armor_leather",
+    "name": "Leather Armor",
+    "cat": "Armor",
+    "icon": "armor_leather.png",
+    "desc": "A leather armor.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 3
+    },
+    "material": "leather"
+  },
+  {
+    "id": "armor_ornamental",
+    "name": "Ornamental Armor",
+    "cat": "Armor",
+    "icon": "armor_ornamental.png",
+    "desc": "A ornamental armor.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 5
+    },
+    "material": "metal"
+  },
+  {
+    "id": "armor_plate",
+    "name": "Plate Armor",
+    "cat": "Armor",
+    "icon": "armor_plate.png",
+    "desc": "A plate armor.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 8
+    },
+    "material": "metal"
+  },
+  {
+    "id": "armor_poor",
+    "name": "Poor Armor",
+    "cat": "Armor",
+    "icon": "armor_poor.png",
+    "desc": "A poor armor.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 1
+    },
+    "material": "cloth"
+  },
+  {
+    "id": "armor_reinforcedunique",
+    "name": "Reinforced Armor",
+    "cat": "Armor",
+    "icon": "armor_reinforcedunique.png",
+    "desc": "A reinforced armor.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 9
+    },
+    "material": "metal"
+  },
+  {
+    "id": "armor_robe",
+    "name": "Robe",
+    "cat": "Armor",
+    "icon": "armor_robe.png",
+    "desc": "A robe.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 1
+    },
+    "material": "cloth"
+  },
+  {
+    "id": "armor_steelunique",
+    "name": "Steel Armor",
+    "cat": "Armor",
+    "icon": "armor_steelunique.png",
+    "desc": "A steel armor.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 9
+    },
+    "material": "metal"
+  },
+  {
+    "id": "armor_studded",
+    "name": "Studded Leather",
+    "cat": "Armor",
+    "icon": "armor_studded.png",
+    "desc": "A studded leather.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 4
+    },
+    "material": "leather"
+  },
+  {
+    "id": "armor_tunic",
+    "name": "Tunic",
+    "cat": "Armor",
+    "icon": "armor_tunic.png",
+    "desc": "A tunic.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 1
+    },
+    "material": "cloth"
+  },
+  {
+    "id": "armor_wizardrobe",
+    "name": "Wizard Robe",
+    "cat": "Armor",
+    "icon": "armor_wizardrobe.png",
+    "desc": "A wizard robe.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "TORSO",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 2
+    },
+    "material": "cloth"
+  },
+  {
+    "id": "headgear_adornedcirclet",
+    "name": "Adorned Circlet",
+    "cat": "Headgear",
+    "icon": "headgear_adornedcirclet.png",
+    "desc": "A adorned circlet.",
+    "scene": "",
+    "grid": [
+      2,
+      2
+    ],
+    "slot": "HEAD",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 4
+    },
+    "material": "metal"
+  },
+  {
+    "id": "headgear_cap",
+    "name": "Cap",
+    "cat": "Headgear",
+    "icon": "headgear_cap.png",
+    "desc": "A cap.",
+    "scene": "",
+    "grid": [
+      2,
+      2
+    ],
+    "slot": "HEAD",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 1
+    },
+    "material": "cloth"
+  },
+  {
+    "id": "headgear_gladiator",
+    "name": "Gladiator Helm",
+    "cat": "Headgear",
+    "icon": "headgear_gladiator.png",
+    "desc": "A gladiator helm.",
+    "scene": "",
+    "grid": [
+      2,
+      2
+    ],
+    "slot": "HEAD",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 5
+    },
+    "material": "metal"
+  },
+  {
+    "id": "headgear_hood",
+    "name": "Hood",
+    "cat": "Headgear",
+    "icon": "headgear_hood.png",
+    "desc": "A hood.",
+    "scene": "",
+    "grid": [
+      2,
+      2
+    ],
+    "slot": "HEAD",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 2
+    },
+    "material": "cloth"
+  },
+  {
+    "id": "headgear_hornedhelm",
+    "name": "Horned Helm",
+    "cat": "Headgear",
+    "icon": "headgear_hornedhelm.png",
+    "desc": "A horned helm.",
+    "scene": "",
+    "grid": [
+      2,
+      2
+    ],
+    "slot": "HEAD",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 7
+    },
+    "material": "metal"
+  },
+  {
+    "id": "headgear_magiccrown",
+    "name": "Magic Crown",
+    "cat": "Headgear",
+    "icon": "headgear_magiccrown.png",
+    "desc": "A magic crown.",
+    "scene": "",
+    "grid": [
+      2,
+      2
+    ],
+    "slot": "HEAD",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 3
+    },
+    "material": "metal"
+  },
+  {
+    "id": "headgear_ornamental",
+    "name": "Ornamental Helm",
+    "cat": "Headgear",
+    "icon": "headgear_ornamental.png",
+    "desc": "A ornamental helm.",
+    "scene": "",
+    "grid": [
+      2,
+      2
+    ],
+    "slot": "HEAD",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 4
+    },
+    "material": "metal"
+  },
+  {
+    "id": "headgear_powerhelm",
+    "name": "Power Helm",
+    "cat": "Headgear",
+    "icon": "headgear_powerhelm.png",
+    "desc": "A power helm.",
+    "scene": "",
+    "grid": [
+      2,
+      2
+    ],
+    "slot": "HEAD",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 8
+    },
+    "material": "metal"
+  },
+  {
+    "id": "headgear_ritualist",
+    "name": "Ritualist Mask",
+    "cat": "Headgear",
+    "icon": "headgear_ritualist.png",
+    "desc": "A ritualist mask.",
+    "scene": "",
+    "grid": [
+      2,
+      2
+    ],
+    "slot": "HEAD",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 3
+    },
+    "material": "wood"
+  },
+  {
+    "id": "headgear_sallet",
+    "name": "Sallet",
+    "cat": "Headgear",
+    "icon": "headgear_sallet.png",
+    "desc": "A sallet.",
+    "scene": "",
+    "grid": [
+      2,
+      2
+    ],
+    "slot": "HEAD",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 5
+    },
+    "material": "metal"
+  },
+  {
+    "id": "headgear_skull",
+    "name": "Skull Helm",
+    "cat": "Headgear",
+    "icon": "headgear_skull.png",
+    "desc": "A skull helm.",
+    "scene": "",
+    "grid": [
+      2,
+      2
+    ],
+    "slot": "HEAD",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 6
+    },
+    "material": "metal"
+  },
+  {
+    "id": "headgear_soldier",
+    "name": "Soldier Helm",
+    "cat": "Headgear",
+    "icon": "headgear_soldier.png",
+    "desc": "A soldier helm.",
+    "scene": "",
+    "grid": [
+      2,
+      2
+    ],
+    "slot": "HEAD",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 4
+    },
+    "material": "metal"
+  },
+  {
+    "id": "headgear_steelhelm",
+    "name": "Steel Helm",
+    "cat": "Headgear",
+    "icon": "headgear_steelhelm.png",
+    "desc": "A steel helm.",
+    "scene": "",
+    "grid": [
+      2,
+      2
+    ],
+    "slot": "HEAD",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 6
+    },
+    "material": "metal"
+  },
+  {
+    "id": "shield_army",
+    "name": "Army Shield",
+    "cat": "Shield",
+    "icon": "shield_army.png",
+    "desc": "A army shield.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "LEFT_HAND",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 5
+    },
+    "material": "metal"
+  },
+  {
+    "id": "shield_demon",
+    "name": "Demon Shield",
+    "cat": "Shield",
+    "icon": "shield_demon.png",
+    "desc": "A demon shield.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "LEFT_HAND",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 8
+    },
+    "material": "metal"
+  },
+  {
+    "id": "shield_guardian",
+    "name": "Guardian Shield",
+    "cat": "Shield",
+    "icon": "shield_guardian.png",
+    "desc": "A guardian shield.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "LEFT_HAND",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 7
+    },
+    "material": "metal"
+  },
+  {
+    "id": "shield_kiteA",
+    "name": "Kite Shield",
+    "cat": "Shield",
+    "icon": "shield_kiteA.png",
+    "desc": "A kite shield.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "LEFT_HAND",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 6
+    },
+    "material": "metal"
+  },
+  {
+    "id": "shield_kiteB",
+    "name": "Kite Shield B",
+    "cat": "Shield",
+    "icon": "shield_kiteB.png",
+    "desc": "A kite shield b.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "LEFT_HAND",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 5
+    },
+    "material": "metal"
+  },
+  {
+    "id": "shield_kitebasic",
+    "name": "Basic Kite Shield",
+    "cat": "Shield",
+    "icon": "shield_kitebasic.png",
+    "desc": "A basic kite shield.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "LEFT_HAND",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 4
+    },
+    "material": "metal"
+  },
+  {
+    "id": "shield_kiteC",
+    "name": "Kite Shield C",
+    "cat": "Shield",
+    "icon": "shield_kiteC.png",
+    "desc": "A kite shield c.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "LEFT_HAND",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 6
+    },
+    "material": "metal"
+  },
+  {
+    "id": "shield_skull",
+    "name": "Skull Shield",
+    "cat": "Shield",
+    "icon": "shield_skull.png",
+    "desc": "A skull shield.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "LEFT_HAND",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 7
+    },
+    "material": "metal"
+  },
+  {
+    "id": "shield_steelbuckler",
+    "name": "Steel Buckler",
+    "cat": "Shield",
+    "icon": "shield_steelbuckler.png",
+    "desc": "A steel buckler.",
+    "scene": "",
+    "grid": [
+      2,
+      2
+    ],
+    "slot": "LEFT_HAND",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 4
+    },
+    "material": "metal"
+  },
+  {
+    "id": "shield_tower",
+    "name": "Tower Shield",
+    "cat": "Shield",
+    "icon": "shield_tower.png",
+    "desc": "A tower shield.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "LEFT_HAND",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 9
+    },
+    "material": "metal"
+  },
+  {
+    "id": "shield_woodenbuckler",
+    "name": "Wooden Buckler",
+    "cat": "Shield",
+    "icon": "shield_woodenbuckler.png",
+    "desc": "A wooden buckler.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "LEFT_HAND",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {
+      "defense": 2
+    },
+    "material": "wood"
+  },
+  {
+    "id": "lifepotion",
     "name": "Life Potion",
-    "category": "Potion",
-    "desc": "Restores health."
+    "cat": "Potion",
+    "icon": "lifepotion.png",
+    "desc": "Restores 50 HP over 3 seconds.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": true,
+    "max_stack": 10,
+    "stats": {
+      "hp_restore": 50
+    }
   },
   {
-    "file": "lifepotionbig.png",
+    "id": "lifepotionbig",
     "name": "Greater Life Potion",
-    "category": "Potion",
-    "desc": "Restores a large amount of health."
+    "cat": "Potion",
+    "icon": "lifepotionbig.png",
+    "desc": "Restores 100 HP over 3 seconds.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": true,
+    "max_stack": 10,
+    "stats": {
+      "hp_restore": 100
+    }
   },
   {
-    "file": "manapotion.png",
+    "id": "manapotion",
     "name": "Mana Potion",
-    "category": "Potion",
-    "desc": "Restores mana."
+    "cat": "Potion",
+    "icon": "manapotion.png",
+    "desc": "Restores 50 MP over 3 seconds.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": true,
+    "max_stack": 10,
+    "stats": {
+      "mp_restore": 50
+    }
   },
   {
-    "file": "manapotionbig.png",
+    "id": "manapotionbig",
     "name": "Greater Mana Potion",
-    "category": "Potion",
-    "desc": "Restores a large amount of mana."
+    "cat": "Potion",
+    "icon": "manapotionbig.png",
+    "desc": "Restores 100 MP over 3 seconds.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": true,
+    "max_stack": 10,
+    "stats": {
+      "mp_restore": 100
+    }
   },
   {
-    "file": "questitem (1).png",
-    "name": "Rusty Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 1."
+    "id": "quest_1",
+    "name": "Quest Item 1",
+    "cat": "Quest",
+    "icon": "questitem (1).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (10).png",
-    "name": "Rusty Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 10."
+    "id": "quest_2",
+    "name": "Quest Item 2",
+    "cat": "Quest",
+    "icon": "questitem (2).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (11).png",
-    "name": "Old Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 11."
+    "id": "quest_3",
+    "name": "Quest Item 3",
+    "cat": "Quest",
+    "icon": "questitem (3).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (12).png",
-    "name": "Worn Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 12."
+    "id": "quest_4",
+    "name": "Quest Item 4",
+    "cat": "Quest",
+    "icon": "questitem (4).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (13).png",
-    "name": "Fine Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 13."
+    "id": "quest_5",
+    "name": "Quest Item 5",
+    "cat": "Quest",
+    "icon": "questitem (5).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (14).png",
-    "name": "Sturdy Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 14."
+    "id": "quest_6",
+    "name": "Quest Item 6",
+    "cat": "Quest",
+    "icon": "questitem (6).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (15).png",
-    "name": "Keen Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 15."
+    "id": "quest_7",
+    "name": "Quest Item 7",
+    "cat": "Quest",
+    "icon": "questitem (7).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (16).png",
-    "name": "Superior Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 16."
+    "id": "quest_8",
+    "name": "Quest Item 8",
+    "cat": "Quest",
+    "icon": "questitem (8).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (17).png",
-    "name": "Flawless Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 17."
+    "id": "quest_9",
+    "name": "Quest Item 9",
+    "cat": "Quest",
+    "icon": "questitem (9).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (18).png",
-    "name": "Arcane Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 18."
+    "id": "quest_10",
+    "name": "Quest Item 10",
+    "cat": "Quest",
+    "icon": "questitem (10).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (19).png",
-    "name": "Rusty Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 19."
+    "id": "quest_11",
+    "name": "Quest Item 11",
+    "cat": "Quest",
+    "icon": "questitem (11).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (2).png",
-    "name": "Old Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 2."
+    "id": "quest_12",
+    "name": "Quest Item 12",
+    "cat": "Quest",
+    "icon": "questitem (12).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (20).png",
-    "name": "Old Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 20."
+    "id": "quest_13",
+    "name": "Quest Item 13",
+    "cat": "Quest",
+    "icon": "questitem (13).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (21).png",
-    "name": "Worn Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 21."
+    "id": "quest_14",
+    "name": "Quest Item 14",
+    "cat": "Quest",
+    "icon": "questitem (14).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (22).png",
-    "name": "Fine Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 22."
+    "id": "quest_15",
+    "name": "Quest Item 15",
+    "cat": "Quest",
+    "icon": "questitem (15).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (3).png",
-    "name": "Worn Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 3."
+    "id": "quest_16",
+    "name": "Quest Item 16",
+    "cat": "Quest",
+    "icon": "questitem (16).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (4).png",
-    "name": "Fine Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 4."
+    "id": "quest_17",
+    "name": "Quest Item 17",
+    "cat": "Quest",
+    "icon": "questitem (17).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      1,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (5).png",
-    "name": "Sturdy Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 5."
+    "id": "quest_18",
+    "name": "Quest Item 18",
+    "cat": "Quest",
+    "icon": "questitem (18).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (6).png",
-    "name": "Keen Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 6."
+    "id": "quest_19",
+    "name": "Quest Item 19",
+    "cat": "Quest",
+    "icon": "questitem (19).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (7).png",
-    "name": "Superior Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 7."
+    "id": "quest_20",
+    "name": "Quest Item 20",
+    "cat": "Quest",
+    "icon": "questitem (20).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (8).png",
-    "name": "Flawless Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 8."
+    "id": "quest_21",
+    "name": "Quest Item 21",
+    "cat": "Quest",
+    "icon": "questitem (21).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "questitem (9).png",
-    "name": "Arcane Quest Item",
-    "category": "Quest",
-    "desc": "A key item. Chapter 9."
+    "id": "quest_22",
+    "name": "Quest Item 22",
+    "cat": "Quest",
+    "icon": "questitem (22).png",
+    "desc": "A mysterious quest item.",
+    "scene": "",
+    "grid": [
+      2,
+      3
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "ring (1).png",
-    "name": "Rusty Ring",
-    "category": "Ring",
-    "desc": "Grants +1 to strength."
+    "id": "gold",
+    "name": "Gold",
+    "cat": "Currency",
+    "icon": "gold.png",
+    "desc": "Gold coins.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": true,
+    "max_stack": 9999,
+    "stats": {}
   },
   {
-    "file": "ring (2).png",
-    "name": "Old Ring",
-    "category": "Ring",
-    "desc": "Grants +2 to agility."
-  },
-  {
-    "file": "ring (3).png",
-    "name": "Worn Ring",
-    "category": "Ring",
-    "desc": "Grants +3 to intelligence."
-  },
-  {
-    "file": "ring (4).png",
-    "name": "Fine Ring",
-    "category": "Ring",
-    "desc": "Grants +4 to vitality."
-  },
-  {
-    "file": "ring (5).png",
-    "name": "Sturdy Ring",
-    "category": "Ring",
-    "desc": "Grants +5 to strength."
-  },
-  {
-    "file": "ring (6).png",
-    "name": "Keen Ring",
-    "category": "Ring",
-    "desc": "Grants +6 to agility."
-  },
-  {
-    "file": "ring (7).png",
-    "name": "Superior Ring",
-    "category": "Ring",
-    "desc": "Grants +7 to intelligence."
-  },
-  {
-    "file": "ring (8).png",
-    "name": "Flawless Ring",
-    "category": "Ring",
-    "desc": "Grants +8 to vitality."
-  },
-  {
-    "file": "shield (1).png",
-    "name": "Rusty Shield",
-    "category": "Shield",
-    "desc": "Provides 5 defense. Rusty protection."
-  },
-  {
-    "file": "shield (10).png",
-    "name": "Rusty Shield",
-    "category": "Shield",
-    "desc": "Provides 7 defense. Rusty protection."
-  },
-  {
-    "file": "shield (11).png",
-    "name": "Old Shield",
-    "category": "Shield",
-    "desc": "Provides 7 defense. Old protection."
-  },
-  {
-    "file": "shield (2).png",
-    "name": "Old Shield",
-    "category": "Shield",
-    "desc": "Provides 5 defense. Old protection."
-  },
-  {
-    "file": "shield (3).png",
-    "name": "Worn Shield",
-    "category": "Shield",
-    "desc": "Provides 5 defense. Worn protection."
-  },
-  {
-    "file": "shield (4).png",
-    "name": "Fine Shield",
-    "category": "Shield",
-    "desc": "Provides 5 defense. Fine protection."
-  },
-  {
-    "file": "shield (5).png",
-    "name": "Sturdy Shield",
-    "category": "Shield",
-    "desc": "Provides 5 defense. Sturdy protection."
-  },
-  {
-    "file": "shield (6).png",
-    "name": "Keen Shield",
-    "category": "Shield",
-    "desc": "Provides 5 defense. Keen protection."
-  },
-  {
-    "file": "shield (7).png",
-    "name": "Superior Shield",
-    "category": "Shield",
-    "desc": "Provides 5 defense. Superior protection."
-  },
-  {
-    "file": "shield (8).png",
-    "name": "Flawless Shield",
-    "category": "Shield",
-    "desc": "Provides 5 defense. Flawless protection."
-  },
-  {
-    "file": "shield (9).png",
-    "name": "Arcane Shield",
-    "category": "Shield",
-    "desc": "Provides 5 defense. Arcane protection."
-  },
-  {
-    "file": "spellbook.png",
+    "id": "spellbook",
     "name": "Spellbook",
-    "category": "Misc",
-    "desc": "A tome of forgotten knowledge."
+    "cat": "Misc",
+    "icon": "spellbook.png",
+    "desc": "A blank spellbook.",
+    "scene": "",
+    "grid": [
+      2,
+      2
+    ],
+    "slot": "",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "staff (1).png",
-    "name": "Rusty Staff",
-    "category": "Staff",
-    "desc": "Deals 8 base damage. A rusty rusty staff."
+    "id": "ring_1",
+    "name": "Ring",
+    "cat": "Ring",
+    "icon": "ring (1).png",
+    "desc": "A ring.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "RING_1",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "staff (2).png",
-    "name": "Old Staff",
-    "category": "Staff",
-    "desc": "Deals 8 base damage. A old old staff."
+    "id": "ring_2",
+    "name": "Ring",
+    "cat": "Ring",
+    "icon": "ring (2).png",
+    "desc": "A ring.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "RING_2",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "staff (3).png",
-    "name": "Worn Staff",
-    "category": "Staff",
-    "desc": "Deals 8 base damage. A worn worn staff."
+    "id": "ring_3",
+    "name": "Ring",
+    "cat": "Ring",
+    "icon": "ring (3).png",
+    "desc": "A ring.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "RING_1",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "staff (4).png",
-    "name": "Fine Staff",
-    "category": "Staff",
-    "desc": "Deals 8 base damage. A fine fine staff."
+    "id": "ring_4",
+    "name": "Ring",
+    "cat": "Ring",
+    "icon": "ring (4).png",
+    "desc": "A ring.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "RING_2",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "staff (5).png",
-    "name": "Sturdy Staff",
-    "category": "Staff",
-    "desc": "Deals 8 base damage. A sturdy sturdy staff."
+    "id": "ring_5",
+    "name": "Ring",
+    "cat": "Ring",
+    "icon": "ring (5).png",
+    "desc": "A ring.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "RING_1",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "staff (6).png",
-    "name": "Keen Staff",
-    "category": "Staff",
-    "desc": "Deals 8 base damage. A keen keen staff."
+    "id": "ring_6",
+    "name": "Ring",
+    "cat": "Ring",
+    "icon": "ring (6).png",
+    "desc": "A ring.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "RING_2",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "sword (1).png",
-    "name": "Rusty Sword",
-    "category": "Sword",
-    "desc": "Deals 8 base damage. A rusty rusty sword."
+    "id": "ring_7",
+    "name": "Ring",
+    "cat": "Ring",
+    "icon": "ring (7).png",
+    "desc": "A ring.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "RING_1",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "sword (10).png",
-    "name": "Rusty Sword",
-    "category": "Sword",
-    "desc": "Deals 11 base damage. A rusty rusty sword."
+    "id": "ring_8",
+    "name": "Ring",
+    "cat": "Ring",
+    "icon": "ring (8).png",
+    "desc": "A ring.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "RING_2",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "sword (11).png",
-    "name": "Old Sword",
-    "category": "Sword",
-    "desc": "Deals 11 base damage. A old old sword."
+    "id": "amulet_1",
+    "name": "Amulet",
+    "cat": "Amulet",
+    "icon": "amulet (1).png",
+    "desc": "An amulet.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "AMULET",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "sword (12).png",
-    "name": "Worn Sword",
-    "category": "Sword",
-    "desc": "Deals 11 base damage. A worn worn sword."
+    "id": "amulet_2",
+    "name": "Amulet",
+    "cat": "Amulet",
+    "icon": "amulet (2).png",
+    "desc": "An amulet.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "AMULET",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "sword (13).png",
-    "name": "Fine Sword",
-    "category": "Sword",
-    "desc": "Deals 11 base damage. A fine fine sword."
+    "id": "amulet_3",
+    "name": "Amulet",
+    "cat": "Amulet",
+    "icon": "amulet (3).png",
+    "desc": "An amulet.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "AMULET",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "sword (14).png",
-    "name": "Sturdy Sword",
-    "category": "Sword",
-    "desc": "Deals 11 base damage. A sturdy sturdy sword."
+    "id": "amulet_4",
+    "name": "Amulet",
+    "cat": "Amulet",
+    "icon": "amulet (4).png",
+    "desc": "An amulet.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "AMULET",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "sword (15).png",
-    "name": "Keen Sword",
-    "category": "Sword",
-    "desc": "Deals 11 base damage. A keen keen sword."
+    "id": "amulet_5",
+    "name": "Amulet",
+    "cat": "Amulet",
+    "icon": "amulet (5).png",
+    "desc": "An amulet.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "AMULET",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   },
   {
-    "file": "sword (16).png",
-    "name": "Superior Sword",
-    "category": "Sword",
-    "desc": "Deals 11 base damage. A superior superior sword."
-  },
-  {
-    "file": "sword (17).png",
-    "name": "Flawless Sword",
-    "category": "Sword",
-    "desc": "Deals 11 base damage. A flawless flawless sword."
-  },
-  {
-    "file": "sword (2).png",
-    "name": "Old Sword",
-    "category": "Sword",
-    "desc": "Deals 8 base damage. A old old sword."
-  },
-  {
-    "file": "sword (3).png",
-    "name": "Worn Sword",
-    "category": "Sword",
-    "desc": "Deals 8 base damage. A worn worn sword."
-  },
-  {
-    "file": "sword (4).png",
-    "name": "Fine Sword",
-    "category": "Sword",
-    "desc": "Deals 8 base damage. A fine fine sword."
-  },
-  {
-    "file": "sword (5).png",
-    "name": "Sturdy Sword",
-    "category": "Sword",
-    "desc": "Deals 8 base damage. A sturdy sturdy sword."
-  },
-  {
-    "file": "sword (6).png",
-    "name": "Keen Sword",
-    "category": "Sword",
-    "desc": "Deals 8 base damage. A keen keen sword."
-  },
-  {
-    "file": "sword (7).png",
-    "name": "Superior Sword",
-    "category": "Sword",
-    "desc": "Deals 8 base damage. A superior superior sword."
-  },
-  {
-    "file": "sword (8).png",
-    "name": "Flawless Sword",
-    "category": "Sword",
-    "desc": "Deals 8 base damage. A flawless flawless sword."
-  },
-  {
-    "file": "sword (9).png",
-    "name": "Arcane Sword",
-    "category": "Sword",
-    "desc": "Deals 8 base damage. A arcane arcane sword."
+    "id": "amulet_6",
+    "name": "Amulet",
+    "cat": "Amulet",
+    "icon": "amulet (6).png",
+    "desc": "An amulet.",
+    "scene": "",
+    "grid": [
+      1,
+      1
+    ],
+    "slot": "AMULET",
+    "rarity": "common",
+    "atk": "",
+    "stack": false,
+    "max_stack": 1,
+    "stats": {}
   }
 ]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b8oqtdils7gjj"]
+
+[ext_resource type="Script" uid="uid://bfa0w0ig6cvv8" path="res://scripts/blood_decals_wall.gd" id="1_a2nk4"]
+
+[node name="BloodDecalsWall" type="Node3D" unique_id=854567026]
+script = ExtResource("1_a2nk4")

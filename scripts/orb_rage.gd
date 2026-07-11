@@ -33,5 +33,5 @@ func _on_body_entered(body: Node) -> void:
 		if body.has_method("consume_orb"):
 			if not body.call("consume_orb"):
 				return
-		AudioManager.play_sfx("orb_pickup")
+		AudioManager.play_sfx_channel4("orb_pickup")
 		queue_free()

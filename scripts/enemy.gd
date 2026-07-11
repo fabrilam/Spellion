@@ -12,6 +12,10 @@ extends CharacterBody3D
 var _player: Node3D
 var _attack_cooldown: float = 0.0
 var _alive: bool = true
+
+func is_alive() -> bool:
+	return _alive
+
 var _hp_bar: Control = null
 var _hp_bar_fill: ColorRect = null
 var _hp_bar_label: Label = null
@@ -29,7 +33,12 @@ var _base_speed: float = 1.25
 var _base_vision: float = 7.5
 var _purple_orb_count: int = 0
 var _slow_timer: float = 0.0
-var display_name: String = ""
+@export var display_name: String = ""
+var _anim: AnimationPlayer = null
+var _pain_timer: float = 0.0
+var _model_node: Node3D = null
+var _snap_frames := 0
+var _item_db_cache: Array = []
 
 const MAX_PURPLE_ORBS: int = 10
 const MAX_LEVEL: int = 20
@@ -39,18 +48,34 @@ func _ready() -> void:
 	if level < 1: level = 1
 	if level > MAX_LEVEL: level = MAX_LEVEL
 	_apply_level_stats()
+	_model_node = get_node_or_null("ZombieModel")
+	if not _model_node:
+		_model_node = get_node_or_null("SpiderModel")
+	if not _model_node:
+		_model_node = get_node_or_null("Skeleton3D")
+	if not _model_node:
+		_model_node = get_node_or_null("Demon")
 	_apply_palette()
 	_base_speed = move_speed
 	_base_vision = 15.0
 	_create_hp_bar()
 	add_to_group("enemies")
-	display_name = "Spider"
+	if display_name == "":
+		display_name = "Spider"
+	_anim = get_node_or_null("AnimationPlayer")
+	if _anim and _anim.has_animation("idle_loop"):
+		_anim.play("idle_loop", 0.0)
 
 func _apply_level_stats() -> void:
 	max_hp = 18 + level * 20
 	hp = max_hp
 	attack_damage = 3 + level * 3.8
 	move_speed = 1.15 + level * 0.12
+	if display_name == "Zombie":
+		move_speed *= 0.5
+	if display_name == "Demon":
+		move_speed *= 1.3
+		attack_damage *= 1.5
 	xp_reward = 5 + level * 11
 	var scl = 0.54 + level * 0.08
 	scale = Vector3(scl, scl, scl)
@@ -60,10 +85,9 @@ var _palette_shader: Shader = preload("res://assets/shaders/palette_swap3d.gdsha
 const PAL_MAX_COLORS := 6
 
 func _apply_palette() -> void:
-	var model := get_node_or_null("SpiderModel")
-	if not model:
+	if not _model_node:
 		return
-	_apply_palette_recursive(model)
+	_apply_palette_recursive(_model_node)
 
 func _extract_dominant_colors(tex: Texture2D, max_c: int) -> Array:
 	var img: Image = tex.get_image()
@@ -242,12 +266,25 @@ func apply_rage(dur: float) -> void:
 func _physics_process(delta: float) -> void:
 	if not _alive or not _player:
 		return
+	if not is_instance_valid(_player) or _player.get_collision_layer_value(3) == false:
+		return
+	_snap_frames += 1
+	if _snap_frames < 60:
+		move_and_slide()
+		return
 	if _slow_timer > 0.0:
 		_slow_timer -= delta
 	else:
 		_base_speed = move_speed
 	_attack_cooldown = max(_attack_cooldown - delta, 0.0)
 
+	if _pain_timer > 0.0:
+		_pain_timer -= delta
+		velocity.x = 0.0
+		velocity.z = 0.0
+		velocity.y += -15.0 * delta
+		move_and_slide()
+		return
 	if _rage_timer > 0.0:
 		_rage_timer -= delta
 		if _rage_timer <= 0.0:
@@ -260,18 +297,29 @@ func _physics_process(delta: float) -> void:
 
 	if _attacking:
 		_attack_windup -= delta
+		velocity.x = 0.0
+		velocity.z = 0.0
 		if _attack_windup <= 0.0:
 			_attacking = false
 			if dist < attack_range:
 				_attack_player()
+		velocity.y += -15.0 * delta
+		move_and_slide()
 		return
 
 	if dist < attack_range:
 		_look_at_player()
 		if _attack_cooldown <= 0.0:
 			_attack_cooldown = 1.0
-			_attacking = true
-			_attack_windup = windup_time
+			if _anim and _anim.has_animation("attack"):
+				_anim.play("attack")
+				_attacking = true
+				_attack_windup = _anim.get_animation("attack").length
+			else:
+				_attacking = true
+				_attack_windup = windup_time
+		velocity.y += -15.0 * delta
+		move_and_slide()
 		return
 
 	if dist < vision_range:
@@ -279,7 +327,10 @@ func _physics_process(delta: float) -> void:
 		var dir := (_player.global_position - global_position).normalized()
 		velocity.x = dir.x * current_speed
 		velocity.z = dir.z * current_speed
+		velocity.y += -15.0 * delta
 		move_and_slide()
+		if _anim and _anim.has_animation("walk") and _anim.current_animation != "walk":
+			_anim.play("walk")
 		return
 
 	# Wander when player is far
@@ -294,11 +345,16 @@ func _physics_process(delta: float) -> void:
 		velocity.x = wdir.x * current_speed * 0.5
 		velocity.z = wdir.z * current_speed * 0.5
 		var _s := scale
-		transform.basis = Basis.looking_at(wdir, Vector3.UP)
+		transform.basis = Basis.looking_at(-wdir, Vector3.UP)
 		scale = _s
+		if _anim and _anim.has_animation("walk") and _anim.current_animation != "walk":
+			_anim.play("walk")
 	else:
 		velocity.x = 0.0
 		velocity.z = 0.0
+		if _anim and _anim.has_animation("idle_loop") and _anim.current_animation != "idle_loop":
+			_anim.play("idle_loop")
+	velocity.y += -15.0 * delta
 	move_and_slide()
 
 func _look_at_player() -> void:
@@ -343,7 +399,11 @@ func take_damage(amount: float) -> void:
 	_bar_show_timer = 3.0
 	_update_hp_bar()
 	_update_bar_visibility()
-	AudioManager.play_sfx("enemy_hit")
+	match display_name:
+		"Zombie": AudioManager.play_sfx_random_overlap("zombie_hit")
+		"Spider": AudioManager.play_sfx_random_overlap("spider_hit")
+		"Demon": AudioManager.play_sfx_random_overlap("demon_hit")
+		_: AudioManager.play_sfx_overlap("enemy_hit")
 	_spawn_blood_effects()
 	_spawn_damage_number(amount)
 	var panel = get_tree().get_first_node_in_group("enemy_hp_panel")
@@ -351,6 +411,10 @@ func take_damage(amount: float) -> void:
 		panel.track(self)
 	if hp <= 0.0:
 		_die()
+	elif _anim and _anim.has_animation("hit"):
+		_pain_timer = _anim.get_animation("hit").length
+		_anim.play("hit")
+		velocity = Vector3.ZERO
 
 func _spawn_damage_number(amount: float) -> void:
 	var scene := preload("res://scenes/fx/floating_damage.tscn")
@@ -372,11 +436,52 @@ func _update_hp_bar() -> void:
 
 func _die() -> void:
 	_alive = false
-	AudioManager.play_sfx("enemy_die")
+	velocity.y = 0.0
+	move_and_slide()
+	match display_name:
+		"Zombie": AudioManager.play_sfx_random_overlap("zombie_die")
+		"Spider": AudioManager.play_sfx_random_overlap("spider_die")
+		"Demon": AudioManager.play_sfx_random_overlap("demon_die")
+		_: AudioManager.play_sfx_overlap("enemy_die")
 	_drop_loot()
 	_drop_xp()
 	_remove_hp_bar()
-	queue_free()
+	set_physics_process(false)
+	set_collision_layer_value(1, false)
+	set_collision_layer_value(3, false)
+	set_collision_mask_value(1, false)
+
+	_spawn_blood_puddle()
+
+	if _anim and _anim.has_animation("die"):
+		_anim.play("die")
+		await _anim.animation_finished
+	elif _model_node:
+		var tween := create_tween()
+		tween.set_parallel(true)
+		tween.tween_property(self, "position:y", position.y - 0.3, 1.0)
+		_fade_to_black(tween, _model_node)
+		await tween.finished
+
+func _spawn_blood_puddle() -> void:
+	var puddle = preload("res://scenes/fx/blood_decal.tscn").instantiate()
+	get_parent().add_child(puddle)
+	if puddle.has_method("init"):
+		puddle.call("init", global_position)
+
+func _fade_to_black(tween: Tween, node: Node) -> void:
+	if node is MeshInstance3D:
+		node.set_surface_override_material(0, null)
+		for i in node.mesh.get_surface_count():
+			var mat: Material = node.mesh.surface_get_material(i)
+			if mat is StandardMaterial3D:
+				var copy := StandardMaterial3D.new()
+				copy.albedo_color = mat.albedo_color
+				copy.albedo_texture = mat.albedo_texture
+				node.set_surface_override_material(i, copy)
+				tween.tween_property(copy, "albedo_color", Color.BLACK, 1.0)
+	for child in node.get_children():
+		_fade_to_black(tween, child)
 
 func consume_orb() -> bool:
 	if _purple_orb_count >= MAX_PURPLE_ORBS or level >= MAX_LEVEL:
@@ -389,15 +494,105 @@ func consume_orb() -> bool:
 	return true
 
 func _drop_loot() -> void:
-	var roll := randf()
-	if roll < 0.45:
-		var orb = preload("res://scenes/orb_rage_red.tscn").instantiate()
-		orb.position = global_position
-		get_parent().add_child(orb)
-	elif roll < 0.65:
-		var orb = preload("res://scenes/orb_of_life.tscn").instantiate()
-		orb.position = global_position
-		get_parent().add_child(orb)
+	var kind := randf()
+	if kind < 0.10:
+		_drop_world_potion("lifepotion")
+	elif kind < 0.20:
+		_drop_world_potion("manapotion")
+	elif kind < 0.30:
+		_drop_basic_item()
+	elif kind < 0.95:
+		_drop_generated_item()
+	else:
+		_drop_unique_item()
+
+func _filter_items(rarity: String) -> Array[Dictionary]:
+	var result: Array[Dictionary] = []
+	for entry in _get_item_db():
+		if entry.get("rarity") != rarity:
+			continue
+		var cat: String = entry.get("cat", "")
+		if cat in ["Sword", "Axe", "Mace", "Bow", "Dagger", "Armor", "Headgear", "Shield", "Ring", "Amulet"]:
+			result.append(entry)
+	return result
+
+func _filter_basic_items() -> Array[Dictionary]:
+	var result: Array[Dictionary] = []
+	for entry in _get_item_db():
+		if entry.get("rarity") != "common":
+			continue
+		var cat: String = entry.get("cat", "")
+		if cat in ["Sword", "Axe", "Mace", "Bow", "Dagger", "Armor", "Headgear", "Shield"]:
+			result.append(entry)
+	return result
+
+func _drop_basic_item() -> void:
+	var pool := _filter_basic_items()
+	if pool.is_empty():
+		return
+	var entry: Dictionary = pool[randi() % pool.size()]
+	var item := Item.from_dict(entry)
+	if not item:
+		return
+	print("Dropped: ", item.name)
+	_drop_world_item(item)
+
+func _drop_unique_item() -> void:
+	var pool := _filter_items("unique")
+	if pool.is_empty():
+		return
+	var entry: Dictionary = pool[randi() % pool.size()]
+	var item := Item.from_dict(entry)
+	if not item:
+		return
+	print("Dropped: ", item.name, " (unique)")
+	_drop_world_item(item)
+
+func _drop_generated_item() -> void:
+	var pool := _filter_items("common")
+	if pool.is_empty():
+		return
+	var entry: Dictionary = pool[randi() % pool.size()]
+	var base := Item.from_dict(entry)
+	if not base:
+		return
+	var dungeon_lv: int = 1
+	var dgn := get_tree().root.find_child("Dungeon", true, false)
+	if dgn and dgn.has_method("get_dungeon_level"):
+		dungeon_lv = dgn.call("get_dungeon_level")
+	var rarity := "magic" if randf() < 0.75 else "rare"
+	var gen := ItemGenerator.generate(base, rarity, dungeon_lv)
+	print("Dropped: ", gen.name, " (", gen.rarity, " ", gen.category, ")")
+	_drop_world_item(gen)
+
+func _get_item_db() -> Array:
+	if _item_db_cache.is_empty():
+		var f := FileAccess.open("res://assets/textures/items/_item_data.json", FileAccess.READ)
+		if f:
+			var parsed = JSON.parse_string(f.get_as_text())
+			if parsed is Array:
+				_item_db_cache = parsed
+	return _item_db_cache
+
+func _drop_world_potion(potion_id: String) -> void:
+	var data: Array = _get_item_db()
+	if data.is_empty():
+		return
+	for entry in data:
+		if entry.get("id") == potion_id:
+			var item := Item.from_dict(entry)
+			if not item:
+				return
+			print("Dropped: ", item.name)
+			_drop_world_item(item)
+			return
+
+func _drop_world_item(item: Item) -> void:
+	var pickup := preload("res://scenes/fx/item_pickup.tscn").instantiate()
+	if pickup.has_method("init"):
+		pickup.call("init", item)
+	get_parent().add_child(pickup)
+	pickup.global_position = global_position
 
 func _drop_xp() -> void:
 	var player = _player

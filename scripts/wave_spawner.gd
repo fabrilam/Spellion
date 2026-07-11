@@ -1,6 +1,8 @@
 extends Node3D
 
 @export var enemy_scene: PackedScene = preload("res://scenes/spider.tscn")
+@export var zombie_scene: PackedScene = preload("res://scenes/zombie.tscn")
+@export var demon_scene: PackedScene = preload("res://scenes/demon.tscn")
 @export var super_spider_scene: PackedScene = preload("res://scenes/super_spider.tscn")
 @export var player: Node3D
 @export var scatter_count: int = 0
@@ -35,10 +37,16 @@ func _process(_delta: float) -> void:
 
 func _spawn_scatter() -> void:
 	var forest_center := Vector3(0.0, 0.0, -80.0)
+	var scenes: Array[PackedScene] = [enemy_scene]
+	if zombie_scene:
+		scenes.append(zombie_scene)
+	if demon_scene:
+		scenes.append(demon_scene)
 	for i in scatter_count:
 		var lvl := randi_range(1, 8)
-		var pos := forest_center + Vector3(randf_range(-scatter_radius, scatter_radius), 0.0, randf_range(-scatter_radius, scatter_radius))
-		var enemy := enemy_scene.instantiate()
+		var pos := forest_center + Vector3(randf_range(-scatter_radius, scatter_radius), -0.49, randf_range(-scatter_radius, scatter_radius))
+		var chosen: PackedScene = scenes[randi() % scenes.size()]
+		var enemy: Node = chosen.instantiate()
 		enemy.position = pos
 		add_child(enemy)
 		enemy.init(player, lvl)
@@ -56,7 +64,13 @@ func _spawn_wave() -> void:
 func _spawn_enemy(min_lvl: int, max_lvl: int) -> void:
 	if not enemy_scene or not player:
 		return
-	var enemy := enemy_scene.instantiate()
+	var scenes: Array[PackedScene] = [enemy_scene]
+	if zombie_scene:
+		scenes.append(zombie_scene)
+	if demon_scene:
+		scenes.append(demon_scene)
+	var chosen: PackedScene = scenes[randi() % scenes.size()]
+	var enemy: Node = chosen.instantiate()
 	var lvl := randi_range(min_lvl, max_lvl)
 	var spawn_pos := _random_spawn_position()
 	enemy.position = spawn_pos
@@ -89,8 +103,8 @@ func _random_spawn_position() -> Vector3:
 	if player:
 		var dir := Vector3(randf_range(-1, 1), 0, randf_range(-1, 1)).normalized()
 		var dist := randf_range(10, 25)
-		return player.global_position + dir * dist
-	return Vector3(randf_range(-190, 190), 0, randf_range(-190, 190))
+		return player.global_position + dir * dist + Vector3(0, -0.49, 0)
+	return Vector3(randf_range(-190, 190), -0.49, randf_range(-190, 190))
 
 func clear_super_spider() -> void:
 	for e in _enemies:

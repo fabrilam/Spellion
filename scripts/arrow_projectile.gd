@@ -10,7 +10,7 @@ var _area: Area3D = null
 func _ready() -> void:
 	_area = Area3D.new()
 	_area.name = "Hitbox"
-	_area.collision_mask = 1
+	_area.collision_mask = 5
 	var col := CollisionShape3D.new()
 	col.shape = BoxShape3D.new()
 	col.shape.size = Vector3(0.3, 1.2, 0.3)

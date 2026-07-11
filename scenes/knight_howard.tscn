@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bo3ete6dln2v1"]
+
+[ext_resource type="Script" uid="uid://4atyonf5jb4t" path="res://scripts/player.gd" id="1_script"]
+[ext_resource type="Resource" uid="uid://be8tr02bt62we" path="res://assets/stats/player_default.tres" id="2_stats"]
+[ext_resource type="PackedScene" uid="uid://dnxl24gc80hf0" path="res://scenes/knight_root.tscn" id="3_model"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_knight"]
+radius = 0.4
+height = 1.8
+
+[node name="Howard" type="CharacterBody3D"]
+collision_layer = 4
+script = ExtResource("1_script")
+stats = ExtResource("2_stats")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_knight")
+
+[node name="KnightRoot" parent="." instance=ExtResource("3_model")]
+transform = Transform3D(-1.0, 0, 0, 0, 1.0, 0, 0, 0, -1.0, 0, 0, 0)
+
+[node name="Camera_FPV" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+current = false

@@ -9,7 +9,7 @@ func _ready() -> void:
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
 		_apply_rage_to_all(duration)
-		AudioManager.play_sfx("orb_pickup")
+		AudioManager.play_sfx_channel4("orb_pickup")
 		queue_free()
 
 func _apply_rage_to_all(dur: float) -> void:

@@ -7,3 +7,9 @@
 *.txt
 tools/jira_config.json
 tools/jira*
+
+# Zombie FBX (too large for GitHub)
+assets/models/enemies/zombie/Zombie Idle.fbx
+assets/models/enemies/zombie/Zombie Idle.fbx.import
+assets/models/enemies/zombie/Zombie Idle_*.png
+assets/models/enemies/zombie/Zombie Idle_*.png.import

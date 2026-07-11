@@ -8,7 +8,25 @@ var _tex := [
 	preload("res://assets/textures/fx/decal_5.png"),
 ]
 
-func _ready() -> void:
+func init(world_pos: Vector3) -> void:
+	# Raycast down to find actual floor Y
+	var space := get_world_3d().direct_space_state
+	if space:
+		var q := PhysicsRayQueryParameters3D.new()
+		q.from = world_pos + Vector3.UP * 2.0
+		q.to = world_pos + Vector3.DOWN * 10.0
+		q.collision_mask = 1
+		var r := space.intersect_ray(q)
+		if r:
+			global_position = Vector3(world_pos.x, r.position.y + 0.005, world_pos.z)
+		else:
+			queue_free()
+			return
+	else:
+		global_position = world_pos
+	_start()
+
+func _start() -> void:
 	randomize()
 	var m := $Decal as MeshInstance3D
 	if not m:

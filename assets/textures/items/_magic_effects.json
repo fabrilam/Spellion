@@ -1,0 +1,472 @@
+[
+  {
+    "id": "life_steal",
+    "name": "Life Steal",
+    "desc": "Restores X% of damage dealt as health.",
+    "tags": [
+      "weapon"
+    ],
+    "min_val": 0.02,
+    "max_val": 0.1,
+    "step": 0.01,
+    "prefix": "Vampírica",
+    "suffix": "del Vampiro"
+  },
+  {
+    "id": "mana_steal",
+    "name": "Mana Steal",
+    "desc": "Restores X% of damage dealt as mana.",
+    "tags": [
+      "weapon"
+    ],
+    "min_val": 0.02,
+    "max_val": 0.1,
+    "step": 0.01,
+    "prefix": "Abisal",
+    "suffix": "del Vacío"
+  },
+  {
+    "id": "fire_damage",
+    "name": "Fire Damage",
+    "desc": "Adds X fire damage on hit.",
+    "tags": [
+      "weapon"
+    ],
+    "min_val": 1,
+    "max_val": 15,
+    "step": 1,
+    "prefix": "Flamante",
+    "suffix": "del Fuego"
+  },
+  {
+    "id": "cold_damage",
+    "name": "Cold Damage",
+    "desc": "Adds X cold damage on hit. Slows enemies.",
+    "tags": [
+      "weapon"
+    ],
+    "min_val": 1,
+    "max_val": 12,
+    "step": 1,
+    "prefix": "Glacial",
+    "suffix": "del Hielo"
+  },
+  {
+    "id": "lightning_damage",
+    "name": "Lightning Damage",
+    "desc": "Adds X lightning damage on hit. Chance to stun.",
+    "tags": [
+      "weapon"
+    ],
+    "min_val": 1,
+    "max_val": 10,
+    "step": 1,
+    "prefix": "Tormentosa",
+    "suffix": "del Trueno"
+  },
+  {
+    "id": "poison_damage",
+    "name": "Poison Damage",
+    "desc": "Adds X poison damage over X seconds.",
+    "tags": [
+      "weapon"
+    ],
+    "min_val": 2,
+    "max_val": 20,
+    "step": 2,
+    "prefix": "Venenosa",
+    "suffix": "del Veneno"
+  },
+  {
+    "id": "critical_chance",
+    "name": "Critical Chance",
+    "desc": "+X% chance to deal critical damage.",
+    "tags": [
+      "weapon"
+    ],
+    "min_val": 0.02,
+    "max_val": 0.15,
+    "step": 0.01,
+    "prefix": "Certera",
+    "suffix": "del Crítico"
+  },
+  {
+    "id": "attack_speed",
+    "name": "Attack Speed",
+    "desc": "+X% attack speed.",
+    "tags": [
+      "weapon"
+    ],
+    "min_val": 0.03,
+    "max_val": 0.15,
+    "step": 0.01,
+    "prefix": "Veloz",
+    "suffix": "del Viento"
+  },
+  {
+    "id": "knockback",
+    "name": "Knockback",
+    "desc": "X% chance to knock enemies back on hit.",
+    "tags": [
+      "weapon"
+    ],
+    "min_val": 0.1,
+    "max_val": 0.5,
+    "step": 0.05,
+    "prefix": "Atronadora",
+    "suffix": "del Impacto"
+  },
+  {
+    "id": "splash",
+    "name": "Splash",
+    "desc": "Damage splashes to nearby enemies.",
+    "tags": [
+      "weapon"
+    ],
+    "min_val": 1,
+    "max_val": 3,
+    "step": 1,
+    "prefix": "Fragmentada",
+    "suffix": "de la Metralla"
+  },
+  {
+    "id": "pierce",
+    "name": "Pierce",
+    "desc": "Projectiles pierce through enemies.",
+    "tags": [
+      "bow"
+    ],
+    "min_val": 1,
+    "max_val": 3,
+    "step": 1,
+    "prefix": "Perforante",
+    "suffix": "del Taladro"
+  },
+  {
+    "id": "life_on_kill",
+    "name": "Life on Kill",
+    "desc": "Restores X health on enemy kill.",
+    "tags": [
+      "weapon"
+    ],
+    "min_val": 5,
+    "max_val": 50,
+    "step": 5,
+    "prefix": "Asesina",
+    "suffix": "de la Muerte"
+  },
+  {
+    "id": "defense",
+    "name": "Defense",
+    "desc": "+X defense.",
+    "tags": [
+      "armor",
+      "shield",
+      "headgear"
+    ],
+    "min_val": 2,
+    "max_val": 20,
+    "step": 2,
+    "prefix": "Fortificada",
+    "suffix": "del Muro"
+  },
+  {
+    "id": "fire_resist",
+    "name": "Fire Resistance",
+    "desc": "+X% fire resistance.",
+    "tags": [
+      "armor",
+      "shield",
+      "headgear",
+      "ring",
+      "amulet"
+    ],
+    "min_val": 0.05,
+    "max_val": 0.3,
+    "step": 0.05,
+    "prefix": "Ignífuga",
+    "suffix": "de las Llamas"
+  },
+  {
+    "id": "cold_resist",
+    "name": "Cold Resistance",
+    "desc": "+X% cold resistance.",
+    "tags": [
+      "armor",
+      "shield",
+      "headgear",
+      "ring",
+      "amulet"
+    ],
+    "min_val": 0.05,
+    "max_val": 0.3,
+    "step": 0.05,
+    "prefix": "Invernal",
+    "suffix": "de la Escarcha"
+  },
+  {
+    "id": "lightning_resist",
+    "name": "Lightning Resistance",
+    "desc": "+X% lightning resistance.",
+    "tags": [
+      "armor",
+      "shield",
+      "headgear",
+      "ring",
+      "amulet"
+    ],
+    "min_val": 0.05,
+    "max_val": 0.3,
+    "step": 0.05,
+    "prefix": "Aislante",
+    "suffix": "del Rayo"
+  },
+  {
+    "id": "poison_resist",
+    "name": "Poison Resistance",
+    "desc": "+X% poison resistance.",
+    "tags": [
+      "armor",
+      "shield",
+      "headgear",
+      "ring",
+      "amulet"
+    ],
+    "min_val": 0.05,
+    "max_val": 0.3,
+    "step": 0.05,
+    "prefix": "Purificada",
+    "suffix": "del Antídoto"
+  },
+  {
+    "id": "max_hp",
+    "name": "Maximum Health",
+    "desc": "+X maximum health.",
+    "tags": [
+      "armor",
+      "shield",
+      "headgear",
+      "ring",
+      "amulet"
+    ],
+    "min_val": 10,
+    "max_val": 100,
+    "step": 10,
+    "prefix": "Vigorosa",
+    "suffix": "de la Salud"
+  },
+  {
+    "id": "hp_regen",
+    "name": "Health Regeneration",
+    "desc": "+X health per second.",
+    "tags": [
+      "armor",
+      "ring",
+      "amulet"
+    ],
+    "min_val": 0.5,
+    "max_val": 5.0,
+    "step": 0.5,
+    "prefix": "Regenerativa",
+    "suffix": "de la Vida"
+  },
+  {
+    "id": "mana_regen",
+    "name": "Mana Regeneration",
+    "desc": "+X mana per second.",
+    "tags": [
+      "armor",
+      "ring",
+      "amulet"
+    ],
+    "min_val": 0.5,
+    "max_val": 5.0,
+    "step": 0.5,
+    "prefix": "Arcana",
+    "suffix": "del Maná"
+  },
+  {
+    "id": "thorns",
+    "name": "Thorns",
+    "desc": "Reflects X damage back to attacker.",
+    "tags": [
+      "armor",
+      "shield"
+    ],
+    "min_val": 3,
+    "max_val": 25,
+    "step": 2,
+    "prefix": "Punzante",
+    "suffix": "de las Espinas"
+  },
+  {
+    "id": "movement_speed",
+    "name": "Movement Speed",
+    "desc": "+X% movement speed.",
+    "tags": [
+      "boots",
+      "ring",
+      "amulet"
+    ],
+    "min_val": 0.05,
+    "max_val": 0.2,
+    "step": 0.05,
+    "prefix": "Fugaz",
+    "suffix": "del Errante"
+  },
+  {
+    "id": "magic_find",
+    "name": "Magic Find",
+    "desc": "+X% chance of better magic items.",
+    "tags": [
+      "ring",
+      "amulet",
+      "headgear"
+    ],
+    "min_val": 0.05,
+    "max_val": 0.3,
+    "step": 0.05,
+    "prefix": "Afortunada",
+    "suffix": "de la Fortuna"
+  },
+  {
+    "id": "gold_find",
+    "name": "Gold Find",
+    "desc": "+X% more gold from enemies.",
+    "tags": [
+      "ring",
+      "amulet",
+      "headgear"
+    ],
+    "min_val": 0.1,
+    "max_val": 0.5,
+    "step": 0.1,
+    "prefix": "Avariciosa",
+    "suffix": "del Oro"
+  },
+  {
+    "id": "spell_damage",
+    "name": "Spell Damage",
+    "desc": "+X spell damage.",
+    "tags": [
+      "weapon",
+      "ring",
+      "amulet"
+    ],
+    "prefix": "Arcano",
+    "suffix": "del Mago",
+    "min_val": 2,
+    "max_val": 20,
+    "step": 2
+  },
+  {
+    "id": "max_mana",
+    "name": "Maximum Mana",
+    "desc": "+X maximum mana.",
+    "tags": [
+      "armor",
+      "ring",
+      "amulet",
+      "headgear"
+    ],
+    "prefix": "Manático",
+    "suffix": "del Maná",
+    "min_val": 10,
+    "max_val": 80,
+    "step": 10
+  },
+  {
+    "id": "magic_resist",
+    "name": "Magic Resistance",
+    "desc": "+X% magic resistance.",
+    "tags": [
+      "armor",
+      "shield",
+      "headgear",
+      "ring",
+      "amulet"
+    ],
+    "prefix": "Etéreo",
+    "suffix": "de la Magia",
+    "min_val": 0.05,
+    "max_val": 0.3,
+    "step": 0.05
+  },
+  {
+    "id": "all_resist",
+    "name": "All Resistance",
+    "desc": "+X% resistance to all elements.",
+    "tags": [
+      "armor",
+      "shield",
+      "headgear",
+      "ring",
+      "amulet"
+    ],
+    "prefix": "Prístino",
+    "suffix": "de la Protección",
+    "min_val": 0.03,
+    "max_val": 0.15,
+    "step": 0.03
+  },
+  {
+    "id": "stat_strength",
+    "name": "Strength",
+    "desc": "+X strength.",
+    "tags": [
+      "armor",
+      "ring",
+      "amulet"
+    ],
+    "prefix": "Férreo",
+    "suffix": "de la Fuerza",
+    "min_val": 1,
+    "max_val": 8,
+    "step": 1
+  },
+  {
+    "id": "stat_agility",
+    "name": "Agility",
+    "desc": "+X agility.",
+    "tags": [
+      "armor",
+      "ring",
+      "amulet"
+    ],
+    "prefix": "Sutil",
+    "suffix": "de la Agilidad",
+    "min_val": 1,
+    "max_val": 8,
+    "step": 1
+  },
+  {
+    "id": "stat_intelligence",
+    "name": "Intelligence",
+    "desc": "+X intelligence.",
+    "tags": [
+      "armor",
+      "ring",
+      "amulet"
+    ],
+    "prefix": "Sabio",
+    "suffix": "de la Sabiduría",
+    "min_val": 1,
+    "max_val": 8,
+    "step": 1
+  },
+  {
+    "id": "stat_vitality",
+    "name": "Vitality",
+    "desc": "+X vitality.",
+    "tags": [
+      "armor",
+      "ring",
+      "amulet"
+    ],
+    "prefix": "Robusto",
+    "suffix": "de la Vitalidad",
+    "min_val": 1,
+    "max_val": 8,
+    "step": 1
+  }
+]

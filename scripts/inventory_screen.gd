@@ -13,6 +13,11 @@ var _slot_map: Dictionary = {}
 var _grid_cells: Array = []
 var _grid_rect: Rect2 = Rect2()
 var _default_cell_size: Vector2 = Vector2(24, 24)
+var _world_drag: bool = false
+var _just_dropped := false
+
+var _open_hand := preload("res://assets/textures/ui/openhand.png")
+var _closed_hand := preload("res://assets/textures/ui/closedhand.png")
 
 @onready var panel: Control = $Panel
 @onready var drag_texture: TextureRect = $DragItem
@@ -116,17 +121,19 @@ func _setup() -> void:
 		var ey: int = entry["y"]
 		var idx: int = entry["idx"]
 		if ey < 60 and ex > 180:
-			_slot_map[idx] = Inventory.EquipSlot.RING_1
+			_slot_map[idx] = Inventory.EquipSlot.AMULET
 		elif ey < 60:
 			_slot_map[idx] = Inventory.EquipSlot.HEAD
 		elif ey > 150 and ex < 100:
-			_slot_map[idx] = Inventory.EquipSlot.RING_2
+			_slot_map[idx] = Inventory.EquipSlot.RING_1
 		elif ey > 150:
-			_slot_map[idx] = Inventory.EquipSlot.AMULET
+			_slot_map[idx] = Inventory.EquipSlot.RING_2
 		elif ex < 100:
 			_slot_map[idx] = Inventory.EquipSlot.RIGHT_HAND
-		else:
+		elif ex > 200:
 			_slot_map[idx] = Inventory.EquipSlot.LEFT_HAND
+		else:
+			_slot_map[idx] = Inventory.EquipSlot.TORSO
 
 	refresh()
 
@@ -230,26 +237,68 @@ func toggle() -> void:
 		_update_item_visual()
 	else:
 		if _drag_item:
+			if _world_drag:
+				_drop_to_world(_drag_item)
+				_world_drag = false
 			_cancel_drag()
+
+func start_world_drag(item: Item) -> void:
+	_drag_item = item
+	_drag_origin = Vector2i(-1, -1)
+	_drag_from_equip = -1
+	_world_drag = true
+	_show_drag(item)
 
 func _show_tooltip(item: Item) -> void:
 	if not item:
 		_hide_tooltip()
 		return
 	tooltip_name.text = item.name
+	tooltip_name.add_theme_font_size_override("font_size", 18)
+	match item.rarity:
+		"magic": tooltip_name.add_theme_color_override("font_color", Color(0.3, 0.5, 1.0))
+		"rare": tooltip_name.add_theme_color_override("font_color", Color(1.0, 0.85, 0.15))
+		"unique":
+			tooltip_name.add_theme_color_override("font_color", Color(1.0, 0.85, 0.15))
+			var ls := LabelSettings.new()
+			ls.outline_color = Color.RED
+			ls.outline_size = 2
+			tooltip_name.label_settings = ls
 	var cat: String = item.category
 	var desc: String = item.description
 	tooltip_desc.text = cat + "\n" + desc
+	tooltip_desc.add_theme_font_size_override("font_size", 14)
 	var stats_text: String = ""
-	if item.stats.has("min_damage"):
-		var dmg_min: int = item.stats.min_damage
-		var dmg_max: int = item.stats.max_damage
+	if item.stats.has("min_dmg"):
+		var dmg_min: int = item.stats.min_dmg
+		var dmg_max: int = item.stats.max_dmg
 		stats_text += "Damage: %d-%d" % [dmg_min, dmg_max]
+		if item.stats.has("atk_spd"):
+			var spd: float = item.stats.atk_spd
+			var pct: int = int(spd * 100)
+			stats_text += "\nSpeed: %+d%%" % pct
 	if item.stats.has("defense"):
 		stats_text += "\nDefense: %d" % item.stats.defense
+	for fx in item.effects:
+		var ftype: String = fx.get("type", "")
+		var fname: String = fx.get("name", ftype)
+		var fval = fx.get("val", 0)
+		var is_extra: bool = fx.get("extra", false)
+		if ftype == "life_steal":
+			stats_text += "\n%+d%% %s" % [int(fval * 100), fname]
+		elif ftype in ["critical_chance", "attack_speed", "magic_find", "gold_find",
+			"fire_resist", "cold_resist", "lightning_resist", "poison_resist"]:
+			stats_text += "\n%+d%% %s" % [int(fval * 100), fname]
+		elif ftype in ["fire_damage", "cold_damage", "lightning_damage", "poison_damage"]:
+			stats_text += "\n%+d %s" % [int(fval), fname]
+		elif ftype in ["defense", "max_hp"]:
+			stats_text += "\n%+d %s" % [int(fval), fname]
+		else:
+			stats_text += "\n%s: %.1f" % [fname, fval]
 	tooltip_stats.text = stats_text
+	tooltip_stats.add_theme_font_size_override("font_size", 14)
 	tooltip.visible = true
-	tooltip.size = Vector2(200, 80)
+	tooltip.size = Vector2(240, 120)
 	_update_tooltip_pos()
 
 func _hide_tooltip() -> void:
@@ -264,6 +313,8 @@ func _update_tooltip_pos() -> void:
 		tooltip.global_position.x = mp.x - tooltip.size.x - 5
 
 func _process(_delta: float) -> void:
+	if _just_dropped:
+		_just_dropped = false
 	if not visible or not _inventory:
 		return
 	if _drag_item and drag_texture.visible:
@@ -273,9 +324,18 @@ func _process(_delta: float) -> void:
 	_update_highlight(mpos)
 
 	var hovered_item: Item = _get_hovered_item(mpos)
-	if hovered_item:
-		_show_tooltip(hovered_item)
+	var world_item_hovered := false
+	var p := get_tree().get_first_node_in_group("player")
+	if p and p.has_method("is_hovering_item") and p.is_hovering_item():
+		world_item_hovered = true
+	if _drag_item and drag_texture.visible:
+		Input.set_custom_mouse_cursor(_closed_hand, Input.CURSOR_ARROW, Vector2(9, 20))
+	elif hovered_item or world_item_hovered:
+		if hovered_item:
+			_show_tooltip(hovered_item)
+		Input.set_custom_mouse_cursor(_open_hand, Input.CURSOR_ARROW, Vector2(9, 20))
 	else:
+		Input.set_custom_mouse_cursor(null, Input.CURSOR_ARROW)
 		_hide_tooltip()
 
 func _update_highlight(mpos: Vector2) -> void:
@@ -283,6 +343,20 @@ func _update_highlight(mpos: Vector2) -> void:
 		highlight.visible = false
 		return
 
+	# Check equip slots first
+	var idx := _find_slot(mpos)
+	if idx >= 0 and _slot_nodes[idx]["type"] == "equip":
+		var eslot: int = _slot_map.get(idx, -1)
+		if eslot >= 0:
+			var allowed: Array = Inventory.EQUIP_SLOT_CATEGORIES.get(eslot, [])
+			if _drag_item.category in allowed:
+				var sn: Dictionary = _slot_nodes[idx]
+				highlight.position = sn["rect"].position
+				highlight.size = sn["rect"].size
+				highlight.visible = true
+				return
+
+	# Fall back to grid
 	var best := best_origin(mpos, _drag_item.grid_width, _drag_item.grid_height)
 	if best.x >= 0:
 		var fp := footprint_rect(best.x, best.y, _drag_item.grid_width, _drag_item.grid_height)
@@ -312,12 +386,45 @@ func _get_hovered_item(mpos: Vector2) -> Item:
 func _input(event: InputEvent) -> void:
 	if not visible or not _inventory:
 		return
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseButton and event.pressed:
 		var mpos: Vector2 = panel.get_local_mouse_position()
-		if _drag_item:
-			_place_item(mpos)
-		else:
-			_pick_item(mpos)
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if _drag_item:
+				_place_item(mpos)
+			else:
+				_pick_item(mpos)
+		elif event.button_index == MOUSE_BUTTON_RIGHT:
+			_use_item(mpos)
+
+func _use_item(mpos: Vector2) -> void:
+	var item := _get_hovered_item(mpos)
+	if not item or item.category != "Potion":
+		return
+	var hp: float = item.stats.get("hp_restore", 0.0)
+	var mp: float = item.stats.get("mp_restore", 0.0)
+	if hp <= 0 and mp <= 0:
+		return
+	var p := get_tree().get_first_node_in_group("player")
+	if not p:
+		return
+	# Remove item immediately
+	_inventory.remove_item(item)
+	refresh()
+	AudioManager.play_sfx_channel4("potion_drink")
+	# Apply heal over time
+	var st: Stats = p.stats
+	if hp > 0:
+		var per_tick: float = hp / 30.0
+		for _t in range(30):
+			await get_tree().create_timer(0.1).timeout
+			st.heal(per_tick)
+	if mp > 0:
+		var per_tick: float = mp / 30.0
+		for _t in range(30):
+			await get_tree().create_timer(0.1).timeout
+			var mana_needed := st.get_max_mana() - st.mana
+			if mana_needed > 0:
+				st.mana = min(st.mana + per_tick, st.get_max_mana())
 
 func _find_slot(mpos: Vector2) -> int:
 	for i in _slot_nodes:
@@ -369,15 +476,20 @@ func _place_item(mpos: Vector2) -> void:
 	var idx := _find_slot(mpos)
 	if idx >= 0 and _slot_nodes[idx]["type"] == "equip":
 		var eslot: int = _slot_map.get(idx, -1)
+		print("equip: idx=", idx, " eslot=", eslot, " cat=", _drag_item.category)
 		if eslot >= 0:
 			var allowed: Array = Inventory.EQUIP_SLOT_CATEGORIES.get(eslot, [])
+			print("  allowed cat=", allowed)
 			if _drag_item.category in allowed:
 				var old: Item = _inventory.unequip(eslot)
 				_inventory.equip(_drag_item, eslot)
+				AudioManager.play_sfx_channel4(Item.drop_sound(_drag_item))
 				if old and not _inventory.add_item(old):
 					_drop_to_world(old)
 				_cancel_drag()
 				return
+		else:
+			print("  FAIL: eslot < 0")
 
 	var gpos := best_origin(mpos, _drag_item.grid_width, _drag_item.grid_height)
 	if gpos.x >= 0:
@@ -400,15 +512,21 @@ func _place_item(mpos: Vector2) -> void:
 		else:
 			if _inventory._has_room(_drag_item, gpos.x, gpos.y):
 				_inventory._place(_drag_item, gpos.x, gpos.y)
+				AudioManager.play_sfx_channel4(Item.drop_sound(_drag_item))
 				_cancel_drag()
 				return
 
 	if _drag_from_equip >= 0:
 		_inventory.equip(_drag_item, _drag_from_equip)
+		AudioManager.play_sfx_channel4(Item.drop_sound(_drag_item))
 	elif _drag_origin.x >= 0:
 		_inventory._place(_drag_item, _drag_origin.x, _drag_origin.y)
+		AudioManager.play_sfx_channel4(Item.drop_sound(_drag_item))
+	elif _world_drag:
+		_drop_to_world(_drag_item)
 	else:
 		_inventory.add_item(_drag_item)
+		AudioManager.play_sfx_channel4(Item.drop_sound(_drag_item))
 	_cancel_drag()
 
 func _show_drag(item: Item) -> void:
@@ -422,15 +540,23 @@ func _show_drag(item: Item) -> void:
 	_update_drag_pos()
 
 func _update_drag_pos() -> void:
-	drag_texture.global_position = _mouse_pos() - Vector2(18, 18)
+	drag_texture.global_position = _mouse_pos() - drag_texture.size * 0.5
 
 func _cancel_drag() -> void:
 	_drag_item = null
 	_drag_origin = Vector2i(-1, -1)
 	_drag_from_equip = -1
+	_world_drag = false
+	_just_dropped = true
 	drag_texture.visible = false
 	highlight.visible = false
 	_update_item_visual()
+
+func is_dragging() -> bool:
+	return _drag_item != null
+
+func is_just_dropped() -> bool:
+	return _just_dropped
 
 func _grid_cell_at(mpos: Vector2) -> Vector2i:
 	for gy in Inventory.GRID_ROWS:
@@ -446,9 +572,27 @@ func _drop_to_world(item: Item) -> void:
 	if world_node.has_method("init"):
 		world_node.call("init", item)
 	get_tree().current_scene.add_child(world_node)
-	if _player:
-		var dir := Vector3(randf_range(-1, 1), 0, randf_range(-1, 1)).normalized()
-		var ground_y := -0.49
-		if _player.global_position.z > 0.0:
-			ground_y = 0.2
-		world_node.global_position = Vector3(_player.global_position.x + dir.x * 2.0, ground_y, _player.global_position.z + dir.z * 2.0)
+	AudioManager.play_sfx_channel4(Item.drop_sound(item))
+	var cam: Camera3D = get_viewport().get_camera_3d()
+	if cam and _player:
+		var from: Vector3 = cam.project_ray_origin(get_viewport().get_mouse_position())
+		var dir: Vector3 = cam.project_ray_normal(get_viewport().get_mouse_position())
+		var space: PhysicsDirectSpaceState3D = _player.get_world_3d().direct_space_state
+		if space:
+			var q := PhysicsRayQueryParameters3D.new()
+			q.from = from
+			q.to = from + dir * 100.0
+			q.collision_mask = 1
+			var r: Dictionary = space.intersect_ray(q)
+			if r:
+				var dist: float = r.position.distance_to(_player.global_position)
+				var pos: Vector3 = r.position
+				if dist > 5.0:
+					var dir_to_player: Vector3 = (pos - _player.global_position).normalized()
+					pos = _player.global_position + dir_to_player * 5.0
+				world_node.global_position = pos
+				return
+	# Fallback
+	var fdir: Vector3 = Vector3(randf_range(-1, 1), 0, randf_range(-1, 1)).normalized()
+	world_node.global_position = _player.global_position + fdir * 2.0
+	world_node.global_position.y += -0.49

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c1x8xhceyf8m3"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_trail"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.6)
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 1.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_trail"]
+size = Vector3(0.55, 0.02, 0.02)
+
+[node name="SwordTrail" type="Node3D" unique_id=1696702734]
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1684590545]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.27865887, 0)
+material_override = SubResource("Mat_trail")
+mesh = SubResource("BoxMesh_trail")

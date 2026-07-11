@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://blk1ttjaqvqyg"]
+
+[ext_resource type="Texture2D" uid="uid://cbkm3wjmwa406" path="res://assets/textures/items/sword_standard.png" id="1_2chv5"]
+
+[node name="WeaponSprite" type="Node3D" unique_id=406286167]
+transform = Transform3D(1, 0, 2.9802322e-08, -2.9802322e-08, 1.0000002, 0, -5.9604645e-08, -2.9802322e-08, 1, 0, 0, 0)
+
+[node name="WeaponSpriteGraphic" type="Sprite3D" parent="." unique_id=187257239]
+transform = Transform3D(-4.371139e-08, -2.9802319e-08, 0.99999994, -2.9802315e-08, 1.0000001, 2.9802314e-08, -1, -2.9802319e-08, -4.3711385e-08, -2.6392048e-16, 0.29714805, 8.855702e-09)
+texture = ExtResource("1_2chv5")

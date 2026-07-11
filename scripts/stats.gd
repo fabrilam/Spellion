@@ -36,18 +36,35 @@ var _attack_speed: float = 0.0
 var _attack_speed_mod: float = 0.0
 var _bow_speed_bonus: float = 0.0
 var _hp_regen_add: float = 0.0
+var _equip_defense: float = 0.0
+
+var _bonus_hp_regen: float = 0.0
+var _bonus_mana_regen: float = 0.0
+var _bonus_max_hp: float = 0.0
+var _bonus_max_mana: float = 0.0
+var _bonus_speed: float = 0.0
+var _bonus_crit: float = 0.0
+var _bonus_spell_damage: float = 0.0
+var _bonus_str: int = 0
+var _bonus_agi: int = 0
+var _bonus_int: int = 0
+var _bonus_vit: int = 0
 
 func _update_derived() -> void:
-	_max_hp = 80.0 + vitality * 10.0
-	_max_mana = 20.0 + intelligence * 5.0
-	_dmg_min = _item_dmg_min + strength * _item_str_scale_min + agility * _item_dex_scale_min
-	_dmg_max = _item_dmg_max + strength * _item_str_scale_max + agility * _item_dex_scale_max
-	_spell_damage = 8.0 + intelligence * 1.5
-	_mana_regen = 2.0 + intelligence * 0.5
-	_hp_regen = vitality * 0.02 + _hp_regen_add
-	_speed = 2.75 + agility * 0.05
-	_crit_chance = 0.05 + agility * 0.005
-	_defense = vitality * 1.5
+	var total_str := strength + _bonus_str
+	var total_agi := agility + _bonus_agi
+	var total_int := intelligence + _bonus_int
+	var total_vit := vitality + _bonus_vit
+	_max_hp = 80.0 + total_vit * 10.0 + _bonus_max_hp
+	_max_mana = 20.0 + total_int * 5.0 + _bonus_max_mana
+	_dmg_min = _item_dmg_min + total_str * _item_str_scale_min + total_agi * _item_dex_scale_min
+	_dmg_max = _item_dmg_max + total_str * _item_str_scale_max + total_agi * _item_dex_scale_max
+	_spell_damage = 8.0 + total_int * 1.5 + _bonus_spell_damage
+	_mana_regen = 0.5 + total_int * 0.1 + _bonus_mana_regen
+	_hp_regen = total_vit * 0.02 + _hp_regen_add + _bonus_hp_regen
+	_speed = 2.75 + total_agi * 0.05 + _bonus_speed
+	_crit_chance = 0.05 + total_agi * 0.005 + _bonus_crit
+	_defense = total_vit * 1.5
 	_attack_speed = 3.0 + agility * 0.015 + _attack_speed_mod + _bow_speed_bonus
 	if hp > _max_hp: hp = _max_hp
 	if mana > _max_mana: mana = _max_mana
@@ -86,8 +103,25 @@ func get_mana_regen() -> float: _update_derived() if _mana_regen == 0.0 else nul
 func get_hp_regen() -> float: _update_derived() if _hp_regen == 0.0 and _hp_regen_add == 0.0 else null; return _hp_regen
 func get_speed() -> float: _update_derived() if _speed == 0.0 else null; return _speed
 func get_crit_chance() -> float: _update_derived() if _crit_chance == 0.0 else null; return _crit_chance
-func get_defense() -> float: _update_derived() if _defense == 0.0 else null; return _defense
+func get_defense() -> float: _update_derived() if _defense == 0.0 else null; return _defense + _equip_defense
 func get_attack_speed() -> float: return _attack_speed if _attack_speed > 0 else 1.0
+
+func set_equip_defense(val: float) -> void:
+	_equip_defense = val
+
+func set_equip_bonus(bonus: Dictionary) -> void:
+	_bonus_hp_regen = bonus.get("hp_regen", 0.0)
+	_bonus_mana_regen = bonus.get("mana_regen", 0.0)
+	_bonus_max_hp = bonus.get("max_hp", 0.0)
+	_bonus_max_mana = bonus.get("max_mana", 0.0)
+	_bonus_speed = bonus.get("movement_speed", 0.0)
+	_bonus_crit = bonus.get("critical_chance", 0.0)
+	_bonus_spell_damage = bonus.get("spell_damage", 0.0)
+	_bonus_str = int(bonus.get("stat_strength", 0))
+	_bonus_agi = int(bonus.get("stat_agility", 0))
+	_bonus_int = int(bonus.get("stat_intelligence", 0))
+	_bonus_vit = int(bonus.get("stat_vitality", 0))
+	_update_derived()
 
 func set_item_melee_damage(min_val: float, max_val: float, s_min: float = 0.15, s_max: float = 0.3, d_min: float = 0.0, d_max: float = 0.0) -> void:
 	_item_dmg_min = min_val
@@ -144,7 +178,7 @@ func add_xp(amount: float) -> bool:
 		hp = get_max_hp()
 		mana = get_max_mana()
 		xp_changed.emit(xp, xp_to_next)
-		AudioManager.play_sfx("levelup")
+		AudioManager.play_sfx_channel4("levelup")
 		return true
 	xp_changed.emit(xp, xp_to_next)
 	return false

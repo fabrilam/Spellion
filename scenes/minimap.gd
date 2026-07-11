@@ -64,6 +64,8 @@ func _draw() -> void:
 	for enemy in get_tree().get_nodes_in_group("enemies"):
 		if not is_instance_valid(enemy):
 			continue
+		if enemy.has_method("is_alive") and not enemy.call("is_alive"):
+			continue
 		var rel: Vector3 = enemy.global_position - _player.global_position
 		var sp: Vector2 = center + Vector2(rel.x * scale_f, rel.z * scale_f)
 		if sp.x >= 0 and sp.x <= map_size and sp.y >= 0 and sp.y <= map_size:

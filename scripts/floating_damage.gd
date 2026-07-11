@@ -15,7 +15,7 @@ func init(amount: float, world_pos: Vector3) -> void:
 	var label = $Label as Label
 	if not label:
 		return
-	label.text = str(ceil(amount))
+	label.text = str(roundi(amount))
 	offset = screen_pos
 	var tween := create_tween()
 	tween.set_parallel(true)

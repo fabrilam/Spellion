@@ -3,22 +3,25 @@
 [ext_resource type="Script" uid="uid://clbbdesslsb6w" path="res://scripts/camera_rig.gd" id="1_ig7tw"]
 [ext_resource type="PlaneMesh" uid="uid://1d6ep8r7oldr" path="res://assets/meshes/floor_400.tres" id="2_60kde"]
 [ext_resource type="Environment" uid="uid://0ohst2r0tf21" path="res://assets/env/forest_env.tres" id="3_venvi"]
-[ext_resource type="PackedScene" uid="uid://bqekei4v82bce" path="res://scenes/howard.tscn" id="4_howard"]
+[ext_resource type="PackedScene" uid="uid://bo3ete6dln2v1" path="res://scenes/knight_howard.tscn" id="4_howard"]
 [ext_resource type="Material" uid="uid://ce0s7rkvxn1yl" path="res://assets/textures/floor/floor_grass_material.tres" id="5_floor_mat"]
 [ext_resource type="Script" uid="uid://cyg0dyw8a8fnj" path="res://scripts/wave_spawner.gd" id="6_spawner"]
 [ext_resource type="PackedScene" uid="uid://dikuvi1qxt3wh" path="res://scenes/hud.tscn" id="7_hud"]
 [ext_resource type="PackedScene" uid="uid://d0d7rjymd7xn6" path="res://scenes/stats_screen.tscn" id="9_stats"]
 [ext_resource type="Script" uid="uid://cdr206usxicj8" path="res://scripts/forest_scatter.gd" id="10_forest"]
-[ext_resource type="PackedScene" uid="uid://bheq2fmkfkct6" path="res://scenes/minimap.tscn" id="11_minimap"]
+[ext_resource type="PackedScene" path="res://scenes/minimap.tscn" id="11_minimap"]
 [ext_resource type="Script" uid="uid://dfk5477mh5g4r" path="res://scripts/orb_sky_spawner.gd" id="12_dg77c"]
-[ext_resource type="PackedScene" uid="uid://dmhqodj6kxrci" path="res://scenes/inventory_screen.tscn" id="12_inv"]
+[ext_resource type="PackedScene" path="res://scenes/inventory_screen.tscn" id="12_inv"]
 [ext_resource type="PackedScene" uid="uid://i03ay0pqo6gn" path="res://scenes/enemy_hp_panel.tscn" id="13_hp"]
 [ext_resource type="Script" uid="uid://bdwhddmlralrn" path="res://scripts/dungeon/dungeon_visualizer.gd" id="14_w48qg"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_w48qg"]
+data = PackedVector3Array(200, 0, 200, -200, 0, 200, 200, 0, -200, -200, 0, 200, -200, 0, -200, 200, 0, -200)
 
 [node name="Main" type="Node3D" unique_id=1026970952]
 
 [node name="CameraRig" type="Marker3D" parent="." unique_id=1097307975]
-transform = Transform3D(1, 0, 0, 0, 0.57357645, 0.81915206, 0, -0.81915206, 0.57357645, 0, 28, 20)
+transform = Transform3D(1, 0, 0, 0, 0.57357645, 0.81915206, 0, -0.81915206, 0.57357645, 0, 20, 14)
 script = ExtResource("1_ig7tw")
 target = NodePath("../Howard")
 follow_speed = 10.0
@@ -38,6 +41,11 @@ light_energy = 1.2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 material_override = ExtResource("5_floor_mat")
 mesh = ExtResource("2_60kde")
+
+[node name="FloorCollision" type="StaticBody3D" parent="Floor" unique_id=2112974938]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/FloorCollision" unique_id=38083607]
+shape = SubResource("ConcavePolygonShape3D_w48qg")
 
 [node name="Howard" parent="." unique_id=1730466666 instance=ExtResource("4_howard")]
 

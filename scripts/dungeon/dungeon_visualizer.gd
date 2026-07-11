@@ -171,6 +171,25 @@ func _build_meshes() -> void:
 	col_body.add_to_group("dungeon_wall")
 	add_child(col_body)
 
+	# Floor collision (one StaticBody3D with shapes for each floor tile)
+	var floor_col := StaticBody3D.new()
+	floor_col.name = "FloorCollision"
+	for y in range(_grid_h):
+		for x in range(_grid_w):
+			var tile_type: int = _grid[y][x]
+			if tile_type == DungeonTiles.TileType.VOID:
+				continue
+			var px: float = x * 2.0 - _grid_w * 0.5 * 2.0
+			var pz: float = y * 2.0 + 20.0
+			var sh := CollisionShape3D.new()
+			var box := BoxShape3D.new()
+			box.size = Vector3(2.0, 0.2, 2.0)
+			sh.shape = box
+			sh.position = Vector3(px, 0.1, pz)
+			floor_col.add_child(sh)
+	floor_col.collision_layer = 1
+	add_child(floor_col)
+
 	_add_lights()
 	_add_goal_tile()
 	_add_exit_marker()
@@ -308,18 +327,60 @@ func _add_lights() -> void:
 func _add_exit_marker() -> void:
 	var stair_mat := StandardMaterial3D.new()
 	stair_mat.albedo_color = Color(0.4, 0.35, 0.3)
+	# Existing visual steps
 	var step1 := MeshInstance3D.new()
 	step1.mesh = BoxMesh.new()
 	step1.mesh.size = Vector3(1.5, 0.1, 0.6)
 	step1.material_override = stair_mat
-	step1.position = _spawn_pos + Vector3(-0.3, 0.05, 0.0)
+	step1.position = _spawn_pos + Vector3(-0.3, 0.05, -0.75)
 	add_child(step1)
 	var step2 := MeshInstance3D.new()
 	step2.mesh = BoxMesh.new()
 	step2.mesh.size = Vector3(1.5, 0.1, 0.6)
 	step2.material_override = stair_mat
-	step2.position = _spawn_pos + Vector3(-0.5, 0.15, 0.0)
+	step2.position = _spawn_pos + Vector3(-0.5, 0.15, -0.75)
 	add_child(step2)
+
+	# 6 visual stair meshes
+	for i in range(6):
+		var frac := float(i) / 6.0
+		var y_pos: float = -0.4 + frac * 0.6
+		var z_pos: float = -(6 - i) * 0.5 - 0.75
+		var vm := MeshInstance3D.new()
+		vm.mesh = BoxMesh.new()
+		vm.mesh.size = Vector3(1.5, 0.1, 0.5)
+		vm.material_override = stair_mat
+		vm.position = _spawn_pos + Vector3(-0.3, y_pos, z_pos)
+		add_child(vm)
+
+	# Single ramp collision (trimesh of rotated box) under the stairs
+	var ramp_body := StaticBody3D.new()
+	ramp_body.name = "EntranceRampCollision"
+	var ramp_sh := CollisionShape3D.new()
+	var ramp_mesh := BoxMesh.new()
+	ramp_mesh.size = Vector3(1.5, 0.6, 3.5)
+	var trimesh := ramp_mesh.create_trimesh_shape()
+	if trimesh:
+		ramp_sh.shape = trimesh
+	ramp_sh.position = _spawn_pos + Vector3(-0.3, -0.4, -2.5)
+	ramp_sh.rotation.x = 0.17
+	ramp_sh.rotation.y = PI
+	ramp_body.add_child(ramp_sh)
+	# Collision for the two top visual steps
+	var sh1 := CollisionShape3D.new()
+	var box1 := BoxShape3D.new()
+	box1.size = Vector3(1.5, 0.1, 0.6)
+	sh1.shape = box1
+	sh1.position = _spawn_pos + Vector3(-0.3, 0.05, -0.75)
+	ramp_body.add_child(sh1)
+	var sh2 := CollisionShape3D.new()
+	var box2 := BoxShape3D.new()
+	box2.size = Vector3(1.5, 0.1, 0.6)
+	sh2.shape = box2
+	sh2.position = _spawn_pos + Vector3(-0.5, 0.15, -0.75)
+	ramp_body.add_child(sh2)
+	ramp_body.collision_layer = 1
+	add_child(ramp_body)
 
 func _goal_tile_trigger() -> void:
 	if not _goal_area or not _goal_area.monitoring:
@@ -334,6 +395,9 @@ func _goal_tile_trigger() -> void:
 		_dungeon_level += 1
 		goal_reached.emit(prev)
 
+func get_dungeon_level() -> int:
+	return _dungeon_level
+
 func _spawn_enemies() -> void:
 	_spawn_enemies_with_level(1)
 
@@ -341,7 +405,7 @@ func _spawn_enemies_with_level(dlvl: int) -> void:
 	var player := get_tree().get_first_node_in_group("player")
 	if not player:
 		return
-	var enemy_scene := preload("res://scenes/spider.tscn")
+	var enemy_scenes: Array[PackedScene] = [preload("res://scenes/spider.tscn"), preload("res://scenes/zombie.tscn")]
 	var floor_tiles: Array = []
 	for y in range(_grid_h):
 		for x in range(_grid_w):
@@ -364,7 +428,8 @@ func _spawn_enemies_with_level(dlvl: int) -> void:
 	for i in min(count_, spawn_tiles.size()):
 		var idx: int = randi_range(0, spawn_tiles.size() - 1)
 		var pos: Vector3 = spawn_tiles[idx]
-		var enemy := enemy_scene.instantiate()
+		var scene_idx: int = randi() % enemy_scenes.size()
+		var enemy: Node = enemy_scenes[scene_idx].instantiate()
 		enemy.position = pos + Vector3(0.0, 0.6, 0.0)
 		var min_lvl: int = (dlvl - 1) * 3 + 1
 		var max_lvl: int = dlvl * 3
