@@ -2,8 +2,9 @@
 .godot/
 /android/
 
-# No subir
+# No subir (except docs/*.md)
 *.md
+!/docs/**/*.md
 *.txt
 tools/jira_config.json
 tools/jira*
@@ -13,3 +14,6 @@ assets/models/enemies/zombie/Zombie Idle.fbx
 assets/models/enemies/zombie/Zombie Idle.fbx.import
 assets/models/enemies/zombie/Zombie Idle_*.png
 assets/models/enemies/zombie/Zombie Idle_*.png.import
+
+# Google Service Account key
+gen-lang-client-*.json
