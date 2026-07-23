@@ -2,9 +2,11 @@
 .godot/
 /android/
 
-# No subir (except docs/*.md)
+# No subir (except docs/, tools/, and root CHANGELOG)
 *.md
 !/docs/**/*.md
+!/tools/**/*.md
+!/CHANGELOG.md
 *.txt
 tools/jira_config.json
 tools/jira*
