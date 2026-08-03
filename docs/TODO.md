@@ -42,6 +42,16 @@
 - 15 tareas pendientes creadas en Jira
 - Todos los docs reorganizados
 
+### 2026-07-23 (noche) — Jira completo + protocolo de sesión
+
+**Logros:**
+- Jira project key actualizada (KAN → TAREA), board ID dinámico
+- 89 tareas en Sprint 1, asignadas a Fabricio, tipo Programacion/Engine
+- 15 tareas pendientes creadas (TAREA-92 a 106)
+- Protocolo de sesión formalizado en AGENTS.md
+- TODO.md actualizado con pendientes + bitácora
+- Corregido unicode + empty response en jira.py
+
 ### 2026-07-22 — Sheets + Process Notes
 
 **Logros:**
